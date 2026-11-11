@@ -1,3 +1,27 @@
+<!--
+=====================================================================
+ RIGZORA STORE – ALL IN ONE FILE (save as index.html)
+
+ FIRESTORE RULES (paste in Firebase Console → Firestore Database → Rules):
+
+ rules_version = '2';
+ service cloud.firestore {
+   match /databases/{database}/documents {
+     match /users/{uid} {
+       allow read, write: if request.auth != null && request.auth.uid == uid;
+     }
+     match /orders/{id} {
+       allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+       allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+       allow update, delete: if false;
+     }
+   }
+ }
+
+ Also enable: Authentication → Sign-in method → Email/Password.
+ Open via http://localhost or your hosted domain (not file://).
+=====================================================================
+-->
 <!doctype html>
 <html lang='en'>
 <head>
@@ -72,23 +96,17 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 
 <div class='modal' id='payModal'><div class='box'><div class='bh'><h2>Select Payment Method</h2><button class='x' onclick='closeM(this)'>×</button></div>
 <p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p>
-
 <div class='pay-opts'>
   <label class='pay-opt'><input type='radio' name='pmode' value='UPI' checked onchange='togglePayMode()'> Pay via UPI</label>
   <label class='pay-opt'><input type='radio' name='pmode' value='COD' onchange='togglePayMode()'> Cash on Delivery</label>
 </div>
-
 <div id='upiSection'>
   <img class='qr' src='https://i.ibb.co/6y4tWvQ/upi-qr.png' alt='UPI payment QR code' onerror="this.onerror=null;this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=anuhsp33355@okicici%26pn=ANU%20THAKUR'">
   <div class='payid'><b>UPI ID:</b> anuhsp33355@okicici (Anu Thakur)</div>
   <a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
   <label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
 </div>
-
-<div id='codSection' style='display:none;'>
-  <p class='muted'>Pay in cash or via QR upon delivery.</p>
-</div>
-
+<div id='codSection' style='display:none;'><p class='muted'>Pay in cash or via QR upon delivery.</p></div>
 <div class='err' id='payErr'></div>
 <button class='btn wide' id='orderBtn' onclick='placeOrder()'>I have paid – place order</button>
 </div></div>
@@ -126,24 +144,44 @@ const items = [
 [2,'8GB DDR4 Desktop RAM','RAM','8GB • 3200MHz • Desktop DIMM',1499,'🧠'],
 [3,'32GB DDR4 Dual Channel Kit','RAM','2×16GB • 3600MHz',5799,'🧠'],
 [4,'16GB DDR5 Gaming RAM','RAM','16GB • 5600MHz • DDR5',4299,'🧠'],
+[21,'8GB DDR5 Desktop RAM','RAM','8GB • 4800MHz • DDR5',2799,'🧠'],
+[22,'16GB DDR4 Laptop RAM','RAM','16GB • 3200MHz • SODIMM',2999,'🧠'],
+[23,'8GB DDR4 Laptop RAM','RAM','8GB • 3200MHz • SODIMM',1599,'🧠'],
+[24,'64GB DDR5 Dual Channel Kit','RAM','2×32GB • 6000MHz • DDR5',15999,'🧠'],
 [5,'GeForce RTX Gaming Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan • PCIe',24999,'🎮'],
 [6,'Radeon RX Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan',21999,'🎮'],
 [7,'Entry-Level Graphics Card','Graphics Card','4GB GDDR6 • Compact',10999,'🎮'],
+[25,'High-End Gaming Graphics Card','Graphics Card','12GB GDDR6X • Triple Fan • PCIe',42999,'🎮'],
+[26,'4-Core Desktop Processor','Processor','4 Core • 8 Thread • Desktop CPU',6499,'⚙️'],
 [8,'6-Core Desktop Processor','Processor','6 Core • 12 Thread • Desktop CPU',11999,'⚙️'],
 [9,'8-Core Gaming Processor','Processor','8 Core • 16 Thread • Desktop CPU',18999,'⚙️'],
-[10,'1TB NVMe M.2 SSD','Storage','1TB • PCIe NVMe • High Speed',5499,'💾'],
+[27,'12-Core Performance Processor','Processor','12 Core • 24 Thread • Desktop CPU',28999,'⚙️'],
+[28,'256GB SATA SSD','Storage','256GB • SATA 2.5-inch',1799,'💾'],
 [11,'512GB NVMe M.2 SSD','Storage','512GB • PCIe NVMe',2999,'💾'],
+[10,'1TB NVMe M.2 SSD','Storage','1TB • PCIe NVMe • High Speed',5499,'💾'],
+[29,'2TB NVMe M.2 SSD','Storage','2TB • PCIe NVMe • High Speed',9999,'💾'],
 [12,'2TB SATA Hard Drive','Storage','2TB • 3.5-inch • 7200RPM',4999,'💽'],
+[30,'4TB SATA Hard Drive','Storage','4TB • 3.5-inch • 5400RPM',7999,'💽'],
 [13,'B550 Motherboard','Motherboard','AM4 • DDR4 • M.2 • ATX',8999,'🧩'],
 [14,'H610 Motherboard','Motherboard','Intel LGA1700 • DDR4 • mATX',6499,'🧩'],
 [15,'B760 DDR5 Motherboard','Motherboard','Intel LGA1700 • DDR5 • M.2',11999,'🧩'],
+[31,'24-inch Full HD Monitor','Monitor','24" • 1080p • 75Hz • IPS',8499,'🖥️'],
+[32,'27-inch QHD Gaming Monitor','Monitor','27" • 1440p • 165Hz • IPS',17999,'🖥️'],
 [16,'650W Bronze Power Supply','Accessories','650W • 80+ Bronze • ATX',4999,'🔌'],
+[33,'750W Gold Power Supply','Accessories','750W • 80+ Gold • Modular',7499,'🔌'],
 [17,'ARGB Gaming Cabinet','Accessories','Tempered Glass • 4 ARGB Fans',4599,'🖥️'],
 [18,'240mm Liquid CPU Cooler','Accessories','240mm Radiator • ARGB Fans',4299,'❄️'],
+[35,'Air CPU Cooler','Accessories','Tower • 4 Heatpipes • 120mm Fan',1999,'❄️'],
+[34,'120mm ARGB Case Fan (3 Pack)','Accessories','3 × 120mm • ARGB • Controller',1499,'🌀'],
+[36,'Thermal Paste','Accessories','4g • High Conductivity',299,'🧴'],
 [19,'Mechanical Gaming Keyboard','Accessories','RGB • Mechanical switches • USB',1999,'⌨️'],
-[20,'Gaming Mouse','Accessories','Adjustable DPI • RGB • USB',799,'🖱️']
+[20,'Gaming Mouse','Accessories','Adjustable DPI • RGB • USB',799,'🖱️'],
+[37,'Gaming Headset','Accessories','7.1 Surround • Mic • USB',1799,'🎧'],
+[38,'XL Gaming Mouse Pad','Accessories','800 × 300mm • Anti-slip base',499,'🟦'],
+[39,'1080p Webcam','Accessories','Full HD • Built-in Mic • USB',2299,'📷'],
+[40,'WiFi PCIe Network Adapter','Accessories','Dual Band • Bluetooth • PCIe',1199,'📶']
 ].map(x => ({ id: x[0], name: x[1], cat: x[2], spec: x[3], price: Math.round(x[4] * 1.1), emoji: x[5] }));
-const cats = ['All', 'RAM', 'Graphics Card', 'Processor', 'Storage', 'Motherboard', 'Accessories'];
+const cats = ['All', 'RAM', 'Graphics Card', 'Processor', 'Storage', 'Motherboard', 'Monitor', 'Accessories'];
 const total = () => cart.reduce((a, x) => a + items.find(p => p.id === x.id).price * x.qty, 0);
 function show(id) { $(id).classList.add('show'); } function hide(id) { $(id).classList.remove('show'); }
 function closeM(el) { const m = el.closest('.modal'); m.classList.remove('show'); if (m.id === 'authModal') pending = false; }
@@ -157,10 +195,17 @@ else if (p.cat === 'Processor') s = L(24, 18, 24, 72, '#fbc02d', 4, '3 2') + L(9
 else if (p.cat === 'Storage' && /Hard/.test(n)) s = R(22, 8, 76, 74, '#b0bec5', 6) + C(60, 42, 27, '#455a64') + C(60, 42, 8, '#cfd8dc') + L(60, 42, 88, 16, '#eceff1', 3) + R(30, 72, 60, 5, c);
 else if (p.cat === 'Storage') s = R(8, 28, 104, 34, '#1565c0', 3) + R(14, 28, 8, 34, '#fbc02d') + [0, 1, 2].map(i => R(34 + i * 24, 34, 18, 22, '#212121', 2)).join('') + R(34, 56, 60, 4, c);
 else if (p.cat === 'Motherboard') s = R(15, 6, 90, 78, '#1b5e20', 4) + R(28, 16, 30, 30, '#cfd8dc', 3) + R(34, 22, 18, 18, '#78909c') + [0, 1, 2, 3].map(i => R(70 + i * 8, 12, 5, 36, '#212121')).join('') + R(22, 60, 76, 6, '#111') + R(68, 70, 14, 10, c, 2);
+else if (p.cat === 'Monitor') s = R(12, 10, 96, 58, '#263238', 4) + R(17, 15, 86, 48, c, 2) + R(52, 68, 16, 10, '#607d8b') + R(36, 78, 48, 5, '#607d8b', 2);
 else if (/Power/.test(n)) s = R(18, 16, 84, 58, '#37474f', 5) + C(60, 45, 22, '#263238', c) + C(60, 45, 5, c) + R(24, 66, 20, 4, '#90a4ae');
 else if (/Cabinet/.test(n)) s = R(32, 5, 56, 80, '#212121', 5) + R(38, 11, 44, 68, '#455a64', 3) + [22, 43, 64].map(y => C(60, y, 8, 'none', c)).join('');
+else if (/Case Fan/.test(n)) s = [0, 1, 2].map(i => C(22 + i * 38, 45, 17, '#263238', c) + C(22 + i * 38, 45, 5, c)).join('');
 else if (/Cooler/.test(n)) s = R(8, 28, 72, 34, '#546e7a', 3) + C(30, 45, 13, '#263238', c) + C(58, 45, 13, '#263238', c) + C(98, 45, 14, '#263238', c) + L(80, 38, 86, 38, '#90a4ae', 3) + L(80, 52, 86, 52, '#90a4ae', 3);
 else if (/Keyboard/.test(n)) s = R(6, 26, 108, 42, '#263238', 4) + [0, 1, 2].map(r => [...Array(12)].map((_, i) => R(11 + i * 8.5, 31 + r * 9, 6, 6, r == 1 ? c : '#78909c', 1)).join('')).join('') + R(30, 58, 56, 6, '#78909c', 1);
+else if (/Mouse Pad/.test(n)) s = R(8, 22, 104, 50, '#263238', 6) + R(14, 28, 92, 4, c, 2);
+else if (/Webcam/.test(n)) s = C(60, 36, 24, '#263238', c) + C(60, 36, 10, '#455a64') + R(50, 60, 20, 16, '#607d8b', 2);
+else if (/Headset/.test(n)) s = '<path d="M25 55 A35 38 0 0 1 95 55" fill="none" stroke="#263238" stroke-width="6"/>' + R(16, 48, 16, 28, '#263238', 5) + R(88, 48, 16, 28, '#263238', 5) + R(28, 72, 24, 5, c, 2);
+else if (/WiFi/.test(n)) s = R(15, 40, 90, 26, '#1b5e20', 3) + R(24, 66, 40, 8, '#fbc02d') + L(88, 40, 88, 14, '#263238', 4) + L(98, 40, 98, 18, '#263238', 4);
+else if (/Thermal/.test(n)) s = R(48, 12, 24, 56, '#eceff1', 4) + R(52, 4, 16, 10, c, 2) + R(48, 28, 24, 18, c);
 else s = R(42, 10, 36, 70, '#263238', 18) + L(60, 10, 60, 38, '#607d8b', 2) + R(56, 20, 8, 14, c, 4);
 return `<svg viewBox='0 0 120 90' xmlns='http://www.w3.org/2000/svg'>${s}</svg>`; }
 function render() { const q = $('search').value.toLowerCase(); const list = items.filter(p => (category === 'All' || p.cat === category) && (p.name + ' ' + p.cat + ' ' + p.spec).toLowerCase().includes(q)); $('result').textContent = list.length + ' products'; $('grid').innerHTML = list.map(p => `<article class='product'><div class='art'><span class='tag'>ILLUSTRATION</span>${art(p)}</div><div class='info'><div class='cat'>${p.cat}</div><h3>${p.name}</h3><div class='spec'>${p.spec}</div><div class='rating'>★★★★☆ <span class='muted'>Sample rating</span></div><div class='price'>${money(p.price)}</div><button class='btn add' onclick='add(${p.id})'>Add to Cart</button></div></article>`).join('') || '<p>No matching products.</p>'; }

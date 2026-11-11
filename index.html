@@ -27,6 +27,8 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 .box{background:#fff;border-radius:8px;width:min(520px,100%);max-height:92vh;overflow:auto;padding:20px}.bh{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);margin-bottom:10px}.bh h2{margin:0 0 8px}.x{border:0;background:none;font-size:26px}
 .box label{display:block;margin:10px 0 4px;font-weight:bold;font-size:13px}.box input{width:100%;padding:10px;border:1px solid #888;border-radius:3px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .err{color:#b12704;font-size:13px;margin-top:8px;min-height:16px}
+.payid{background:#f0f2f2;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}
+.qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd}
 .order{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;line-height:1.6}.green{color:var(--green);font-weight:bold}.policy li{margin:9px 0;line-height:1.5}
 .tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:52px;display:grid;place-items:center;margin:6px auto 12px;animation:pop .4s}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
 .pay-opts{display:flex;gap:12px;margin:14px 0}.pay-opt{flex:1;border:1px solid var(--line);padding:10px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:bold}.pay-opt input{width:auto}
@@ -72,20 +74,28 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 <p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p>
 
 <div class='pay-opts'>
-  <label class='pay-opt'><input type='radio' name='pmode' value='COD' checked> Cash on Delivery</label>
+  <label class='pay-opt'><input type='radio' name='pmode' value='UPI' checked onchange='togglePayMode()'> Pay via UPI</label>
+  <label class='pay-opt'><input type='radio' name='pmode' value='COD' onchange='togglePayMode()'> Cash on Delivery</label>
 </div>
 
-<div id='codSection'>
-  <p class='muted'>Pay in cash or via QR upon delivery. Please ensure exact change if possible.</p>
+<div id='upiSection'>
+  <img class='qr' src='assets/upi-payment-qr.png' alt='UPI payment QR code'>
+  <div class='payid'><b>UPI ID:</b> anuhsp33355@okicici (Anu Thakur)</div>
+  <a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
+  <label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
+</div>
+
+<div id='codSection' style='display:none;'>
+  <p class='muted'>Pay in cash upon delivery.</p>
 </div>
 
 <div class='err' id='payErr'></div>
-<button class='btn wide' id='orderBtn' onclick='placeOrder()'>Place COD Order</button>
+<button class='btn wide' id='orderBtn' onclick='placeOrder()'>I have paid – place order</button>
 </div></div>
 
 <div class='modal' id='okModal'><div class='box' style='text-align:center'><div class='tick'>✓</div><h2>Order placed!</h2>
 <p>Order ID: <b id='orderId'></b><br>Amount: <b id='okAmount'></b></p>
-<p class='muted' id='okMsg'>Your Cash on Delivery order is confirmed! You can track it under Returns &amp; Orders.</p>
+<p class='muted' id='okMsg'>Your order is confirmed! You can track it under Returns &amp; Orders.</p>
 <button class='btn wide' onclick='closeM(this);openOrders()'>View my orders</button><button class='btn alt wide' onclick='closeM(this)'>Continue shopping</button></div></div>
 
 <div class='modal' id='ordersModal'><div class='box'><div class='bh'><h2>Your orders</h2><button class='x' onclick='closeM(this)'>×</button></div><div id='ordersList'></div></div></div>
@@ -211,38 +221,52 @@ async function saveAddress() {
 }
 function addrText(a) { return [a.name, a.house, a.area, a.city, a.state, a.pincode, 'Ph: ' + a.phone].filter(Boolean).join(', '); }
 
+function togglePayMode(){
+  const isUPI = document.querySelector('input[name="pmode"]:checked').value === 'UPI';
+  $('upiSection').style.display = isUPI ? 'block' : 'none';
+  $('codSection').style.display = isUPI ? 'none' : 'block';
+  $('orderBtn').textContent = isUPI ? 'I have paid – place order' : 'Place COD Order';
+}
 function openPay() {
   const amt = total();
   $('payAmount').textContent = money(amt);
   $('payAddr').textContent = addrText(address);
+  $('utr').value = '';
   $('payErr').textContent = '';
+  $('upiLink').href = 'upi://pay?pa=anuhsp33355@okicici&pn=ANU%20THAKUR&am=' + amt + '&cu=INR&tn=RIGZORA%20PC%20Parts';
+  const r = document.querySelectorAll('input[name="pmode"]'); if (r.length) r[0].checked = true;
+  togglePayMode();
   show('payModal');
 }
 async function placeOrder() {
   const err = t => { $('payErr').textContent = t; }; err('');
+  const pmode = document.querySelector('input[name="pmode"]:checked').value;
+  const utr = $('utr').value.trim();
+  if (pmode === 'UPI' && !/^[0-9]{12}$/.test(utr)) return err('Enter the 12-digit UPI transaction ID (UTR) shown in your payment app.');
   if (!cart.length || !user || !address) return err('Something is missing. Please close this and try again.');
   const lines = cart.map(x => { const p = items.find(i => i.id === x.id); return { id: p.id, name: p.name, price: p.price, qty: x.qty }; });
   const amt = total();
   $('orderBtn').disabled = true;
   try {
-    const statusStr = 'Placed - Cash on Delivery';
+    const statusStr = pmode === 'COD' ? 'Placed - Cash on Delivery' : 'Placed - payment to be verified';
     const orderData = {
       uid: user.uid,
       email: user.email,
       items: lines,
       total: amt,
       address,
-      paymentMethod: 'COD',
+      paymentMethod: pmode,
       status: statusStr,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     };
+    if (pmode === 'UPI') orderData.utr = utr;
     const ref = await db.collection('orders').add(orderData);
     cart = [];
     updateCart();
     hide('payModal');
     $('orderId').textContent = ref.id.slice(0, 8).toUpperCase();
     $('okAmount').textContent = money(amt);
-    $('okMsg').textContent = 'Your Cash on Delivery order is confirmed! You can track it under Returns & Orders.';
+    $('okMsg').textContent = pmode === 'COD' ? 'Your Cash on Delivery order is confirmed! You can track it under Returns & Orders.' : 'We will verify your payment and confirm your order soon. You can track it under Returns & Orders.';
     show('okModal');
   } catch (e) { err('Order could not be saved: ' + e.message); }
   $('orderBtn').disabled = false;

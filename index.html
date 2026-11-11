@@ -1,115 +1,209 @@
 <!doctype html>
-<html lang="en">
+<html lang='en'>
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RIGZORA | PC Parts & Gaming Store</title>
+<meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>RIGZORA | PC Parts &amp; Gaming Store</title>
 <style>
-:root{--nav:#172337;--blue:#2874f0;--yellow:#ffe500;--bg:#f1f3f6;--ink:#172337;--muted:#687789;--line:#e4e8ef;--green:#168447}
+:root{--nav:#131921;--nav2:#232f3e;--orange:#febd69;--btn:#ffd814;--btn2:#ffa41c;--bg:#eaeded;--ink:#0f1111;--muted:#565959;--line:#d5d9d9;--green:#007600}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px Arial,Helvetica,sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}
-.top{background:#101b2c;color:#d9e4f2;padding:8px 5%;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-header{background:var(--nav);color:white;padding:13px 5%;display:flex;align-items:center;gap:22px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #0002}
-.brand{font-size:27px;font-weight:900;letter-spacing:1.5px;white-space:nowrap}.brand b{color:var(--yellow)}.brand small{display:block;font-size:9px;letter-spacing:3px;color:#bdcce0;margin-top:2px}
-.search{display:flex;flex:1;max-width:680px}.search input{padding:12px 14px;border:0;border-radius:4px 0 0 4px;width:100%;outline:0}.search button{border:0;background:var(--yellow);padding:0 20px;font-weight:bold;border-radius:0 4px 4px 0}
-.head-actions{display:flex;gap:14px;align-items:center}.head-actions button{background:transparent;border:0;color:white;font-weight:bold}.cartnum{background:#fff;color:#172337;border-radius:20px;padding:2px 7px}
-nav{background:white;display:flex;justify-content:center;gap:clamp(15px,4vw,50px);padding:13px 5%;box-shadow:0 2px 5px #0000000b;overflow:auto;white-space:nowrap}nav a{color:#29384c;text-decoration:none;font-weight:bold;font-size:13px}nav a:hover{color:var(--blue)}
-.wrap{max-width:1300px;margin:auto;padding:18px 18px 45px}.hero{border-radius:7px;background:linear-gradient(110deg,#101c30,#1d4672 60%,#1b2433);color:white;min-height:260px;padding:38px 5%;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}.hero h1{font-size:clamp(32px,5vw,56px);margin:8px 0}.hero h1 span{color:var(--yellow)}.hero p{color:#d4dfed;max-width:500px;line-height:1.6}.hero .kicker{color:var(--yellow);font-weight:bold;letter-spacing:3px}.hero-art{font-size:clamp(70px,12vw,145px);filter:drop-shadow(0 15px 18px #0008);padding-right:5%}.cta{display:inline-block;background:var(--yellow);color:#172337;padding:12px 19px;border-radius:4px;text-decoration:none;font-weight:bold;margin-top:8px}
-.perks{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:15px 0}.perk{background:white;padding:16px;border-radius:5px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px #0000000a}.perk strong{display:block}.perk small{color:var(--muted)}
-.panel{background:white;border-radius:5px;margin-top:17px;padding:20px;box-shadow:0 1px 3px #0000000a}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:16px}.sectionhead h2{font-size:21px;margin:0}.sectionhead small{color:var(--muted)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.filter{background:white;border:1px solid #d6deea;padding:8px 13px;border-radius:20px;color:#33445b}.filter.active{background:var(--blue);color:white;border-color:var(--blue)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.product{border:1px solid var(--line);border-radius:5px;overflow:hidden;background:white;transition:.18s}.product:hover{box-shadow:0 5px 18px #142b4c20;transform:translateY(-2px)}.art{height:145px;display:grid;place-items:center;background:linear-gradient(145deg,#f4f7fb,#e5edf8);font-size:66px;position:relative}.tag{position:absolute;left:9px;top:9px;background:#e7f6ec;color:var(--green);font-size:10px;padding:5px 7px;border-radius:3px;font-weight:bold}.info{padding:12px}.cat{font-size:10px;color:var(--blue);font-weight:bold;text-transform:uppercase;letter-spacing:1px}.info h3{font-size:14px;line-height:1.35;min-height:38px;margin:7px 0}.spec{color:var(--muted);font-size:11px;min-height:27px}.rating{font-size:11px;color:#168447;margin:7px 0}.price{font-size:19px;font-weight:bold}.mrp{font-size:11px;color:#8793a2;text-decoration:line-through;margin-left:6px}.off{font-size:11px;color:var(--green);margin-left:5px}.add{width:100%;background:#ff9f00;border:0;border-radius:3px;padding:10px;margin-top:10px;font-weight:bold;color:#172337}.add:hover{background:#f5ad28}
-.info-strip{display:grid;grid-template-columns:1fr 1fr;gap:14px}.info-strip article{background:#fff;border-radius:5px;padding:20px}.info-strip h3{margin-top:0}.info-strip p{color:var(--muted);line-height:1.6}
-footer{background:#172337;color:#d7e0eb;padding:32px 5%;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}footer h3{color:white}footer a{color:#d7e0eb;display:block;margin:9px 0;text-decoration:none}footer small{color:#9cacc0}
-.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:30}.overlay.show{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(480px,100%);background:white;padding:20px;overflow:auto}.drawerhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}.x{border:0;background:none;font-size:27px}.cartrow{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.cartrow small{display:block;color:var(--muted);margin-top:5px}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:1px solid var(--line);background:#f4f6f9;padding:4px 10px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;padding:18px 0}.wide{width:100%;border:0;background:var(--blue);color:white;padding:13px;border-radius:4px;font-weight:bold;margin:5px 0}.secondary{background:#edf3ff;color:#1d5dbb}.muted{color:var(--muted);font-size:11px;line-height:1.5}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.modalbox{background:white;border-radius:7px;width:min(560px,100%);max-height:92vh;overflow:auto;padding:22px}.modalbox h2{margin-top:0}.qr{display:block;width:min(280px,80%);margin:12px auto;border:8px solid white;box-shadow:0 0 0 1px #ddd}.payid{background:#f2f5f9;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}.policy li{margin:10px 0;line-height:1.5}
-.art svg{width:80%;height:90%}@media(max-width:850px){.grid{grid-template-columns:repeat(3,1fr)}.perks{grid-template-columns:repeat(2,1fr)}header{flex-wrap:wrap}.search{order:3;flex-basis:100%;max-width:none}.head-actions{margin-left:auto}}
-@media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:112px;font-size:51px}.info{padding:9px}.price{font-size:16px}.wrap{padding:10px}.hero{padding:25px 20px;min-height:250px}.hero-art{font-size:65px;padding:0}.perks{gap:7px}.perk{padding:10px;font-size:12px}.info-strip,footer{grid-template-columns:1fr}.brand{font-size:23px}}
+header{background:var(--nav);color:#fff;padding:8px 14px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+.brand{font-size:26px;font-weight:900;letter-spacing:1px;white-space:nowrap;color:#fff;text-decoration:none}.brand b{color:var(--orange)}
+.loc{font-size:12px;color:#ccc;line-height:1.3;white-space:nowrap}.loc b{display:block;color:#fff;font-size:13px}
+.search{display:flex;flex:1;min-width:0}.search select{border:0;background:#e6e6e6;border-radius:4px 0 0 4px;padding:0 8px;max-width:130px}.search input{flex:1;min-width:0;border:0;padding:11px;outline:0}.search button{border:0;background:var(--orange);padding:0 16px;border-radius:0 4px 4px 0;font-weight:bold}
+.hbtn{background:none;border:1px solid transparent;color:#fff;text-align:left;padding:6px 8px;border-radius:2px;line-height:1.25;white-space:nowrap}.hbtn:hover{border-color:#fff}.hbtn small{display:block;font-size:11px;font-weight:normal;color:#ddd}.hbtn b{font-size:13px}
+.cartnum{background:var(--orange);color:var(--nav);border-radius:10px;padding:1px 7px;margin-left:4px}
+nav{background:var(--nav2);padding:6px 14px;display:flex;gap:6px;overflow:auto;white-space:nowrap}nav button{background:none;border:1px solid transparent;color:#fff;padding:6px 10px;font-size:13px}nav button:hover,nav button.active{border-color:#fff}
+.wrap{max-width:1300px;margin:auto;padding:14px 14px 40px}
+.hero{border-radius:6px;background:linear-gradient(110deg,#131921,#1d4672 60%,#232f3e);color:#fff;min-height:240px;padding:34px 5%;display:flex;align-items:center;justify-content:space-between;overflow:hidden}.hero h1{font-size:clamp(30px,5vw,52px);margin:8px 0}.hero h1 span{color:var(--orange)}.hero p{color:#d4dfed;max-width:480px;line-height:1.6}.kicker{color:var(--orange);font-weight:bold;letter-spacing:3px}.hero-art{font-size:clamp(70px,12vw,140px);padding-right:5%}
+.panel{background:#fff;border-radius:6px;margin-top:14px;padding:18px}.sectionhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}.sectionhead h2{margin:0;font-size:21px}.muted{color:var(--muted);font-size:12px;line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.product{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}.product:hover{box-shadow:0 4px 14px #0002}
+.art{height:145px;display:grid;place-items:center;background:#f7f8f8;position:relative}.art svg{width:80%;height:90%}.tag{position:absolute;left:8px;top:8px;background:#e7f4e8;color:var(--green);font-size:10px;padding:4px 6px;border-radius:3px;font-weight:bold}
+.info{padding:12px}.cat{font-size:10px;color:#007185;font-weight:bold;text-transform:uppercase;letter-spacing:1px}.info h3{font-size:14px;line-height:1.35;min-height:38px;margin:6px 0}.spec{color:var(--muted);font-size:12px;min-height:30px}.rating{font-size:12px;color:#de7921;margin:6px 0}.price{font-size:22px;font-weight:bold}
+.btn{background:var(--btn);border:1px solid #fcd200;border-radius:20px;padding:9px 18px;font-weight:bold;color:var(--ink)}.btn:hover{background:#f7ca00}.btn.alt{background:var(--btn2);border-color:#ff8f00}.add{width:100%;margin-top:10px}.wide{width:100%;margin-top:12px;border-radius:8px;padding:11px;display:block;text-align:center;text-decoration:none}
+footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}footer a{color:#d7e0eb;margin:0 10px}
+.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:30}.overlay.show{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);background:#fff;padding:18px;overflow:auto}
+.cartrow{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.cartrow small{display:block;color:var(--muted);margin-top:4px}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid var(--line);background:#f0f2f2;padding:4px 10px;border-radius:4px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;padding:16px 0}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
+.box{background:#fff;border-radius:8px;width:min(520px,100%);max-height:92vh;overflow:auto;padding:20px}.bh{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);margin-bottom:10px}.bh h2{margin:0 0 8px}.x{border:0;background:none;font-size:26px}
+.box label{display:block;margin:10px 0 4px;font-weight:bold;font-size:13px}.box input{width:100%;padding:10px;border:1px solid #888;border-radius:3px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.err{color:#b12704;font-size:13px;margin-top:8px;min-height:16px}.payid{background:#f0f2f2;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}.qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd}
+.order{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;line-height:1.6}.green{color:var(--green);font-weight:bold}.policy li{margin:9px 0;line-height:1.5}
+.tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:52px;display:grid;place-items:center;margin:6px auto 12px;animation:pop .4s}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}header{flex-wrap:wrap}.search{order:5;flex-basis:100%}.loc{display:none}}
+@media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:112px}.info{padding:9px}.price{font-size:18px}.wrap{padding:8px}.row2{grid-template-columns:1fr}}
 </style></head>
 <body>
-<div class="top">⚡ RIGZORA — YOUR PC HARDWARE DESTINATION <span>Demo storefront • India</span></div>
 <header>
-<a href="#" style="color:white;text-decoration:none"><div class="brand">RIG<b>ZORA</b><small>PC PARTS • GAMING • PERFORMANCE</small></div></a>
-<div class="search"><input id="search" placeholder="Search for RAM, graphics cards, SSDs and more..." aria-label="Search products"><button onclick="render()">SEARCH</button></div>
-<div class="head-actions"><button onclick="showPolicy()">Returns</button><button onclick="openCart()">🛒 Cart <span class="cartnum" id="count">0</span></button></div>
+<a class='brand' href='#'>RIG<b>ZORA</b></a>
+<div class='loc'>Deliver to<b id='loc'>Select address</b></div>
+<div class='search'><select id='scat' onchange='setCat(this.value)'></select><input id='search' placeholder='Search RAM, graphics cards, SSDs...' aria-label='Search'><button onclick='render()'>Search</button></div>
+<button class='hbtn' onclick='accountClick()'><small id='hello'>Hello, sign in</small><b>Account</b></button>
+<button class='hbtn' onclick='openOrders()'><small>Returns</small><b>&amp; Orders</b></button>
+<button class='hbtn' onclick='openCart()'>🛒 <b>Cart</b><span class='cartnum' id='count'>0</span></button>
 </header>
-<nav><a href="#products">ALL PRODUCTS</a><a href="#products" onclick="setCat('RAM')">RAM</a><a href="#products" onclick="setCat('Graphics Card')">GRAPHICS CARDS</a><a href="#products" onclick="setCat('Processor')">PROCESSORS</a><a href="#products" onclick="setCat('Storage')">SSD & STORAGE</a><a href="#products" onclick="setCat('Motherboard')">MOTHERBOARDS</a><a href="#products" onclick="setCat('Accessories')">ACCESSORIES</a><a href="#customer-form">FORM 1</a><a href="#customer-form-2">FORM 2</a></nav>
-<div class="wrap">
-<section class="hero"><div><div class="kicker">WELCOME TO RIGZORA</div><h1>UPGRADE YOUR<br><span>GAME.</span></h1><p>Shop PC components for gaming, streaming, creating and everyday performance. Find the parts for your next build.</p><a class="cta" href="#products">SHOP COMPONENTS →</a></div><div class="hero-art">🖥️</div></section>
-<div class="perks"><div class="perk"><span>🚚</span><div><strong>Delivery information</strong><small>Shipping details at checkout</small></div></div><div class="perk"><span>↩️</span><div><strong>Returns policy</strong><small>Read return conditions</small></div></div><div class="perk"><span>💳</span><div><strong>UPI payment option</strong><small>Scan QR or open UPI app</small></div></div><div class="perk"><span>🛠️</span><div><strong>Build assistance</strong><small>Choose compatible parts</small></div></div></div>
-<section class="panel" id="products"><div class="sectionhead"><div><h2>Popular PC Components</h2><small>Explore the RIGZORA collection</small></div><small id="result">20 products</small></div><div class="filters" id="filters"></div><div class="grid" id="grid"></div></section>
-<div class="info-strip"><article><h3>↩️ Returns & Refunds</h3><p>Review the sample returns policy before placing an order. Actual return eligibility, timelines and refund method must be confirmed and published by the store owner before launch.</p><button class="wide secondary" onclick="showPolicy()">VIEW RETURNS POLICY</button></article><article><h3>💳 UPI checkout</h3><p>Customers can scan the provided QR code or open a UPI app with the cart amount prefilled. Payment confirmation is not automated in this demo.</p><button class="wide" onclick="openCart()">GO TO CART</button></article></div>
+<nav id='nav'></nav>
+<div class='wrap'>
+<section class='hero'><div><div class='kicker'>WELCOME TO RIGZORA</div><h1>Upgrade your <span>game.</span></h1><p>Shop PC components for gaming, streaming, creating and everyday performance.</p><button class='btn' onclick='go()'>Shop now</button></div><div class='hero-art'>🖥️</div></section>
+<section class='panel' id='products'><div class='sectionhead'><h2>Popular PC components</h2><small class='muted' id='result'></small></div><div class='grid' id='grid'></div></section>
 </div>
+<footer><b>RIGZORA</b> – hardware for your next build.<p><a href='#' onclick='showPolicy();return false'>Returns &amp; refunds</a><a href='mailto:hello@rigzora.example'>Contact store</a></p><small>© 2026 RIGZORA</small></footer>
 
-<section class="panel" id="customer-form">
-  <div class="sectionhead">
-    <div><h2>RIGZORA Customer Form</h2><small>Send your enquiry or order details using our form.</small></div>
-    <a class="cta" style="margin:0" href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6NQQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=header" target="_blank" rel="noopener noreferrer">OPEN GOOGLE FORM ↗</a>
-  </div>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6NQQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?embedded=true"
-    width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0"
-    title="RIGZORA customer form">Loading…</iframe>
-  <p class="muted">If the form does not load here, use the Open Google Form button.</p>
-</section>
+<div class='overlay' id='cartOverlay' onclick='if(event.target===this)closeCart()'><aside class='drawer'><div class='bh'><h2>Shopping Cart</h2><button class='x' onclick='closeCart()'>×</button></div><div id='cartItems'></div><div class='total'><span>Subtotal</span><span id='total'>₹0</span></div><button class='btn wide' onclick='checkout()'>Proceed to Buy</button></aside></div>
 
-<section class="panel" id="customer-form-2">
-  <div class="sectionhead">
-    <div><h2>RIGZORA Form 2</h2><small>Fill in this form to send us your details.</small></div>
-    <a class="cta" style="margin:0" href="https://docs.google.com/forms/d/e/1FAIpQLSfEeIXsriE3J9vcMo-hRQ3v3YsNchjXTUXZJq3UxfgTEYfEXA/viewform" target="_blank" rel="noopener noreferrer">OPEN GOOGLE FORM ↗</a>
-  </div>
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEeIXsriE3J9vcMo-hRQ3v3YsNchjXTUXZJq3UxfgTEYfEXA/viewform?embedded=true"
-    width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0"
-    title="RIGZORA form 2">Loading…</iframe>
-  <p class="muted">If the form does not load here, use the Open Google Form button.</p>
-</section>
+<div class='modal' id='authModal'><div class='box'><div class='bh'><h2 id='authTitle'>Sign in</h2><button class='x' onclick='closeM(this)'>×</button></div>
+<div id='nameRow'><label>Your name</label><input id='aName' autocomplete='name'></div>
+<label>Email</label><input id='aEmail' type='email' autocomplete='email'>
+<label>Password (min 6 characters)</label><input id='aPass' type='password' autocomplete='current-password'>
+<div class='err' id='authErr'></div>
+<button class='btn wide' id='authBtn' onclick='submitAuth()'>SIGN IN</button>
+<p class='muted'><span id='toUp'>New to RIGZORA? <a href='#' onclick='setMode(1);return false'>Create your account</a></span><span id='toIn'>Already have an account? <a href='#' onclick='setMode(0);return false'>Sign in</a></span></p></div></div>
 
-<footer><div><div class="brand">RIG<b>ZORA</b></div><p>Hardware for your next build. Shop components, plan upgrades and build your setup.</p><small>© 2026 RIGZORA. Demo website.</small></div><div><h3>QUICK LINKS</h3><a href="#products">Shop products</a><a href="#products">New arrivals</a><a href="#products">Best sellers</a></div><div><h3>CUSTOMER SERVICE</h3><a href="#" onclick="showPolicy()">Returns & refunds</a><a href="mailto:hello@rigzora.example">Contact store</a><small>Replace demo contact details before launch.</small></div></footer>
-<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer"><div class="drawerhead"><h2>Your Shopping Cart</h2><button class="x" onclick="closeCart()">×</button></div><div id="cartItems"></div><div class="total"><span>Subtotal</span><span id="total">₹0</span></div><button class="wide" onclick="payment()">CONTINUE TO UPI PAYMENT</button><p class="muted">Demo checkout: this page does not create an order or verify a payment. Keep your UPI transaction reference and contact the store owner to confirm an order.</p></aside></div>
-<div class="modal" id="payModal"><div class="modalbox"><div class="drawerhead"><h2>Pay using UPI</h2><button class="x" onclick="closeModal('payModal')">×</button></div><p>Cart amount: <b id="payAmount"></b></p><img class="qr" src="assets/upi-payment-qr.png" alt="Uploaded UPI payment QR code"><div class="payid"><b>UPI ID shown in the uploaded QR:</b><br>anuhsp33355@okicici</div><p class="muted">Important: this QR belongs to the account named ANU THAKUR in the uploaded image. Payments made by scanning it will go to that UPI account, not automatically to a RIGZORA business account. Confirm that you are authorised to receive business payments there before publishing.</p><a id="upiLink" class="wide" style="display:block;text-align:center;text-decoration:none" href="#">OPEN UPI APP</a><button class="wide secondary" onclick="closeModal('payModal')">BACK TO STORE</button><p class="muted">After paying, check your UPI app for success. This demo cannot verify payment or automatically confirm an order.</p></div></div>
-<div class="modal" id="policyModal"><div class="modalbox policy"><div class="drawerhead"><h2>RIGZORA Returns & Refunds</h2><button class="x" onclick="closeModal('policyModal')">×</button></div><p><b>Sample policy — customise before launch.</b></p><ul><li>Contact the store within 7 days of delivery to request a return for an eligible item.</li><li>Products must be unused, undamaged and returned with original packaging, accessories and invoice.</li><li>Opened, physically damaged, tampered or incorrectly installed components may not qualify, subject to applicable consumer law and product warranty.</li><li>Share clear photos and your order details when requesting a return.</li><li>Refunds should be processed to the original payment method after the returned product is inspected.</li><li>Damaged, defective or incorrect deliveries should be reported promptly with unboxing photos/video.</li></ul><p class="muted">This is placeholder wording, not a verified legal policy. Set your actual return window, address, shipping responsibility, refund timelines and customer support contact. Follow applicable Indian consumer-protection rules.</p><button class="wide" onclick="closeModal('policyModal')">CLOSE</button></div></div>
+<div class='modal' id='addrModal'><div class='box'><div class='bh'><h2>Delivery address</h2><button class='x' onclick='closeM(this)'>×</button></div>
+<div class='row2'><div><label>Full name</label><input id='dName'></div><div><label>Mobile number</label><input id='dPhone' type='tel' maxlength='10'></div></div>
+<label>House no., building, street</label><input id='dHouse'>
+<label>Area, landmark</label><input id='dArea'>
+<div class='row2'><div><label>Pincode</label><input id='dPin' maxlength='6'></div><div><label>City</label><input id='dCity'></div></div>
+<label>State</label><input id='dState'>
+<div class='err' id='addrErr'></div>
+<button class='btn wide' id='addrBtn' onclick='saveAddress()'>Save and continue to payment</button></div></div>
+
+<div class='modal' id='payModal'><div class='box'><div class='bh'><h2>Pay using UPI</h2><button class='x' onclick='closeM(this)'>×</button></div>
+<p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p>
+<img class='qr' src='assets/upi-payment-qr.png' alt='UPI payment QR code'>
+<div class='payid'><b>UPI ID:</b> anuhsp33355@okicici</div>
+<a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
+<label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
+<div class='err' id='payErr'></div>
+<button class='btn wide' id='orderBtn' onclick='placeOrder()'>I have paid – place order</button>
+<p class='muted'>Your order is confirmed after the store checks the payment in its UPI account.</p></div></div>
+
+<div class='modal' id='okModal'><div class='box' style='text-align:center'><div class='tick'>✓</div><h2>Order placed!</h2>
+<p>Order ID: <b id='orderId'></b><br>Amount: <b id='okAmount'></b></p>
+<p class='muted'>We will verify your payment and confirm your order soon. You can track it under Returns &amp; Orders.</p>
+<button class='btn wide' onclick='closeM(this);openOrders()'>View my orders</button><button class='btn alt wide' onclick='closeM(this)'>Continue shopping</button></div></div>
+
+<div class='modal' id='ordersModal'><div class='box'><div class='bh'><h2>Your orders</h2><button class='x' onclick='closeM(this)'>×</button></div><div id='ordersList'></div></div></div>
+
+<div class='modal' id='policyModal'><div class='box policy'><div class='bh'><h2>Returns &amp; Refunds</h2><button class='x' onclick='closeM(this)'>×</button></div><p><b>Sample policy – edit before launch.</b></p><ul><li>Contact the store within 7 days of delivery to request a return for an eligible item.</li><li>Products must be unused, undamaged and returned with original packaging, accessories and invoice.</li><li>Opened, damaged, tampered or incorrectly installed parts may not qualify, subject to consumer law and warranty.</li><li>Share clear photos and your order details when requesting a return.</li><li>Refunds are processed to the original payment method after inspection.</li><li>Report damaged or wrong deliveries promptly with unboxing photos or video.</li></ul><button class='btn wide' onclick='closeM(this)'>Close</button></div></div>
+
+<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js'></script>
+<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js'></script>
+<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js'></script>
 <script>
+const firebaseConfig={apiKey:'YOUR_API_KEY',authDomain:'YOUR_PROJECT_ID.firebaseapp.com',projectId:'YOUR_PROJECT_ID',storageBucket:'YOUR_PROJECT_ID.appspot.com',messagingSenderId:'YOUR_SENDER_ID',appId:'YOUR_APP_ID'};
+const ready=firebaseConfig.apiKey!=='YOUR_API_KEY';
+let auth=null,db=null,user=null,address=null,cart=[],category='All',signup=false,pending=false;
+try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore()}catch(e){console.error(e)}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').split(String.fromCharCode(34)).join('&quot;');
+const money=n=>'₹'+n.toLocaleString('en-IN');
 const items=[
-[1,"16GB DDR4 Gaming RAM","RAM","16GB • 3200MHz • Desktop DIMM",2899,"🧠"],
-[2,"8GB DDR4 Desktop RAM","RAM","8GB • 3200MHz • Desktop DIMM",1499,"🧠"],
-[3,"32GB DDR4 Dual Channel Kit","RAM","2×16GB • 3600MHz",5799,"🧠"],
-[4,"16GB DDR5 Gaming RAM","RAM","16GB • 5600MHz • DDR5",4299,"🧠"],
-[5,"GeForce RTX Gaming Graphics Card","Graphics Card","8GB GDDR6 • Dual Fan • PCIe",24999,"🎮"],
-[6,"Radeon RX Graphics Card","Graphics Card","8GB GDDR6 • Dual Fan",21999,"🎮"],
-[7,"Entry-Level Graphics Card","Graphics Card","4GB GDDR6 • Compact",10999,"🎮"],
-[8,"6-Core Desktop Processor","Processor","6 Core • 12 Thread • Desktop CPU",11999,"⚙️"],
-[9,"8-Core Gaming Processor","Processor","8 Core • 16 Thread • Desktop CPU",18999,"⚙️"],
-[10,"1TB NVMe M.2 SSD","Storage","1TB • PCIe NVMe • High Speed",5499,"💾"],
-[11,"512GB NVMe M.2 SSD","Storage","512GB • PCIe NVMe",2999,"💾"],
-[12,"2TB SATA Hard Drive","Storage","2TB • 3.5-inch • 7200RPM",4999,"💽"],
-[13,"B550 Motherboard","Motherboard","AM4 • DDR4 • M.2 • ATX",8999,"🧩"],
-[14,"H610 Motherboard","Motherboard","Intel LGA1700 • DDR4 • mATX",6499,"🧩"],
-[15,"B760 DDR5 Motherboard","Motherboard","Intel LGA1700 • DDR5 • M.2",11999,"🧩"],
-[16,"650W Bronze Power Supply","Accessories","650W • 80+ Bronze • ATX",4999,"🔌"],
-[17,"ARGB Gaming Cabinet","Accessories","Tempered Glass • 4 ARGB Fans",4599,"🖥️"],
-[18,"240mm Liquid CPU Cooler","Accessories","240mm Radiator • ARGB Fans",4299,"❄️"],
-[19,"Mechanical Gaming Keyboard","Accessories","RGB • Mechanical switches • USB",1999,"⌨️"],
-[20,"Gaming Mouse","Accessories","Adjustable DPI • RGB • USB",799,"🖱️"]
-].map(x=>({id:x[0],name:x[1],cat:x[2],spec:x[3],price:x[4],emoji:x[5]}));
-let category="All",cart=[];
-const money=n=>"₹"+n.toLocaleString("en-IN");
+[1,'16GB DDR4 Gaming RAM','RAM','16GB • 3200MHz • Desktop DIMM',2899,'🧠'],
+[2,'8GB DDR4 Desktop RAM','RAM','8GB • 3200MHz • Desktop DIMM',1499,'🧠'],
+[3,'32GB DDR4 Dual Channel Kit','RAM','2×16GB • 3600MHz',5799,'🧠'],
+[4,'16GB DDR5 Gaming RAM','RAM','16GB • 5600MHz • DDR5',4299,'🧠'],
+[5,'GeForce RTX Gaming Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan • PCIe',24999,'🎮'],
+[6,'Radeon RX Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan',21999,'🎮'],
+[7,'Entry-Level Graphics Card','Graphics Card','4GB GDDR6 • Compact',10999,'🎮'],
+[8,'6-Core Desktop Processor','Processor','6 Core • 12 Thread • Desktop CPU',11999,'⚙️'],
+[9,'8-Core Gaming Processor','Processor','8 Core • 16 Thread • Desktop CPU',18999,'⚙️'],
+[10,'1TB NVMe M.2 SSD','Storage','1TB • PCIe NVMe • High Speed',5499,'💾'],
+[11,'512GB NVMe M.2 SSD','Storage','512GB • PCIe NVMe',2999,'💾'],
+[12,'2TB SATA Hard Drive','Storage','2TB • 3.5-inch • 7200RPM',4999,'💽'],
+[13,'B550 Motherboard','Motherboard','AM4 • DDR4 • M.2 • ATX',8999,'🧩'],
+[14,'H610 Motherboard','Motherboard','Intel LGA1700 • DDR4 • mATX',6499,'🧩'],
+[15,'B760 DDR5 Motherboard','Motherboard','Intel LGA1700 • DDR5 • M.2',11999,'🧩'],
+[16,'650W Bronze Power Supply','Accessories','650W • 80+ Bronze • ATX',4999,'🔌'],
+[17,'ARGB Gaming Cabinet','Accessories','Tempered Glass • 4 ARGB Fans',4599,'🖥️'],
+[18,'240mm Liquid CPU Cooler','Accessories','240mm Radiator • ARGB Fans',4299,'❄️'],
+[19,'Mechanical Gaming Keyboard','Accessories','RGB • Mechanical switches • USB',1999,'⌨️'],
+[20,'Gaming Mouse','Accessories','Adjustable DPI • RGB • USB',799,'🖱️']
+].map(x=>({id:x[0],name:x[1],cat:x[2],spec:x[3],price:Math.round(x[4]*1.1),emoji:x[5]}));
+const cats=['All','RAM','Graphics Card','Processor','Storage','Motherboard','Accessories'];
+const total=()=>cart.reduce((a,x)=>a+items.find(p=>p.id===x.id).price*x.qty,0);
+function show(id){$(id).classList.add('show')}function hide(id){$(id).classList.remove('show')}function closeM(el){el.closest('.modal').classList.remove('show')}
+function go(){$('products').scrollIntoView({behavior:'smooth'})}
 function setCat(c){category=c;renderFilters();render()}
-function renderFilters(){let cats=["All","RAM","Graphics Card","Processor","Storage","Motherboard","Accessories"];document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${category===c?'active':''}" onclick="setCat('${c}')">${c}</button>`).join("")}
-function art(p){const c=["#2874f0","#e53935","#43a047","#8e24aa","#fb8c00"][p.id%5];const R=(x,y,w,h,f,r=0)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${f}"/>`,C=(x,y,r,f,st)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}" stroke="${st||"none"}" stroke-width="2"/>`,L=(x1,y1,x2,y2,st,w,d)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${st}" stroke-width="${w}" stroke-dasharray="${d||0}"/>`;let s="";const n=p.name;
-if(p.cat==="RAM")s=R(10,26,100,38,"#2e7d32",3)+[0,1,2,3].map(i=>R(18+i*22,32,16,18,"#212121",2)).join("")+R(10,54,100,6,c)+L(12,67,108,67,"#fbc02d",6,"3 2");
-else if(p.cat==="Graphics Card")s=R(4,20,6,50,"#90a4ae")+R(10,24,100,42,"#263238",5)+C(40,45,16,"#37474f",c)+C(80,45,16,"#37474f",c)+C(40,45,5,c)+C(80,45,5,c)+L(20,69,100,69,"#fbc02d",4,"3 2");
-else if(p.cat==="Processor")s=L(24,18,24,72,"#fbc02d",4,"3 2")+L(96,18,96,72,"#fbc02d",4,"3 2")+L(34,9,86,9,"#fbc02d",4,"3 2")+L(34,81,86,81,"#fbc02d",4,"3 2")+R(30,15,60,60,"#cfd8dc",6)+R(42,27,36,36,"#78909c",3)+R(48,33,24,24,c,2);
-else if(p.cat==="Storage"&&/Hard/.test(n))s=R(22,8,76,74,"#b0bec5",6)+C(60,42,27,"#455a64")+C(60,42,8,"#cfd8dc")+L(60,42,88,16,"#eceff1",3)+R(30,72,60,5,c);
-else if(p.cat==="Storage")s=R(8,28,104,34,"#1565c0",3)+R(14,28,8,34,"#fbc02d")+[0,1,2].map(i=>R(34+i*24,34,18,22,"#212121",2)).join("")+R(34,56,60,4,c);
-else if(p.cat==="Motherboard")s=R(15,6,90,78,"#1b5e20",4)+R(28,16,30,30,"#cfd8dc",3)+R(34,22,18,18,"#78909c")+[0,1,2,3].map(i=>R(70+i*8,12,5,36,"#212121")).join("")+R(22,60,76,6,"#111")+R(68,70,14,10,c,2);
-else if(/Power/.test(n))s=R(18,16,84,58,"#37474f",5)+C(60,45,22,"#263238",c)+C(60,45,5,c)+R(24,66,20,4,"#90a4ae");
-else if(/Cabinet/.test(n))s=R(32,5,56,80,"#212121",5)+R(38,11,44,68,"#455a64",3)+[22,43,64].map(y=>C(60,y,8,"none",c)).join("");
-else if(/Cooler/.test(n))s=R(8,28,72,34,"#546e7a",3)+C(30,45,13,"#263238",c)+C(58,45,13,"#263238",c)+C(98,45,14,"#263238",c)+L(80,38,86,38,"#90a4ae",3)+L(80,52,86,52,"#90a4ae",3);
-else if(/Keyboard/.test(n))s=R(6,26,108,42,"#263238",4)+[0,1,2].map(r=>[...Array(12)].map((_,i)=>R(11+i*8.5,31+r*9,6,6,r==1?c:"#78909c",1)).join("")).join("")+R(30,58,56,6,"#78909c",1);
-else s=R(42,10,36,70,"#263238",18)+L(60,10,60,38,"#607d8b",2)+R(56,20,8,14,c,4);
-return `<svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg">${s}</svg>`}
-function render(){let q=document.getElementById("search").value.toLowerCase();let list=items.filter(p=>(category==="All"||p.cat===category)&&(p.name+" "+p.cat+" "+p.spec).toLowerCase().includes(q));document.getElementById("result").textContent=list.length+" products";document.getElementById("grid").innerHTML=list.map(p=>`<article class="product"><div class="art"><span class="tag">ILLUSTRATION</span>${art(p)}</div><div class="info"><div class="cat">${p.cat}</div><h3>${p.name}</h3><div class="spec">${p.spec}</div><div class="rating">★ ★ ★ ★ ☆ &nbsp; Sample rating</div><div><span class="price">${money(p.price)}</span><span class="mrp">${money(Math.round(p.price*1.15))}</span><span class="off">15% off*</span></div><button class="add" onclick="add(${p.id})">ADD TO CART</button></div></article>`).join("")||"<p>No matching products.</p>"}
-function add(id){let x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});updateCart()}
-function updateCart(){document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{let p=items.find(i=>i.id===x.id);return `<div class="cartrow"><div><b>${p.name}</b><small>${money(p.price)} each</small><div class="qty"><button onclick="qty(${p.id},-1)">−</button>${x.qty}<button onclick="qty(${p.id},1)">+</button></div></div><b>${money(p.price*x.qty)}</b></div>`}).join(""):'<p>Your cart is empty. Add a product to get started.</p>';document.getElementById("total").textContent=money(cart.reduce((a,x)=>a+items.find(p=>p.id===x.id).price*x.qty,0))}
-function qty(id,n){let x=cart.find(i=>i.id===id);x.qty+=n;if(x.qty<1)cart=cart.filter(i=>i.id!==id);updateCart()}
-function openCart(){document.getElementById("cartOverlay").classList.add("show");updateCart()}function closeCart(){document.getElementById("cartOverlay").classList.remove("show")}
-function payment(){if(!cart.length){alert("Your cart is empty.");return}let amount=cart.reduce((a,x)=>a+items.find(p=>p.id===x.id).price*x.qty,0);document.getElementById("payAmount").textContent=money(amount);document.getElementById("upiLink").href="upi://pay?pa=anuhsp33355@okicici&pn=ANU%20THAKUR&am="+amount+"&cu=INR&tn=RIGZORA%20PC%20Parts";closeCart();document.getElementById("payModal").classList.add("show")}
-function showPolicy(){document.getElementById("policyModal").classList.add("show")}function closeModal(id){document.getElementById(id).classList.remove("show")}
-document.getElementById("search").addEventListener("input",render);renderFilters();render();updateCart();
+function renderFilters(){$('nav').innerHTML=cats.map(c=>`<button class='${category===c?'active':''}' onclick='setCat(this.textContent)'>${c}</button>`).join('');$('scat').innerHTML=cats.map(c=>`<option ${category===c?'selected':''}>${c}</option>`).join('')}
+function art(p){const c=['#2874f0','#e53935','#43a047','#8e24aa','#fb8c00'][p.id%5];const R=(x,y,w,h,f,r=0)=>`<rect x='${x}' y='${y}' width='${w}' height='${h}' rx='${r}' fill='${f}'/>`,C=(x,y,r,f,st)=>`<circle cx='${x}' cy='${y}' r='${r}' fill='${f}' stroke='${st||'none'}' stroke-width='2'/>`,L=(x1,y1,x2,y2,st,w,d)=>`<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='${st}' stroke-width='${w}' stroke-dasharray='${d||0}'/>`;let s='';const n=p.name;
+if(p.cat==='RAM')s=R(10,26,100,38,'#2e7d32',3)+[0,1,2,3].map(i=>R(18+i*22,32,16,18,'#212121',2)).join('')+R(10,54,100,6,c)+L(12,67,108,67,'#fbc02d',6,'3 2');
+else if(p.cat==='Graphics Card')s=R(4,20,6,50,'#90a4ae')+R(10,24,100,42,'#263238',5)+C(40,45,16,'#37474f',c)+C(80,45,16,'#37474f',c)+C(40,45,5,c)+C(80,45,5,c)+L(20,69,100,69,'#fbc02d',4,'3 2');
+else if(p.cat==='Processor')s=L(24,18,24,72,'#fbc02d',4,'3 2')+L(96,18,96,72,'#fbc02d',4,'3 2')+L(34,9,86,9,'#fbc02d',4,'3 2')+L(34,81,86,81,'#fbc02d',4,'3 2')+R(30,15,60,60,'#cfd8dc',6)+R(42,27,36,36,'#78909c',3)+R(48,33,24,24,c,2);
+else if(p.cat==='Storage'&&/Hard/.test(n))s=R(22,8,76,74,'#b0bec5',6)+C(60,42,27,'#455a64')+C(60,42,8,'#cfd8dc')+L(60,42,88,16,'#eceff1',3)+R(30,72,60,5,c);
+else if(p.cat==='Storage')s=R(8,28,104,34,'#1565c0',3)+R(14,28,8,34,'#fbc02d')+[0,1,2].map(i=>R(34+i*24,34,18,22,'#212121',2)).join('')+R(34,56,60,4,c);
+else if(p.cat==='Motherboard')s=R(15,6,90,78,'#1b5e20',4)+R(28,16,30,30,'#cfd8dc',3)+R(34,22,18,18,'#78909c')+[0,1,2,3].map(i=>R(70+i*8,12,5,36,'#212121')).join('')+R(22,60,76,6,'#111')+R(68,70,14,10,c,2);
+else if(/Power/.test(n))s=R(18,16,84,58,'#37474f',5)+C(60,45,22,'#263238',c)+C(60,45,5,c)+R(24,66,20,4,'#90a4ae');
+else if(/Cabinet/.test(n))s=R(32,5,56,80,'#212121',5)+R(38,11,44,68,'#455a64',3)+[22,43,64].map(y=>C(60,y,8,'none',c)).join('');
+else if(/Cooler/.test(n))s=R(8,28,72,34,'#546e7a',3)+C(30,45,13,'#263238',c)+C(58,45,13,'#263238',c)+C(98,45,14,'#263238',c)+L(80,38,86,38,'#90a4ae',3)+L(80,52,86,52,'#90a4ae',3);
+else if(/Keyboard/.test(n))s=R(6,26,108,42,'#263238',4)+[0,1,2].map(r=>[...Array(12)].map((_,i)=>R(11+i*8.5,31+r*9,6,6,r==1?c:'#78909c',1)).join('')).join('')+R(30,58,56,6,'#78909c',1);
+else s=R(42,10,36,70,'#263238',18)+L(60,10,60,38,'#607d8b',2)+R(56,20,8,14,c,4);
+return `<svg viewBox='0 0 120 90' xmlns='http://www.w3.org/2000/svg'>${s}</svg>`}
+function render(){const q=$('search').value.toLowerCase();const list=items.filter(p=>(category==='All'||p.cat===category)&&(p.name+' '+p.cat+' '+p.spec).toLowerCase().includes(q));$('result').textContent=list.length+' products';$('grid').innerHTML=list.map(p=>`<article class='product'><div class='art'><span class='tag'>ILLUSTRATION</span>${art(p)}</div><div class='info'><div class='cat'>${p.cat}</div><h3>${p.name}</h3><div class='spec'>${p.spec}</div><div class='rating'>★★★★☆ <span class='muted'>Sample rating</span></div><div class='price'>${money(p.price)}</div><button class='btn add' onclick='add(${p.id})'>Add to Cart</button></div></article>`).join('')||'<p>No matching products.</p>'}
+function add(id){const x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});updateCart()}
+function qty(id,n){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=n;if(x.qty<1)cart=cart.filter(i=>i.id!==id);updateCart()}
+function updateCart(){$('count').textContent=cart.reduce((a,x)=>a+x.qty,0);$('cartItems').innerHTML=cart.length?cart.map(x=>{const p=items.find(i=>i.id===x.id);return `<div class='cartrow'><div><b>${p.name}</b><small>${money(p.price)} each</small><div class='qty'><button onclick='qty(${p.id},-1)'>−</button>${x.qty}<button onclick='qty(${p.id},1)'>+</button></div></div><b>${money(p.price*x.qty)}</b></div>`}).join(''):'<p>Your cart is empty. Add a product to get started.</p>';$('total').textContent=money(total())}
+function openCart(){$('cartOverlay').classList.add('show');updateCart()}function closeCart(){$('cartOverlay').classList.remove('show')}
+function showPolicy(){show('policyModal')}
+
+function setMode(s){signup=!!s;$('authTitle').textContent=signup?'Create account':'Sign in';$('nameRow').style.display=signup?'block':'none';$('authBtn').textContent=signup?'CREATE ACCOUNT':'SIGN IN';$('toUp').style.display=signup?'none':'inline';$('toIn').style.display=signup?'inline':'none';$('aPass').autocomplete=signup?'new-password':'current-password';$('authErr').textContent=''}
+function openAuth(s){setMode(s);show('authModal')}
+function friendly(e){const m={'auth/email-already-in-use':'This email is already registered. Please sign in.','auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'No account found with this email.','auth/invalid-email':'Please enter a valid email.','auth/weak-password':'Password must be at least 6 characters.','auth/network-request-failed':'Network problem. Check your internet and try again.','auth/too-many-requests':'Too many attempts. Please try again later.'};return m[e.code]||e.message}
+async function submitAuth(){
+const err=t=>{$('authErr').textContent=t};err('');
+if(!ready||!auth)return err('Add your Firebase config in the code first.');
+const email=$('aEmail').value.trim(),pw=$('aPass').value,name=$('aName').value.trim();
+if(!email||pw.length<6)return err('Enter a valid email and a password of at least 6 characters.');
+if(signup&&!name)return err('Please enter your name.');
+$('authBtn').disabled=true;
+try{
+if(signup){const c=await auth.createUserWithEmailAndPassword(email,pw);await c.user.updateProfile({displayName:name});$('hello').textContent='Hello, '+name;try{await db.collection('users').doc(c.user.uid).set({name,email,createdAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}catch(e2){console.error(e2)}}
+else await auth.signInWithEmailAndPassword(email,pw);
+hide('authModal');
+}catch(e){err(friendly(e))}
+$('authBtn').disabled=false}
+function accountClick(){if(!user)return openAuth(0);if(confirm('Sign out of RIGZORA?'))auth.signOut()}
+if(auth)auth.onAuthStateChanged(async u=>{user=u;address=null;
+if(u){$('hello').textContent='Hello, '+(u.displayName||(u.email||'').split('@')[0]);try{const d=await db.collection('users').doc(u.uid).get();if(d.exists&&d.data().address)address=d.data().address}catch(e){console.error(e)}}
+else $('hello').textContent='Hello, sign in';
+$('loc').textContent=address?address.city+' '+address.pincode:'Select address';
+if(u&&pending){pending=false;hide('authModal');openAddress()}});
+
+function checkout(){if(!cart.length){alert('Your cart is empty.');return}closeCart();if(!user){pending=true;openAuth(0);return}openAddress()}
+function openAddress(){const a=address||{};$('dName').value=a.name||(user&&user.displayName)||'';$('dPhone').value=a.phone||'';$('dHouse').value=a.house||'';$('dArea').value=a.area||'';$('dPin').value=a.pincode||'';$('dCity').value=a.city||'';$('dState').value=a.state||'';$('addrErr').textContent='';show('addrModal')}
+async function saveAddress(){
+const a={name:$('dName').value.trim(),phone:$('dPhone').value.trim(),house:$('dHouse').value.trim(),area:$('dArea').value.trim(),pincode:$('dPin').value.trim(),city:$('dCity').value.trim(),state:$('dState').value.trim()};
+const err=t=>{$('addrErr').textContent=t};
+if(!a.name||!a.house||!a.city||!a.state)return err('Please fill name, house/street, city and state.');
+if(!/^[0-9]{10}$/.test(a.phone))return err('Enter a valid 10-digit mobile number.');
+if(!/^[0-9]{6}$/.test(a.pincode))return err('Enter a valid 6-digit pincode.');
+$('addrBtn').disabled=true;
+try{await db.collection('users').doc(user.uid).set({address:a},{merge:true});address=a;$('loc').textContent=a.city+' '+a.pincode;hide('addrModal');openPay()}
+catch(e){err('Could not save address: '+e.message)}
+$('addrBtn').disabled=false}
+function addrText(a){return [a.name,a.house,a.area,a.city,a.state,a.pincode,'Ph: '+a.phone].filter(Boolean).join(', ')}
+function openPay(){const amt=total();$('payAmount').textContent=money(amt);$('payAddr').textContent=addrText(address);$('utr').value='';$('payErr').textContent='';$('upiLink').href='upi://pay?pa=anuhsp33355@okicici&pn=ANU%20THAKUR&am='+amt+'&cu=INR&tn=RIGZORA%20PC%20Parts';show('payModal')}
+async function placeOrder(){
+const err=t=>{$('payErr').textContent=t};err('');
+const utr=$('utr').value.trim();
+if(!/^[0-9]{12}$/.test(utr))return err('Enter the 12-digit UPI transaction ID (UTR) shown in your payment app.');
+if(!cart.length||!user||!address)return err('Something is missing. Please close this and try again.');
+const lines=cart.map(x=>{const p=items.find(i=>i.id===x.id);return {id:p.id,name:p.name,price:p.price,qty:x.qty}});
+const amt=total();
+$('orderBtn').disabled=true;
+try{
+const ref=await db.collection('orders').add({uid:user.uid,email:user.email,items:lines,total:amt,address,utr,status:'Placed - payment to be verified',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+cart=[];updateCart();hide('payModal');$('orderId').textContent=ref.id.slice(0,8).toUpperCase();$('okAmount').textContent=money(amt);show('okModal');
+}catch(e){err('Order could not be saved: '+e.message)}
+$('orderBtn').disabled=false}
+async function openOrders(){
+if(!user)return openAuth(0);
+show('ordersModal');$('ordersList').textContent='Loading...';
+try{
+const s=await db.collection('orders').where('uid','==',user.uid).get();
+const arr=s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>((b.createdAt&&b.createdAt.seconds)||0)-((a.createdAt&&a.createdAt.seconds)||0));
+$('ordersList').innerHTML=arr.length?arr.map(o=>`<div class='order'><b>Order #${esc(o.id.slice(0,8).toUpperCase())}</b>${o.createdAt?' · '+esc(new Date(o.createdAt.seconds*1000).toLocaleDateString('en-IN')):''}<br>${(o.items||[]).map(i=>esc(i.name)+' × '+esc(i.qty)).join('<br>')}<br><b>${money(Number(o.total)||0)}</b> · <span class='green'>${esc(o.status)}</span><br><small class='muted'>Deliver to: ${esc(o.address?addrText(o.address):'')}</small></div>`).join(''):'<p>No orders yet.</p>';
+}catch(e){$('ordersList').textContent='Could not load orders: '+e.message}}
+
+$('search').addEventListener('input',render);
+setMode(0);renderFilters();render();updateCart();
 </script></body></html>

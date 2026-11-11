@@ -31,7 +31,7 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 .qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd;border-radius:8px}
 .order{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;line-height:1.6}.green{color:var(--green);font-weight:bold}.policy li{margin:9px 0;line-height:1.5}
 .tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:52px;display:grid;place-items:center;margin:6px auto 12px;animation:pop .4s}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.pay-opts{display:flex;gap:12px;margin:14px 0}.pay-opt{flex:1;border:1px solid var(--line);padding:10px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:bold}.pay-opt input{width:auto}
+.pay-opts{display:flex;gap:12px;margin:14px 0}.box .pay-opt{flex:1;border:1px solid var(--line);padding:10px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:bold;margin:0}.pay-opt input{width:auto;padding:0}
 @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}header{flex-wrap:wrap}.search{order:5;flex-basis:100%}.loc{display:none}}
 @media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:112px}.info{padding:9px}.price{font-size:18px}.wrap{padding:8px}.row2{grid-template-columns:1fr}}
 </style></head>
@@ -79,7 +79,7 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 </div>
 
 <div id='upiSection'>
-  <img class='qr' src='https://i.ibb.co/6y4tWvQ/upi-qr.png' alt='UPI payment QR code' onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=anuhsp33355@okicici%26pn=ANU%20THAKUR'">
+  <img class='qr' src='https://i.ibb.co/6y4tWvQ/upi-qr.png' alt='UPI payment QR code' onerror="this.onerror=null;this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=anuhsp33355@okicici%26pn=ANU%20THAKUR'">
   <div class='payid'><b>UPI ID:</b> anuhsp33355@okicici (Anu Thakur)</div>
   <a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
   <label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
@@ -145,7 +145,8 @@ const items = [
 ].map(x => ({ id: x[0], name: x[1], cat: x[2], spec: x[3], price: Math.round(x[4] * 1.1), emoji: x[5] }));
 const cats = ['All', 'RAM', 'Graphics Card', 'Processor', 'Storage', 'Motherboard', 'Accessories'];
 const total = () => cart.reduce((a, x) => a + items.find(p => p.id === x.id).price * x.qty, 0);
-function show(id) { $(id).classList.add('show'); } function hide(id) { $(id).classList.remove('show'); } function closeM(el) { el.closest('.modal').classList.remove('show'); }
+function show(id) { $(id).classList.add('show'); } function hide(id) { $(id).classList.remove('show'); }
+function closeM(el) { const m = el.closest('.modal'); m.classList.remove('show'); if (m.id === 'authModal') pending = false; }
 function go() { $('products').scrollIntoView({ behavior: 'smooth' }); }
 function setCat(c) { category = c; renderFilters(); render(); }
 function renderFilters() { $('nav').innerHTML = cats.map(c => `<button class='${category === c ? 'active' : ''}' onclick='setCat(this.textContent)'>${c}</button>`).join(''); $('scat').innerHTML = cats.map(c => `<option ${category === c ? 'selected' : ''}>${c}</option>`).join(''); }
@@ -171,10 +172,10 @@ function showPolicy() { show('policyModal'); }
 
 function setMode(s) { signup = !!s; $('authTitle').textContent = signup ? 'Create account' : 'Sign in'; $('nameRow').style.display = signup ? 'block' : 'none'; $('authBtn').textContent = signup ? 'CREATE ACCOUNT' : 'SIGN IN'; $('toUp').style.display = signup ? 'none' : 'inline'; $('toIn').style.display = signup ? 'inline' : 'none'; $('aPass').autocomplete = signup ? 'new-password' : 'current-password'; $('authErr').textContent = ''; }
 function openAuth(s) { setMode(s); show('authModal'); }
-function friendly(e) { const m = { 'auth/email-already-in-use': 'This email is already registered. Please sign in.', 'auth/invalid-credential': 'Wrong email or password.', 'auth/wrong-password': 'Wrong email or password.', 'auth/user-not-found': 'No account found with this email.', 'auth/invalid-email': 'Please enter a valid email.', 'auth/weak-password': 'Password must be at least 6 characters.', 'auth/network-request-failed': 'Network problem. Check your internet and try again.', 'auth/too-many-requests': 'Too many attempts. Please try again later.' }; return m[e.code] || e.message; }
+function friendly(e) { const m = { 'auth/email-already-in-use': 'This email is already registered. Please sign in.', 'auth/invalid-credential': 'Wrong email or password.', 'auth/wrong-password': 'Wrong email or password.', 'auth/user-not-found': 'No account found with this email.', 'auth/invalid-email': 'Please enter a valid email.', 'auth/weak-password': 'Password must be at least 6 characters.', 'auth/network-request-failed': 'Network problem. Check your internet and try again.', 'auth/too-many-requests': 'Too many attempts. Please try again later.', 'auth/operation-not-allowed': 'Email/Password sign-in is not enabled in Firebase Console.', 'auth/unauthorized-domain': 'This domain is not authorized in Firebase Authentication settings.' }; return m[e.code] || e.message; }
 async function submitAuth() {
   const err = t => { $('authErr').textContent = t; }; err('');
-  if (!ready || !auth) return err('Add your Firebase config in the code first.');
+  if (!ready || !auth) return err('Firebase did not load. Check your internet connection and run the page via http://localhost or a hosted URL.');
   const email = $('aEmail').value.trim(), pw = $('aPass').value, name = $('aName').value.trim();
   if (!email || pw.length < 6) return err('Enter a valid email and a password of at least 6 characters.');
   if (signup && !name) return err('Please enter your name.');

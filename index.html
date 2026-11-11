@@ -104,7 +104,15 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 <script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js'></script>
 <script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js'></script>
 <script>
-const firebaseConfig={apiKey:'YOUR_API_KEY',authDomain:'YOUR_PROJECT_ID.firebaseapp.com',projectId:'YOUR_PROJECT_ID',storageBucket:'YOUR_PROJECT_ID.appspot.com',messagingSenderId:'YOUR_SENDER_ID',appId:'YOUR_APP_ID'};
+const firebaseConfig = {
+  apiKey: "AIzaSyDNB_0hxzuxgpPGCXXcFF4LuI2A5l8WqBE",
+  authDomain: "rigzora-store.firebaseapp.com",
+  projectId: "rigzora-store",
+  storageBucket: "rigzora-store.firebasestorage.app",
+  messagingSenderId: "789618312361",
+  appId: "1:789618312361:web:4122495cb8cd800679d5b8",
+  measurementId: "G-YZX0WTFZND"
+};
 const ready=firebaseConfig.apiKey!=='YOUR_API_KEY';
 let auth=null,db=null,user=null,address=null,cart=[],category='All',signup=false,pending=false;
 try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore()}catch(e){console.error(e)}

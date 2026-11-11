@@ -26,12 +26,9 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 .modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
 .box{background:#fff;border-radius:8px;width:min(520px,100%);max-height:92vh;overflow:auto;padding:20px}.bh{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);margin-bottom:10px}.bh h2{margin:0 0 8px}.x{border:0;background:none;font-size:26px}
 .box label{display:block;margin:10px 0 4px;font-weight:bold;font-size:13px}.box input{width:100%;padding:10px;border:1px solid #888;border-radius:3px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.err{color:#b12704;font-size:13px;margin-top:8px;min-height:16px}
-.payid{background:#f0f2f2;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}
-.qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd;border-radius:8px}
+.err{color:#b12704;font-size:13px;margin-top:8px;min-height:16px}.payid{background:#f0f2f2;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}.qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd}
 .order{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;line-height:1.6}.green{color:var(--green);font-weight:bold}.policy li{margin:9px 0;line-height:1.5}
 .tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:52px;display:grid;place-items:center;margin:6px auto 12px;animation:pop .4s}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.pay-opts{display:flex;gap:12px;margin:14px 0}.pay-opt{flex:1;border:1px solid var(--line);padding:10px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:bold}.pay-opt input{width:auto}
 @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}header{flex-wrap:wrap}.search{order:5;flex-basis:100%}.loc{display:none}}
 @media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:112px}.info{padding:9px}.price{font-size:18px}.wrap{padding:8px}.row2{grid-template-columns:1fr}}
 </style></head>
@@ -70,32 +67,19 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 <div class='err' id='addrErr'></div>
 <button class='btn wide' id='addrBtn' onclick='saveAddress()'>Save and continue to payment</button></div></div>
 
-<div class='modal' id='payModal'><div class='box'><div class='bh'><h2>Select Payment Method</h2><button class='x' onclick='closeM(this)'>×</button></div>
-<p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p>
-
-<div class='pay-opts'>
-  <label class='pay-opt'><input type='radio' name='pmode' value='UPI' checked onchange='togglePayMode()'> Pay via UPI</label>
-  <label class='pay-opt'><input type='radio' name='pmode' value='COD' onchange='togglePayMode()'> Cash on Delivery</label>
-</div>
-
-<div id='upiSection'>
-  <img class='qr' src='https://i.ibb.co/6y4tWvQ/upi-qr.png' alt='UPI payment QR code' onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=anuhsp33355@okicici%26pn=ANU%20THAKUR'">
-  <div class='payid'><b>UPI ID:</b> anuhsp33355@okicici (Anu Thakur)</div>
-  <a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
-  <label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
-</div>
-
-<div id='codSection' style='display:none;'>
-  <p class='muted'>Pay in cash or via QR upon delivery.</p>
-</div>
-
-<div class='err' id='payErr'></div>
+<div class='modal' id='payModal'><div class='box'><div class='bh'><h2>Choose payment</h2><button class='x' onclick='closeM(this)'>×</button></div>
+<p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p><div class='row2' style='margin:10px 0'><button class='btn' id='mUpi' onclick='setPay(0)'>💳 UPI</button><button class='btn' id='mCod' onclick='setPay(1)'>💵 Cash on Delivery</button></div><div id='upiBox'>
+<img class='qr' src='assets/upi-payment-qr.png' alt='UPI payment QR code'>
+<div class='payid'><b>UPI ID:</b> anuhsp33355@okicici</div>
+<a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
+<label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
+</div><div id='codBox' style='display:none'><p class='muted'>Pay in cash when your order is delivered. Please keep the exact amount ready. The store may call you to confirm the order.</p></div><div class='err' id='payErr'></div>
 <button class='btn wide' id='orderBtn' onclick='placeOrder()'>I have paid – place order</button>
-</div></div>
+<p class='muted' id='payNote'>Your order is confirmed after the store checks the payment in its UPI account.</p></div></div>
 
 <div class='modal' id='okModal'><div class='box' style='text-align:center'><div class='tick'>✓</div><h2>Order placed!</h2>
 <p>Order ID: <b id='orderId'></b><br>Amount: <b id='okAmount'></b></p>
-<p class='muted' id='okMsg'>Your order is confirmed! You can track it under Returns &amp; Orders.</p>
+<p class='muted' id='okNote'>We will verify your payment and confirm your order soon. You can track it under Returns &amp; Orders.</p>
 <button class='btn wide' onclick='closeM(this);openOrders()'>View my orders</button><button class='btn alt wide' onclick='closeM(this)'>Continue shopping</button></div></div>
 
 <div class='modal' id='ordersModal'><div class='box'><div class='bh'><h2>Your orders</h2><button class='x' onclick='closeM(this)'>×</button></div><div id='ordersList'></div></div></div>
@@ -104,24 +88,16 @@ footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}fo
 
 <script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js'></script>
 <script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js'></script>
-<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js'></script>
+<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js'></script><script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js'></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDNB_0hxzuxgpPGCXXcFF4LuI2A5l8WqBE",
-  authDomain: "rigzora-store.firebaseapp.com",
-  projectId: "rigzora-store",
-  storageBucket: "rigzora-store.firebasestorage.app",
-  messagingSenderId: "789618312361",
-  appId: "1:789618312361:web:4122495cb8cd800679d5b8",
-  measurementId: "G-YZX0WTFZND"
-};
-const ready = firebaseConfig.apiKey !== 'YOUR_API_KEY';
-let auth = null, db = null, user = null, address = null, cart = [], category = 'All', signup = false, pending = false;
-try { firebase.initializeApp(firebaseConfig); auth = firebase.auth(); db = firebase.firestore(); } catch (e) { console.error(e); }
-const $ = id => document.getElementById(id);
-const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').split(String.fromCharCode(34)).join('&quot;');
-const money = n => '₹' + n.toLocaleString('en-IN');
-const items = [
+const firebaseConfig={apiKey:'AIzaSyDNB_0hxzuxgpPGCXXcFF4LuI2A5l8WqBE',authDomain:'rigzora-store.firebaseapp.com',projectId:'rigzora-store',storageBucket:'rigzora-store.firebasestorage.app',messagingSenderId:'789618312361',appId:'1:789618312361:web:4122495cb8cd800679d5b8',measurementId:'G-YZX0WTFZND'};
+const ready=firebaseConfig.apiKey!=='YOUR_API_KEY';
+let auth=null,db=null,user=null,address=null,cart=[],category='All',signup=false,pending=false,method='upi';
+try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();try{firebase.analytics()}catch(e2){}}catch(e){console.error(e)}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').split(String.fromCharCode(34)).join('&quot;');
+const money=n=>'₹'+n.toLocaleString('en-IN');
+const items=[
 [1,'16GB DDR4 Gaming RAM','RAM','16GB • 3200MHz • Desktop DIMM',2899,'🧠'],
 [2,'8GB DDR4 Desktop RAM','RAM','8GB • 3200MHz • Desktop DIMM',1499,'🧠'],
 [3,'32GB DDR4 Dual Channel Kit','RAM','2×16GB • 3600MHz',5799,'🧠'],
@@ -142,20 +118,92 @@ const items = [
 [18,'240mm Liquid CPU Cooler','Accessories','240mm Radiator • ARGB Fans',4299,'❄️'],
 [19,'Mechanical Gaming Keyboard','Accessories','RGB • Mechanical switches • USB',1999,'⌨️'],
 [20,'Gaming Mouse','Accessories','Adjustable DPI • RGB • USB',799,'🖱️']
-].map(x => ({ id: x[0], name: x[1], cat: x[2], spec: x[3], price: Math.round(x[4] * 1.1), emoji: x[5] }));
-const cats = ['All', 'RAM', 'Graphics Card', 'Processor', 'Storage', 'Motherboard', 'Accessories'];
-const total = () => cart.reduce((a, x) => a + items.find(p => p.id === x.id).price * x.qty, 0);
-function show(id) { $(id).classList.add('show'); } function hide(id) {$(id).classList.remove('show'); } function closeM(el) { el.closest('.modal').classList.remove('show'); }
-function go() { $('products').scrollIntoView({ behavior: 'smooth' }); }
-function setCat(c) { category = c; renderFilters(); render(); }
-function renderFilters() { $('nav').innerHTML = cats.map(c => `<button class='${category === c ? 'active' : ''}' onclick='setCat(this.textContent)'>${c}</button>`).join(''); $('scat').innerHTML = cats.map(c => `<option ${category === c ? 'selected' : ''}>${c}</option>`).join(''); }
-function art(p) { const c = ['#2874f0', '#e53935', '#43a047', '#8e24aa', '#fb8c00'][p.id % 5]; const R = (x, y, w, h, f, r = 0) => `<rect x='${x}' y='${y}' width='${w}' height='${h}' rx='${r}' fill='${f}'/>`, C = (x, y, r, f, st) => `<circle cx='${x}' cy='${y}' r='${r}' fill='${f}' stroke='${st || 'none'}' stroke-width='2'/>`, L = (x1, y1, x2, y2, st, w, d) => `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='${st}' stroke-width='${w}' stroke-dasharray='${d || 0}'/>`; let s = ''; const n = p.name;
-if (p.cat === 'RAM') s = R(10, 26, 100, 38, '#2e7d32', 3) + [0, 1, 2, 3].map(i => R(18 + i * 22, 32, 16, 18, '#212121', 2)).join('') + R(10, 54, 100, 6, c) + L(12, 67, 108, 67, '#fbc02d', 6, '3 2');
-else if (p.cat === 'Graphics Card') s = R(4, 20, 6, 50, '#90a4ae') + R(10, 24, 100, 42, '#263238', 5) + C(40, 45, 16, '#37474f', c) + C(80, 45, 16, '#37474f', c) + C(40, 45, 5, c) + C(80, 45, 5, c) + L(20, 69, 100, 69, '#fbc02d', 4, '3 2');
-else if (p.cat === 'Processor') s = L(24, 18, 24, 72, '#fbc02d', 4, '3 2') + L(96, 18, 96, 72, '#fbc02d', 4, '3 2') + L(34, 9, 86, 9, '#fbc02d', 4, '3 2') + L(34, 81, 86, 81, '#fbc02d', 4, '3 2') + R(30, 15, 60, 60, '#cfd8dc', 6) + R(42, 27, 36, 36, '#78909c', 3) + R(48, 33, 24, 24, c, 2);
-else if (p.cat === 'Storage' && /Hard/.test(n)) s = R(22, 8, 76, 74, '#b0bec5', 6) + C(60, 42, 27, '#455a64') + C(60, 42, 8, '#cfd8dc') + L(60, 42, 88, 16, '#eceff1', 3) + R(30, 72, 60, 5, c);
-else if (p.cat === 'Storage') s = R(8, 28, 104, 34, '#1565c0', 3) + R(14, 28, 8, 34, '#fbc02d') + [0, 1, 2].map(i => R(34 + i * 24, 34, 18, 22, '#212121', 2)).join('') + R(34, 56, 60, 4, c);
-else if (p.cat === 'Motherboard') s = R(15, 6, 90, 78, '#1b5e20', 4) + R(28, 16, 30, 30, '#cfd8dc', 3) + R(34, 22, 18, 18, '#78909c') + [0, 1, 2, 3].map(i => R(70 + i * 8, 12, 5, 36, '#212121')).join('') + R(22, 60, 76, 6, '#111') + R(68, 70, 14, 10, c, 2);
-else if (/Power/.test(n)) s = R(18, 16, 84, 58, '#37474f', 5) + C(60, 45, 22, '#263238', c) + C(60, 45, 5, c) + R(24, 66, 20, 4, '#90a4ae');
-else if (/Cabinet/.test(n)) s = R(32, 5, 56, 80, '#212121', 5) + R(38, 11, 44, 68, '#455a64', 3) + [22, 43, 64].map(y => C(60, y, 8, 'none', c)).join('');
-else if (/Cooler/.test(n)) s = R(8, 28, 72, 34, '#546e7a', 3) + C(30, 45, 13, '#263238', c) + C(58, 45, 13, '#263238', c) + C(
+].map(x=>({id:x[0],name:x[1],cat:x[2],spec:x[3],price:Math.round(x[4]*1.1),emoji:x[5]}));
+const cats=['All','RAM','Graphics Card','Processor','Storage','Motherboard','Accessories'];
+const total=()=>cart.reduce((a,x)=>a+items.find(p=>p.id===x.id).price*x.qty,0);
+function show(id){$(id).classList.add('show')}function hide(id){$(id).classList.remove('show')}function closeM(el){el.closest('.modal').classList.remove('show')}
+function go(){$('products').scrollIntoView({behavior:'smooth'})}
+function setCat(c){category=c;renderFilters();render()}
+function renderFilters(){$('nav').innerHTML=cats.map(c=>`<button class='${category===c?'active':''}' onclick='setCat(this.textContent)'>${c}</button>`).join('');$('scat').innerHTML=cats.map(c=>`<option ${category===c?'selected':''}>${c}</option>`).join('')}
+function art(p){const c=['#2874f0','#e53935','#43a047','#8e24aa','#fb8c00'][p.id%5];const R=(x,y,w,h,f,r=0)=>`<rect x='${x}' y='${y}' width='${w}' height='${h}' rx='${r}' fill='${f}'/>`,C=(x,y,r,f,st)=>`<circle cx='${x}' cy='${y}' r='${r}' fill='${f}' stroke='${st||'none'}' stroke-width='2'/>`,L=(x1,y1,x2,y2,st,w,d)=>`<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='${st}' stroke-width='${w}' stroke-dasharray='${d||0}'/>`;let s='';const n=p.name;
+if(p.cat==='RAM')s=R(10,26,100,38,'#2e7d32',3)+[0,1,2,3].map(i=>R(18+i*22,32,16,18,'#212121',2)).join('')+R(10,54,100,6,c)+L(12,67,108,67,'#fbc02d',6,'3 2');
+else if(p.cat==='Graphics Card')s=R(4,20,6,50,'#90a4ae')+R(10,24,100,42,'#263238',5)+C(40,45,16,'#37474f',c)+C(80,45,16,'#37474f',c)+C(40,45,5,c)+C(80,45,5,c)+L(20,69,100,69,'#fbc02d',4,'3 2');
+else if(p.cat==='Processor')s=L(24,18,24,72,'#fbc02d',4,'3 2')+L(96,18,96,72,'#fbc02d',4,'3 2')+L(34,9,86,9,'#fbc02d',4,'3 2')+L(34,81,86,81,'#fbc02d',4,'3 2')+R(30,15,60,60,'#cfd8dc',6)+R(42,27,36,36,'#78909c',3)+R(48,33,24,24,c,2);
+else if(p.cat==='Storage'&&/Hard/.test(n))s=R(22,8,76,74,'#b0bec5',6)+C(60,42,27,'#455a64')+C(60,42,8,'#cfd8dc')+L(60,42,88,16,'#eceff1',3)+R(30,72,60,5,c);
+else if(p.cat==='Storage')s=R(8,28,104,34,'#1565c0',3)+R(14,28,8,34,'#fbc02d')+[0,1,2].map(i=>R(34+i*24,34,18,22,'#212121',2)).join('')+R(34,56,60,4,c);
+else if(p.cat==='Motherboard')s=R(15,6,90,78,'#1b5e20',4)+R(28,16,30,30,'#cfd8dc',3)+R(34,22,18,18,'#78909c')+[0,1,2,3].map(i=>R(70+i*8,12,5,36,'#212121')).join('')+R(22,60,76,6,'#111')+R(68,70,14,10,c,2);
+else if(/Power/.test(n))s=R(18,16,84,58,'#37474f',5)+C(60,45,22,'#263238',c)+C(60,45,5,c)+R(24,66,20,4,'#90a4ae');
+else if(/Cabinet/.test(n))s=R(32,5,56,80,'#212121',5)+R(38,11,44,68,'#455a64',3)+[22,43,64].map(y=>C(60,y,8,'none',c)).join('');
+else if(/Cooler/.test(n))s=R(8,28,72,34,'#546e7a',3)+C(30,45,13,'#263238',c)+C(58,45,13,'#263238',c)+C(98,45,14,'#263238',c)+L(80,38,86,38,'#90a4ae',3)+L(80,52,86,52,'#90a4ae',3);
+else if(/Keyboard/.test(n))s=R(6,26,108,42,'#263238',4)+[0,1,2].map(r=>[...Array(12)].map((_,i)=>R(11+i*8.5,31+r*9,6,6,r==1?c:'#78909c',1)).join('')).join('')+R(30,58,56,6,'#78909c',1);
+else s=R(42,10,36,70,'#263238',18)+L(60,10,60,38,'#607d8b',2)+R(56,20,8,14,c,4);
+return `<svg viewBox='0 0 120 90' xmlns='http://www.w3.org/2000/svg'>${s}</svg>`}
+function render(){const q=$('search').value.toLowerCase();const list=items.filter(p=>(category==='All'||p.cat===category)&&(p.name+' '+p.cat+' '+p.spec).toLowerCase().includes(q));$('result').textContent=list.length+' products';$('grid').innerHTML=list.map(p=>`<article class='product'><div class='art'><span class='tag'>ILLUSTRATION</span>${art(p)}</div><div class='info'><div class='cat'>${p.cat}</div><h3>${p.name}</h3><div class='spec'>${p.spec}</div><div class='rating'>★★★★☆ <span class='muted'>Sample rating</span></div><div class='price'>${money(p.price)}</div><button class='btn add' onclick='add(${p.id})'>Add to Cart</button></div></article>`).join('')||'<p>No matching products.</p>'}
+function add(id){const x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});updateCart()}
+function qty(id,n){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=n;if(x.qty<1)cart=cart.filter(i=>i.id!==id);updateCart()}
+function updateCart(){$('count').textContent=cart.reduce((a,x)=>a+x.qty,0);$('cartItems').innerHTML=cart.length?cart.map(x=>{const p=items.find(i=>i.id===x.id);return `<div class='cartrow'><div><b>${p.name}</b><small>${money(p.price)} each</small><div class='qty'><button onclick='qty(${p.id},-1)'>−</button>${x.qty}<button onclick='qty(${p.id},1)'>+</button></div></div><b>${money(p.price*x.qty)}</b></div>`}).join(''):'<p>Your cart is empty. Add a product to get started.</p>';$('total').textContent=money(total())}
+function openCart(){$('cartOverlay').classList.add('show');updateCart()}function closeCart(){$('cartOverlay').classList.remove('show')}
+function showPolicy(){show('policyModal')}
+
+function setMode(s){signup=!!s;$('authTitle').textContent=signup?'Create account':'Sign in';$('nameRow').style.display=signup?'block':'none';$('authBtn').textContent=signup?'CREATE ACCOUNT':'SIGN IN';$('toUp').style.display=signup?'none':'inline';$('toIn').style.display=signup?'inline':'none';$('aPass').autocomplete=signup?'new-password':'current-password';$('authErr').textContent=''}
+function openAuth(s){setMode(s);show('authModal')}
+function friendly(e){const m={'auth/email-already-in-use':'This email is already registered. Please sign in.','auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'No account found with this email.','auth/invalid-email':'Please enter a valid email.','auth/weak-password':'Password must be at least 6 characters.','auth/network-request-failed':'Network problem. Check your internet and try again.','auth/too-many-requests':'Too many attempts. Please try again later.'};return m[e.code]||e.message}
+async function submitAuth(){
+const err=t=>{$('authErr').textContent=t};err('');
+if(!ready||!auth)return err('Add your Firebase config in the code first.');
+const email=$('aEmail').value.trim(),pw=$('aPass').value,name=$('aName').value.trim();
+if(!email||pw.length<6)return err('Enter a valid email and a password of at least 6 characters.');
+if(signup&&!name)return err('Please enter your name.');
+$('authBtn').disabled=true;
+try{
+if(signup){const c=await auth.createUserWithEmailAndPassword(email,pw);await c.user.updateProfile({displayName:name});$('hello').textContent='Hello, '+name;try{await db.collection('users').doc(c.user.uid).set({name,email,createdAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}catch(e2){console.error(e2)}}
+else await auth.signInWithEmailAndPassword(email,pw);
+hide('authModal');
+}catch(e){err(friendly(e))}
+$('authBtn').disabled=false}
+function accountClick(){if(!user)return openAuth(0);if(confirm('Sign out of RIGZORA?'))auth.signOut()}
+if(auth)auth.onAuthStateChanged(async u=>{user=u;address=null;
+if(u){$('hello').textContent='Hello, '+(u.displayName||(u.email||'').split('@')[0]);try{const d=await db.collection('users').doc(u.uid).get();if(d.exists&&d.data().address)address=d.data().address}catch(e){console.error(e)}}
+else $('hello').textContent='Hello, sign in';
+$('loc').textContent=address?address.city+' '+address.pincode:'Select address';
+if(u&&pending){pending=false;hide('authModal');openAddress()}});
+
+function checkout(){if(!cart.length){alert('Your cart is empty.');return}closeCart();if(!user){pending=true;openAuth(0);return}openAddress()}
+function openAddress(){const a=address||{};$('dName').value=a.name||(user&&user.displayName)||'';$('dPhone').value=a.phone||'';$('dHouse').value=a.house||'';$('dArea').value=a.area||'';$('dPin').value=a.pincode||'';$('dCity').value=a.city||'';$('dState').value=a.state||'';$('addrErr').textContent='';show('addrModal')}
+async function saveAddress(){
+const a={name:$('dName').value.trim(),phone:$('dPhone').value.trim(),house:$('dHouse').value.trim(),area:$('dArea').value.trim(),pincode:$('dPin').value.trim(),city:$('dCity').value.trim(),state:$('dState').value.trim()};
+const err=t=>{$('addrErr').textContent=t};
+if(!a.name||!a.house||!a.city||!a.state)return err('Please fill name, house/street, city and state.');
+if(!/^[0-9]{10}$/.test(a.phone))return err('Enter a valid 10-digit mobile number.');
+if(!/^[0-9]{6}$/.test(a.pincode))return err('Enter a valid 6-digit pincode.');
+$('addrBtn').disabled=true;
+try{await db.collection('users').doc(user.uid).set({address:a},{merge:true});address=a;$('loc').textContent=a.city+' '+a.pincode;hide('addrModal');openPay()}
+catch(e){err('Could not save address: '+e.message)}
+$('addrBtn').disabled=false}
+function setPay(c){method=c?'cod':'upi';$('upiBox').style.display=c?'none':'block';$('codBox').style.display=c?'block':'none';$('mUpi').classList.toggle('alt',!c);$('mCod').classList.toggle('alt',!!c);$('orderBtn').textContent=c?'Place order (Cash on Delivery)':'I have paid – place order';$('payNote').style.display=c?'none':'block';$('payErr').textContent=''}function addrText(a){return [a.name,a.house,a.area,a.city,a.state,a.pincode,'Ph: '+a.phone].filter(Boolean).join(', ')}
+function openPay(){setPay(0);const amt=total();$('payAmount').textContent=money(amt);$('payAddr').textContent=addrText(address);$('utr').value='';$('payErr').textContent='';$('upiLink').href='upi://pay?pa=anuhsp33355@okicici&pn=ANU%20THAKUR&am='+amt+'&cu=INR&tn=RIGZORA%20PC%20Parts';show('payModal')}
+async function placeOrder(){
+const err=t=>{$('payErr').textContent=t};err('');
+const cod=method==='cod';const utr=cod?'':$('utr').value.trim();
+if(!cod&&!/^[0-9]{12}$/.test(utr))return err('Enter the 12-digit UPI transaction ID (UTR) shown in your payment app.');
+if(!cart.length||!user||!address)return err('Something is missing. Please close this and try again.');
+const lines=cart.map(x=>{const p=items.find(i=>i.id===x.id);return {id:p.id,name:p.name,price:p.price,qty:x.qty}});
+const amt=total();
+$('orderBtn').disabled=true;
+try{
+const ref=await db.collection('orders').add({uid:user.uid,email:user.email,items:lines,total:amt,address,utr,paymentMethod:cod?'Cash on Delivery':'UPI',status:cod?'Placed - pay on delivery':'Placed - payment to be verified',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+cart=[];updateCart();hide('payModal');$('orderId').textContent=ref.id.slice(0,8).toUpperCase();$('okAmount').textContent=money(amt);$('okNote').textContent=cod?'Please keep '+money(amt)+' ready to pay in cash on delivery. We will contact you to confirm your order.':'We will verify your payment and confirm your order soon. You can track it under Returns & Orders.';show('okModal');
+}catch(e){err('Order could not be saved: '+e.message)}
+$('orderBtn').disabled=false}
+async function openOrders(){
+if(!user)return openAuth(0);
+show('ordersModal');$('ordersList').textContent='Loading...';
+try{
+const s=await db.collection('orders').where('uid','==',user.uid).get();
+const arr=s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>((b.createdAt&&b.createdAt.seconds)||0)-((a.createdAt&&a.createdAt.seconds)||0));
+$('ordersList').innerHTML=arr.length?arr.map(o=>`<div class='order'><b>Order #${esc(o.id.slice(0,8).toUpperCase())}</b>${o.createdAt?' · '+esc(new Date(o.createdAt.seconds*1000).toLocaleDateString('en-IN')):''}<br>${(o.items||[]).map(i=>esc(i.name)+' × '+esc(i.qty)).join('<br>')}<br><b>${money(Number(o.total)||0)}</b> · ${esc(o.paymentMethod||'UPI')} · <span class='green'>${esc(o.status)}</span><br><small class='muted'>Deliver to: ${esc(o.address?addrText(o.address):'')}</small></div>`).join(''):'<p>No orders yet.</p>';
+}catch(e){$('ordersList').textContent='Could not load orders: '+e.message}}
+
+$('search').addEventListener('input',render);
+setMode(0);renderFilters();render();updateCart();
+</script></body></html>

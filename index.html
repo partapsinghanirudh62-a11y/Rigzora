@@ -183,8 +183,6 @@ body{background-color:#090d16;color:#f3f4f6;background-image:radial-gradient(cir
 </footer>
 
 <script>
-// NOTE: replace each "image" with your own product photo URL. If a photo fails to load,
-// a category placeholder is shown automatically (cards, modal, builder drawer).
 const PC_PARTS = [
   { id:'cpu-ryzen9-7950x3d', category:'CPU', brand:'AMD', name:'Ryzen 9 7950X3D 16-Core Processor', price:599, rating:4.9, tdp:120, psuOutput:0,
     image:'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80',
@@ -218,12 +216,12 @@ const PC_PARTS = [
     description:'High-bandwidth dual-channel DDR5 memory kit with hand-screened ICs, brushed aluminum heatspreaders, and customizable RGB light bar.',
     specs:{'Capacity':'64GB (2 x 32GB)','Speed':'DDR5-6400 MT/s','CAS Latency':'CL32-39-39-102','Voltage':'1.40V','Profiles':'Intel XMP 3.0','Height':'44 mm'} },
   { id:'ram-corsair-dominator-32gb', category:'RAM', brand:'Corsair', name:'Dominator Titanium 32GB (2x16GB) DDR5-6000', price:169, rating:4.8, tdp:10, psuOutput:0,
-    image:'', /* add your own DDR5 photo */
+    image:'',
     description:'Precision-forged aluminum memory modules utilizing Corsair DHX cooling and replaceable top bars for low-latency gaming performance.',
     specs:{'Capacity':'32GB (2 x 16GB)','Speed':'DDR5-6000 MT/s','CAS Latency':'CL30-36-36-76','Voltage':'1.40V','Profiles':'AMD EXPO & XMP','RGB':'11-Zone Capellix'} },
 
   { id:'ssd-samsung-990pro-2tb', category:'Storage', brand:'Samsung', name:'990 PRO 2TB PCIe 4.0 NVMe M.2 SSD', price:169, rating:4.9, tdp:8, psuOutput:0,
-    image:'', /* add your own 990 PRO photo */
+    image:'',
     description:'Blistering sequential read speeds up to 7,450 MB/s with Samsung nickel-coated controller and smart thermal control algorithm.',
     specs:{'Capacity':'2 TB','Interface':'PCIe Gen 4.0 x4','Seq. Read':'7,450 MB/s','Seq. Write':'6,900 MB/s','Form Factor':'M.2 2280','Endurance':'1,200 TBW'} },
   { id:'ssd-wd-sn850x-4tb', category:'Storage', brand:'Western Digital', name:'WD_BLACK SN850X 4TB NVMe Gaming SSD', price:299, rating:4.8, tdp:9, psuOutput:0,
@@ -232,7 +230,7 @@ const PC_PARTS = [
     specs:{'Capacity':'4 TB','Interface':'PCIe Gen 4.0 x4','Seq. Read':'7,300 MB/s','Seq. Write':'6,600 MB/s','Form Factor':'M.2 2280','Endurance':'2,400 TBW'} },
 
   { id:'psu-corsair-rm1000x', category:'PSU', brand:'Corsair', name:'RM1000x Shift 1000W 80+ Gold ATX 3.0', price:189, rating:4.9, tdp:0, psuOutput:1000,
-    image:'', /* add your own PSU photo */
+    image:'',
     description:'Fully modular ATX 3.0 and PCIe 5.0 compliant power supply featuring a side-mounted modular cable interface and 105°C Japanese capacitors.',
     specs:{'Wattage':'1000W Continuous','Efficiency':'80 PLUS Gold','Standard':'ATX 3.0 / PCIe 5.0','12VHPWR Cable':'Included (600W)','Fan':'135mm Zero-RPM','Warranty':'10 Years'} },
   { id:'psu-seasonic-1300w', category:'PSU', brand:'Seasonic', name:'PRIME TX-1300 1300W 80+ Titanium Modular', price:379, rating:5.0, tdp:0, psuOutput:1300,
@@ -254,7 +252,7 @@ const PC_PARTS = [
     description:'360mm all-in-one liquid CPU cooler equipped with a 2.36-inch wide-angle LCD display for real-time coolant temps and custom GIFs.',
     specs:{'Radiator Size':'360mm Aluminum','Pump Display':'2.36" 640x640 LCD','Fans':'3x 120mm F120 RGB Core','Pump Speed':'800 – 2,800 RPM','Sockets':'AM5, AM4, LGA 1700/1851','Tubing':'400mm Nylon Braided'} },
   { id:'cool-noctua-nhd15', category:'Cooling', brand:'Noctua', name:'NH-D15 chromax.black Dual-Tower Air Cooler', price:119, rating:4.9, tdp:6, psuOutput:0,
-    image:'', /* add your own NH-D15 photo */
+    image:'',
     description:'Legendary dual-tower 6-heatpipe air cooler finished in stealth black with dual NF-A15 140mm PWM fans for near-silent thermal dissipation.',
     specs:{'Cooler Type':'Dual-Tower Air','Heatpipes':'6x Copper Heatpipes','Fans':'2x NF-A15 HS-PWM 140mm','Max Noise':'24.6 dB(A)','Height':'165 mm','Thermal Paste':'NT-H1 Included'} }
 ];
@@ -264,7 +262,6 @@ const BUILD_SLOTS = ['CPU','GPU','Motherboard','RAM','Storage','PSU','Case','Coo
 
 let activeCategory = 'All', searchQuery = '', sortBy = 'featured', customBuild = {};
 
-// Category placeholder used whenever a photo is missing or fails to load
 function fallbackImg(cat) {
   const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='800' height='500'><rect width='800' height='500' fill='#0f172a'/><rect x='300' y='150' width='200' height='200' rx='18' fill='none' stroke='#06b6d4' stroke-width='6'/><text x='400' y='265' text-anchor='middle' fill='#06b6d4' font-family='monospace' font-size='34'>" + cat + "</text></svg>";
   return 'data:image/svg+xml,' + encodeURIComponent(svg);
@@ -282,11 +279,17 @@ function init() {
   document.getElementById('specModal').addEventListener('click', e => { if (e.target.id === 'specModal') closeSpecModal(); });
 }
 
+function scrollToCatalog() {
+  document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
+}
+
 function renderCategoryTabs() {
   document.getElementById('categoryTabs').innerHTML = CATEGORIES.map(cat => `
     <button onclick="selectCategory('${cat}')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${activeCategory === cat ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20' : 'bg-slate-900/90 text-slate-300 hover:bg-slate-800 border border-slate-800'}">${cat}</button>`).join('');
 }
+
 function selectCategory(cat) { activeCategory = cat; renderCategoryTabs(); renderParts(); }
+
 function resetFilters() {
   activeCategory = 'All'; searchQuery = ''; sortBy = 'featured';
   document.getElementById('searchInput').value = '';
@@ -368,6 +371,7 @@ function openSpecModal(partId) {
   const modal = document.getElementById('specModal');
   modal.classList.remove('hidden'); modal.classList.add('flex');
 }
+
 function closeSpecModal() {
   const modal = document.getElementById('specModal');
   modal.classList.add('hidden'); modal.classList.remove('flex');
@@ -380,113 +384,133 @@ function addToBuild(partId) {
   renderParts(); renderBuilderDrawer();
   showToast(`Added ${part.name} to ${part.category} slot`);
 }
-function removeFromBuild(category) { delete customBuild[category]; renderParts(); renderBuilderDrawer(); }
-function clearBuild() { customBuild = {}; renderParts(); renderBuilderDrawer(); showToast('Cleared all parts from PC Builder'); }
+
+function removeFromBuild(category) {
+  delete customBuild[category];
+  renderParts(); renderBuilderDrawer();
+}
+
+function clearBuild() {
+  customBuild = {};
+  renderParts(); renderBuilderDrawer();
+  showToast('Cleared all parts from PC Builder');
+}
 
 function loadRecommendedRig() {
   ['cpu-ryzen9-7950x3d','gpu-rtx-4090','mobo-x670e-hero','ram-trident-z5-64gb','ssd-samsung-990pro-2tb','psu-corsair-rm1000x','case-lianli-o11d','cool-nzxt-kraken-360']
     .forEach(id => { const p = PC_PARTS.find(x => x.id === id); if (p) customBuild[p.category] = p; });
   renderParts(); renderBuilderDrawer(); toggleBuilderDrawer(true);
-  showToast('Loaded Flagship 4K Gaming Rig!');
+  showToast('Flagship Workstation Rig auto-filled!');
+}
+
+function toggleBuilderDrawer(open) {
+  const drawer = document.getElementById('builderDrawer');
+  if (open) drawer.classList.remove('hidden');
+  else drawer.classList.add('hidden');
 }
 
 function renderBuilderDrawer() {
-  document.getElementById('buildBadgeCount').textContent = Object.keys(customBuild).length;
-  let totalPrice = 0, totalTdp = 0, psuCapacity = 0;
+  const slotsList = document.getElementById('builderSlotsList');
+  let totalPrice = 0;
+  let totalDraw = 0;
+  let psuWattage = 0;
+  let selectedCount = 0;
 
-  document.getElementById('builderSlotsList').innerHTML = BUILD_SLOTS.map(slot => {
+  slotsList.innerHTML = BUILD_SLOTS.map(slot => {
     const part = customBuild[slot];
     if (part) {
-      totalPrice += part.price; totalTdp += part.tdp;
-      if (part.psuOutput > 0) psuCapacity = part.psuOutput;
+      selectedCount++;
+      totalPrice += part.price;
+      if (part.psuOutput > 0) psuWattage = part.psuOutput;
+      else totalDraw += part.tdp;
+
       return `
-        <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center gap-3">
-          <img src="${imgSrc(part)}" alt="${part.name}" onerror="${imgErr(part.category)}" class="w-14 h-14 rounded-lg object-cover bg-slate-950 shrink-0"/>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-mono uppercase text-cyan-400 font-bold">${slot}</span>
-              <span class="text-xs font-mono font-bold text-emerald-400">$${part.price}</span>
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
+          <div class="flex items-center gap-3 min-w-0">
+            <img src="${imgSrc(part)}" alt="${part.name}" onerror="${imgErr(part.category)}" class="w-10 h-10 rounded-lg object-cover flex-shrink-0 bg-slate-950"/>
+            <div class="min-w-0">
+              <span class="text-[10px] font-mono text-cyan-400 uppercase">${slot}</span>
+              <h4 class="text-xs font-bold text-white truncate">${part.name}</h4>
+              <p class="text-[11px] font-mono text-slate-400">$${part.price.toLocaleString()}</p>
             </div>
-            <p class="text-xs font-bold text-white truncate mt-0.5">${part.name}</p>
-            <p class="text-[11px] font-mono text-slate-400">${part.psuOutput > 0 ? part.psuOutput + 'W PSU' : part.tdp + 'W TDP'}</p>
           </div>
-          <button onclick="removeFromBuild('${slot}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="Remove">✕</button>
+          <button onclick="removeFromBuild('${slot}')" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-rose-950 hover:text-rose-400 text-slate-400 flex items-center justify-center text-xs transition" title="Remove">✕</button>
+        </div>`;
+    } else {
+      return `
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/40 border border-dashed border-slate-800 text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-slate-700"></span>
+            <span class="text-xs font-mono uppercase">Empty ${slot} Slot</span>
+          </div>
+          <button onclick="selectCategory('${slot}'); toggleBuilderDrawer(false);" class="text-[11px] font-semibold text-cyan-400 hover:underline">+ Choose</button>
         </div>`;
     }
-    return `
-      <div onclick="selectCategory('${slot}'); toggleBuilderDrawer(false); scrollToCatalog();" class="border border-dashed border-slate-800 hover:border-cyan-500/60 rounded-xl p-3 flex items-center justify-between cursor-pointer transition group">
-        <div>
-          <span class="text-[10px] font-mono uppercase text-slate-500 group-hover:text-cyan-400">${slot}</span>
-          <p class="text-xs text-slate-400">No ${slot} selected</p>
-        </div>
-        <span class="text-xs font-mono text-cyan-400 group-hover:translate-x-0.5 transition">+ Choose</span>
-      </div>`;
   }).join('');
 
+  document.getElementById('buildBadgeCount').textContent = selectedCount;
   document.getElementById('buildTotalPrice').textContent = `$${totalPrice.toLocaleString()}`;
 
-  const summary = document.getElementById('wattageSummary'), bar = document.getElementById('wattageBar'), msg = document.getElementById('psuStatusMsg');
-  if (psuCapacity > 0) {
-    const pct = Math.min(100, Math.round((totalTdp / psuCapacity) * 100));
-    summary.textContent = `${totalTdp}W / ${psuCapacity}W (${pct}%)`;
-    bar.style.width = pct + '%';
-    if (totalTdp > psuCapacity) {
-      bar.className = 'h-full bg-rose-500 transition-all duration-300';
-      msg.textContent = '⚠️ Warning: System draw exceeds selected PSU capacity!';
-      msg.className = 'text-[11px] text-rose-400 font-medium';
+  const wattageSummary = document.getElementById('wattageSummary');
+  const wattageBar = document.getElementById('wattageBar');
+  const psuStatusMsg = document.getElementById('psuStatusMsg');
+
+  if (psuWattage > 0) {
+    const pct = Math.min(Math.round((totalDraw / psuWattage) * 100), 100);
+    wattageSummary.textContent = `${totalDraw}W Draw / ${psuWattage}W PSU (${pct}%)`;
+    wattageBar.style.width = `${pct}%`;
+    if (totalDraw > psuWattage) {
+      wattageBar.className = 'h-full bg-rose-500 transition-all duration-300';
+      psuStatusMsg.textContent = '⚠️ Warning: Estimated power draw exceeds selected PSU capacity!';
+      psuStatusMsg.className = 'text-[11px] text-rose-400 font-medium';
     } else if (pct > 80) {
-      bar.className = 'h-full bg-amber-400 transition-all duration-300';
-      msg.textContent = '⚡ High load: Consider higher wattage for peak transient headroom.';
-      msg.className = 'text-[11px] text-amber-300';
+      wattageBar.className = 'h-full bg-amber-400 transition-all duration-300';
+      psuStatusMsg.textContent = '⚡ High load factor. Consider a higher wattage PSU for overclocking headroom.';
+      psuStatusMsg.className = 'text-[11px] text-amber-300 font-medium';
     } else {
-      bar.className = 'h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300';
-      msg.textContent = '✓ Optimal PSU headroom for sustained gaming & overclocking.';
-      msg.className = 'text-[11px] text-emerald-400';
+      wattageBar.className = 'h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300';
+      psuStatusMsg.textContent = '✓ Power headroom is optimal and stable.';
+      psuStatusMsg.className = 'text-[11px] text-emerald-400 font-medium';
     }
   } else {
-    summary.textContent = `${totalTdp}W Est. Draw`;
-    bar.style.width = totalTdp > 0 ? '35%' : '0%';
-    bar.className = 'h-full bg-cyan-500 transition-all duration-300';
-    msg.textContent = totalTdp > 0 ? `Recommended PSU: at least ${Math.ceil((totalTdp * 1.35) / 50) * 50}W` : 'Add a CPU, GPU, and Power Supply to verify wattage load.';
-    msg.className = 'text-[11px] text-slate-400';
+    wattageSummary.textContent = `${totalDraw}W Draw / No PSU Selected`;
+    wattageBar.style.width = `${Math.min(totalDraw / 10, 100)}%`;
+    wattageBar.className = 'h-full bg-cyan-400 transition-all duration-300';
+    psuStatusMsg.textContent = selectedCount > 0 ? 'Select a compatible Power Supply (PSU) to calculate headroom.' : 'Add components to build your custom PC.';
+    psuStatusMsg.className = 'text-[11px] text-slate-400';
   }
 }
 
-function toggleBuilderDrawer(open) { document.getElementById('builderDrawer').classList.toggle('hidden', !open); }
-function scrollToCatalog() { document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' }); }
-
 function exportBuildSummary() {
-  const entries = Object.entries(customBuild);
-  if (!entries.length) { showToast('Add some parts first before copying!'); return; }
-  let total = 0;
-  const lines = ['=== NEXUS RIGS CUSTOM PC BUILD ==='];
-  entries.forEach(([slot, part]) => { total += part.price; lines.push(`${slot}: ${part.name} ($${part.price})`); });
-  lines.push(`Total Estimate: $${total.toLocaleString()}`);
-  const text = lines.join('\n');
-  const fallbackCopy = () => {
-    const ta = document.createElement('textarea');
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    let ok = false;
-    try { ok = document.execCommand('copy'); } catch (e) {}
-    ta.remove();
-    showToast(ok ? 'Build list copied to clipboard!' : 'Copy failed — please copy manually');
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => showToast('Build list copied to clipboard!')).catch(fallbackCopy);
-  } else { fallbackCopy(); }
+  const parts = Object.values(customBuild);
+  if (!parts.length) {
+    showToast('Your PC build is currently empty!');
+    return;
+  }
+  const summary = parts.map(p => `• [${p.category}] ${p.name} — $${p.price.toLocaleString()}`).join('\n');
+  const total = parts.reduce((acc, p) => acc + p.price, 0);
+  const text = `NEXUS RIGS - CUSTOM PC BUILD:\n\n${summary}\n\nTotal Estimated Price: $${total.toLocaleString()}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Copied build specification summary to clipboard!');
+  }).catch(() => {
+    showToast('Failed to copy to clipboard.');
+  });
 }
 
+let toastTimeout;
 function showToast(msg) {
   const toast = document.getElementById('toast');
-  document.getElementById('toastText').textContent = msg;
-  toast.classList.remove('opacity-0');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(() => toast.classList.add('opacity-0'), 2600);
+  const text = document.getElementById('toastText');
+  text.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.style.opacity = '0';
+  }, 2500);
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeSpecModal(); toggleBuilderDrawer(false); } });
-
-init();
+window.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
 </html>

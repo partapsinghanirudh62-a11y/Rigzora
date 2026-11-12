@@ -1,209 +1,1030 @@
-<!doctype html>
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-<meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>RIGZORA | PC Parts &amp; Gaming Store</title>
-<style>
-:root{--nav:#131921;--nav2:#232f3e;--orange:#febd69;--btn:#ffd814;--btn2:#ffa41c;--bg:#eaeded;--ink:#0f1111;--muted:#565959;--line:#d5d9d9;--green:#007600}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px Arial,Helvetica,sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}
-header{background:var(--nav);color:#fff;padding:8px 14px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
-.brand{font-size:26px;font-weight:900;letter-spacing:1px;white-space:nowrap;color:#fff;text-decoration:none}.brand b{color:var(--orange)}
-.loc{font-size:12px;color:#ccc;line-height:1.3;white-space:nowrap}.loc b{display:block;color:#fff;font-size:13px}
-.search{display:flex;flex:1;min-width:0}.search select{border:0;background:#e6e6e6;border-radius:4px 0 0 4px;padding:0 8px;max-width:130px}.search input{flex:1;min-width:0;border:0;padding:11px;outline:0}.search button{border:0;background:var(--orange);padding:0 16px;border-radius:0 4px 4px 0;font-weight:bold}
-.hbtn{background:none;border:1px solid transparent;color:#fff;text-align:left;padding:6px 8px;border-radius:2px;line-height:1.25;white-space:nowrap}.hbtn:hover{border-color:#fff}.hbtn small{display:block;font-size:11px;font-weight:normal;color:#ddd}.hbtn b{font-size:13px}
-.cartnum{background:var(--orange);color:var(--nav);border-radius:10px;padding:1px 7px;margin-left:4px}
-nav{background:var(--nav2);padding:6px 14px;display:flex;gap:6px;overflow:auto;white-space:nowrap}nav button{background:none;border:1px solid transparent;color:#fff;padding:6px 10px;font-size:13px}nav button:hover,nav button.active{border-color:#fff}
-.wrap{max-width:1300px;margin:auto;padding:14px 14px 40px}
-.hero{border-radius:6px;background:linear-gradient(110deg,#131921,#1d4672 60%,#232f3e);color:#fff;min-height:240px;padding:34px 5%;display:flex;align-items:center;justify-content:space-between;overflow:hidden}.hero h1{font-size:clamp(30px,5vw,52px);margin:8px 0}.hero h1 span{color:var(--orange)}.hero p{color:#d4dfed;max-width:480px;line-height:1.6}.kicker{color:var(--orange);font-weight:bold;letter-spacing:3px}.hero-art{font-size:clamp(70px,12vw,140px);padding-right:5%}
-.panel{background:#fff;border-radius:6px;margin-top:14px;padding:18px}.sectionhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}.sectionhead h2{margin:0;font-size:21px}.muted{color:var(--muted);font-size:12px;line-height:1.5}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.product{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}.product:hover{box-shadow:0 4px 14px #0002}
-.art{height:145px;display:grid;place-items:center;background:#f7f8f8;position:relative}.art svg{width:80%;height:90%}.tag{position:absolute;left:8px;top:8px;background:#e7f4e8;color:var(--green);font-size:10px;padding:4px 6px;border-radius:3px;font-weight:bold}
-.info{padding:12px}.cat{font-size:10px;color:#007185;font-weight:bold;text-transform:uppercase;letter-spacing:1px}.info h3{font-size:14px;line-height:1.35;min-height:38px;margin:6px 0}.spec{color:var(--muted);font-size:12px;min-height:30px}.rating{font-size:12px;color:#de7921;margin:6px 0}.price{font-size:22px;font-weight:bold}
-.btn{background:var(--btn);border:1px solid #fcd200;border-radius:20px;padding:9px 18px;font-weight:bold;color:var(--ink)}.btn:hover{background:#f7ca00}.btn.alt{background:var(--btn2);border-color:#ff8f00}.add{width:100%;margin-top:10px}.wide{width:100%;margin-top:12px;border-radius:8px;padding:11px;display:block;text-align:center;text-decoration:none}
-footer{background:var(--nav2);color:#d7e0eb;padding:28px 5%;text-align:center}footer a{color:#d7e0eb;margin:0 10px}
-.overlay{display:none;position:fixed;inset:0;background:#0008;z-index:30}.overlay.show{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(460px,100%);background:#fff;padding:18px;overflow:auto}
-.cartrow{display:flex;justify-content:space-between;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.cartrow small{display:block;color:var(--muted);margin-top:4px}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid var(--line);background:#f0f2f2;padding:4px 10px;border-radius:4px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:bold;padding:16px 0}
-.modal{display:none;position:fixed;inset:0;background:#0009;z-index:40;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}
-.box{background:#fff;border-radius:8px;width:min(520px,100%);max-height:92vh;overflow:auto;padding:20px}.bh{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);margin-bottom:10px}.bh h2{margin:0 0 8px}.x{border:0;background:none;font-size:26px}
-.box label{display:block;margin:10px 0 4px;font-weight:bold;font-size:13px}.box input{width:100%;padding:10px;border:1px solid #888;border-radius:3px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.err{color:#b12704;font-size:13px;margin-top:8px;min-height:16px}.payid{background:#f0f2f2;padding:10px;border-radius:4px;text-align:center;overflow-wrap:anywhere}.qr{display:block;width:min(260px,80%);margin:12px auto;border:6px solid #fff;box-shadow:0 0 0 1px #ddd}
-.order{border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0;line-height:1.6}.green{color:var(--green);font-weight:bold}.policy li{margin:9px 0;line-height:1.5}
-.tick{width:84px;height:84px;border-radius:50%;background:var(--green);color:#fff;font-size:52px;display:grid;place-items:center;margin:6px auto 12px;animation:pop .4s}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}header{flex-wrap:wrap}.search{order:5;flex-basis:100%}.loc{display:none}}
-@media(max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:112px}.info{padding:9px}.price{font-size:18px}.wrap{padding:8px}.row2{grid-template-columns:1fr}}
-</style></head>
-<body>
-<header>
-<a class='brand' href='#'>RIG<b>ZORA</b></a>
-<div class='loc'>Deliver to<b id='loc'>Select address</b></div>
-<div class='search'><select id='scat' onchange='setCat(this.value)'></select><input id='search' placeholder='Search RAM, graphics cards, SSDs...' aria-label='Search'><button onclick='render()'>Search</button></div>
-<button class='hbtn' onclick='accountClick()'><small id='hello'>Hello, sign in</small><b>Account</b></button>
-<button class='hbtn' onclick='openOrders()'><small>Returns</small><b>&amp; Orders</b></button>
-<button class='hbtn' onclick='openCart()'>🛒 <b>Cart</b><span class='cartnum' id='count'>0</span></button>
-</header>
-<nav id='nav'></nav>
-<div class='wrap'>
-<section class='hero'><div><div class='kicker'>WELCOME TO RIGZORA</div><h1>Upgrade your <span>game.</span></h1><p>Shop PC components for gaming, streaming, creating and everyday performance.</p><button class='btn' onclick='go()'>Shop now</button></div><div class='hero-art'>🖥️</div></section>
-<section class='panel' id='products'><div class='sectionhead'><h2>Popular PC components</h2><small class='muted' id='result'></small></div><div class='grid' id='grid'></div></section>
-</div>
-<footer><b>RIGZORA</b> – hardware for your next build.<p><a href='#' onclick='showPolicy();return false'>Returns &amp; refunds</a><a href='mailto:hello@rigzora.example'>Contact store</a></p><small>© 2026 RIGZORA</small></footer>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXUS RIGS — PC Hardware Store & Custom Rig Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#090d16',
+            panel: '#111827',
+            card: '#161f33',
+            accent: '#06b6d4',
+            neon: '#8b5cf6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #090d16;
+      color: #f3f4f6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+    }
+    .cyber-grid {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-slate-950">
 
-<div class='overlay' id='cartOverlay' onclick='if(event.target===this)closeCart()'><aside class='drawer'><div class='bh'><h2>Shopping Cart</h2><button class='x' onclick='closeCart()'>×</button></div><div id='cartItems'></div><div class='total'><span>Subtotal</span><span id='total'>₹0</span></div><button class='btn wide' onclick='checkout()'>Proceed to Buy</button></aside></div>
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-obsidian/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-wider text-white">NEXUS<span class="text-cyan-400">RIGS</span></span>
+          <span class="hidden sm:block text-[10px] font-mono uppercase tracking-widest text-slate-400 -mt-1">Hardware & Custom Systems</span>
+        </div>
+      </div>
 
-<div class='modal' id='authModal'><div class='box'><div class='bh'><h2 id='authTitle'>Sign in</h2><button class='x' onclick='closeM(this)'>×</button></div>
-<div id='nameRow'><label>Your name</label><input id='aName' autocomplete='name'></div>
-<label>Email</label><input id='aEmail' type='email' autocomplete='email'>
-<label>Password (min 6 characters)</label><input id='aPass' type='password' autocomplete='current-password'>
-<div class='err' id='authErr'></div>
-<button class='btn wide' id='authBtn' onclick='submitAuth()'>SIGN IN</button>
-<p class='muted'><span id='toUp'>New to RIGZORA? <a href='#' onclick='setMode(1);return false'>Create your account</a></span><span id='toIn'>Already have an account? <a href='#' onclick='setMode(0);return false'>Sign in</a></span></p></div></div>
+      <!-- Search Bar -->
+      <div class="flex-1 max-w-md">
+        <div class="relative">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input 
+            id="searchInput" 
+            type="text" 
+            placeholder="Search RTX 4090, Ryzen 9, DDR5, NVMe..." 
+            class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition"
+          />
+        </div>
+      </div>
 
-<div class='modal' id='addrModal'><div class='box'><div class='bh'><h2>Delivery address</h2><button class='x' onclick='closeM(this)'>×</button></div>
-<div class='row2'><div><label>Full name</label><input id='dName'></div><div><label>Mobile number</label><input id='dPhone' type='tel' maxlength='10'></div></div>
-<label>House no., building, street</label><input id='dHouse'>
-<label>Area, landmark</label><input id='dArea'>
-<div class='row2'><div><label>Pincode</label><input id='dPin' maxlength='6'></div><div><label>City</label><input id='dCity'></div></div>
-<label>State</label><input id='dState'>
-<div class='err' id='addrErr'></div>
-<button class='btn wide' id='addrBtn' onclick='saveAddress()'>Save and continue to payment</button></div></div>
+      <!-- Build Drawer Button -->
+      <button 
+        onclick="toggleBuilderDrawer(true)" 
+        class="relative flex items-center gap-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm px-4 py-2 rounded-xl shadow-lg shadow-cyan-500/20 transition transform active:scale-95"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+        </svg>
+        <span class="hidden sm:inline">PC Builder</span>
+        <span id="buildBadgeCount" class="bg-slate-950 text-cyan-400 font-mono text-xs px-2 py-0.5 rounded-full">0</span>
+      </button>
+    </div>
+  </header>
 
-<div class='modal' id='payModal'><div class='box'><div class='bh'><h2>Choose payment</h2><button class='x' onclick='closeM(this)'>×</button></div>
-<p>Amount to pay: <b id='payAmount'></b></p><p class='muted'>Deliver to: <span id='payAddr'></span></p><div class='row2' style='margin:10px 0'><button class='btn' id='mUpi' onclick='setPay(0)'>💳 UPI</button><button class='btn' id='mCod' onclick='setPay(1)'>💵 Cash on Delivery</button></div><div id='upiBox'>
-<img class='qr' src='assets/upi-payment-qr.png' alt='UPI payment QR code'>
-<div class='payid'><b>UPI ID:</b> anuhsp33355@okicici</div>
-<a id='upiLink' class='btn alt wide' href='#'>OPEN UPI APP</a>
-<label>After paying, enter the 12-digit UPI transaction ID (UTR)</label><input id='utr' inputmode='numeric' maxlength='12' placeholder='e.g. 123456789012'>
-</div><div id='codBox' style='display:none'><p class='muted'>Pay in cash when your order is delivered. Please keep the exact amount ready. The store may call you to confirm the order.</p></div><div class='err' id='payErr'></div>
-<button class='btn wide' id='orderBtn' onclick='placeOrder()'>I have paid – place order</button>
-<p class='muted' id='payNote'>Your order is confirmed after the store checks the payment in its UPI account.</p></div></div>
+  <!-- Hero Banner -->
+  <section class="relative overflow-hidden border-b border-slate-800/80 cyber-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          ENTHUSIAST PC COMPONENTS CATALOG
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+          Architect Your Next <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400">Flagship Workstation</span>
+        </h1>
+        <p class="text-slate-400 text-base sm:text-lg max-w-2xl">
+          Explore authentic PC components across all 8 core hardware categories with real photography, deep technical specs, and live TDP wattage calculation.
+        </p>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button onclick="scrollToCatalog()" class="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-sm hover:bg-cyan-400 transition">
+            Browse All Hardware
+          </button>
+          <button onclick="loadRecommendedRig()" class="px-5 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-semibold text-sm transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Auto-Fill Flagship Rig
+          </button>
+        </div>
+      </div>
 
-<div class='modal' id='okModal'><div class='box' style='text-align:center'><div class='tick'>✓</div><h2>Order placed!</h2>
-<p>Order ID: <b id='orderId'></b><br>Amount: <b id='okAmount'></b></p>
-<p class='muted' id='okNote'>We will verify your payment and confirm your order soon. You can track it under Returns &amp; Orders.</p>
-<button class='btn wide' onclick='closeM(this);openOrders()'>View my orders</button><button class='btn alt wide' onclick='closeM(this)'>Continue shopping</button></div></div>
+      <!-- Featured Showcase Card -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden border border-slate-700/70 bg-slate-900/90 shadow-2xl">
+          <img 
+            src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" 
+            alt="Custom Liquid Cooled Gaming PC" 
+            class="w-full h-64 object-cover object-center"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div>
+              <span class="text-[11px] font-mono uppercase text-cyan-400">Featured Showcase</span>
+              <h3 class="text-white font-bold text-lg">Full-Tower Custom Loop Ready</h3>
+            </div>
+            <span class="px-2.5 py-1 rounded-lg bg-slate-950/80 border border-slate-700 text-xs font-mono text-emerald-400">
+              8 Categories
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class='modal' id='ordersModal'><div class='box'><div class='bh'><h2>Your orders</h2><button class='x' onclick='closeM(this)'>×</button></div><div id='ordersList'></div></div></div>
+  <!-- Category Filter Bar & Controls -->
+  <main id="catalogSection" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <!-- Category Pills -->
+      <div id="categoryTabs" class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+        <!-- Populated by JS -->
+      </div>
 
-<div class='modal' id='policyModal'><div class='box policy'><div class='bh'><h2>Returns &amp; Refunds</h2><button class='x' onclick='closeM(this)'>×</button></div><p><b>Sample policy – edit before launch.</b></p><ul><li>Contact the store within 7 days of delivery to request a return for an eligible item.</li><li>Products must be unused, undamaged and returned with original packaging, accessories and invoice.</li><li>Opened, damaged, tampered or incorrectly installed parts may not qualify, subject to consumer law and warranty.</li><li>Share clear photos and your order details when requesting a return.</li><li>Refunds are processed to the original payment method after inspection.</li><li>Report damaged or wrong deliveries promptly with unboxing photos or video.</li></ul><button class='btn wide' onclick='closeM(this)'>Close</button></div></div>
+      <!-- Sort Dropdown -->
+      <div class="flex items-center gap-3 self-end md:self-auto">
+        <span id="resultsCount" class="text-xs font-mono text-slate-400">Showing 16 parts</span>
+        <select 
+          id="sortSelect" 
+          class="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium rounded-xl px-3 py-2 focus:outline-none focus:border-cyan-400"
+        >
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Highest Rated</option>
+          <option value="tdp-desc">Power Draw (TDP)</option>
+        </select>
+      </div>
+    </div>
 
-<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js'></script>
-<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js'></script>
-<script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js'></script><script src='https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js'></script>
-<script>
-const firebaseConfig={apiKey:'AIzaSyDNB_0hxzuxgpPGCXXcFF4LuI2A5l8WqBE',authDomain:'rigzora-store.firebaseapp.com',projectId:'rigzora-store',storageBucket:'rigzora-store.firebasestorage.app',messagingSenderId:'789618312361',appId:'1:789618312361:web:4122495cb8cd800679d5b8',measurementId:'G-YZX0WTFZND'};
-const ready=firebaseConfig.apiKey!=='YOUR_API_KEY';
-let auth=null,db=null,user=null,address=null,cart=[],category='All',signup=false,pending=false,method='upi';
-try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();try{firebase.analytics()}catch(e2){}}catch(e){console.error(e)}
-const $=id=>document.getElementById(id);
-const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').split(String.fromCharCode(34)).join('&quot;');
-const money=n=>'₹'+n.toLocaleString('en-IN');
-const items=[
-[1,'16GB DDR4 Gaming RAM','RAM','16GB • 3200MHz • Desktop DIMM',2899,'🧠'],
-[2,'8GB DDR4 Desktop RAM','RAM','8GB • 3200MHz • Desktop DIMM',1499,'🧠'],
-[3,'32GB DDR4 Dual Channel Kit','RAM','2×16GB • 3600MHz',5799,'🧠'],
-[4,'16GB DDR5 Gaming RAM','RAM','16GB • 5600MHz • DDR5',4299,'🧠'],
-[5,'GeForce RTX Gaming Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan • PCIe',24999,'🎮'],
-[6,'Radeon RX Graphics Card','Graphics Card','8GB GDDR6 • Dual Fan',21999,'🎮'],
-[7,'Entry-Level Graphics Card','Graphics Card','4GB GDDR6 • Compact',10999,'🎮'],
-[8,'6-Core Desktop Processor','Processor','6 Core • 12 Thread • Desktop CPU',11999,'⚙️'],
-[9,'8-Core Gaming Processor','Processor','8 Core • 16 Thread • Desktop CPU',18999,'⚙️'],
-[10,'1TB NVMe M.2 SSD','Storage','1TB • PCIe NVMe • High Speed',5499,'💾'],
-[11,'512GB NVMe M.2 SSD','Storage','512GB • PCIe NVMe',2999,'💾'],
-[12,'2TB SATA Hard Drive','Storage','2TB • 3.5-inch • 7200RPM',4999,'💽'],
-[13,'B550 Motherboard','Motherboard','AM4 • DDR4 • M.2 • ATX',8999,'🧩'],
-[14,'H610 Motherboard','Motherboard','Intel LGA1700 • DDR4 • mATX',6499,'🧩'],
-[15,'B760 DDR5 Motherboard','Motherboard','Intel LGA1700 • DDR5 • M.2',11999,'🧩'],
-[16,'650W Bronze Power Supply','Accessories','650W • 80+ Bronze • ATX',4999,'🔌'],
-[17,'ARGB Gaming Cabinet','Accessories','Tempered Glass • 4 ARGB Fans',4599,'🖥️'],
-[18,'240mm Liquid CPU Cooler','Accessories','240mm Radiator • ARGB Fans',4299,'❄️'],
-[19,'Mechanical Gaming Keyboard','Accessories','RGB • Mechanical switches • USB',1999,'⌨️'],
-[20,'Gaming Mouse','Accessories','Adjustable DPI • RGB • USB',799,'🖱️']
-].map(x=>({id:x[0],name:x[1],cat:x[2],spec:x[3],price:Math.round(x[4]*1.1),emoji:x[5]}));
-const cats=['All','RAM','Graphics Card','Processor','Storage','Motherboard','Accessories'];
-const total=()=>cart.reduce((a,x)=>a+items.find(p=>p.id===x.id).price*x.qty,0);
-function show(id){$(id).classList.add('show')}function hide(id){$(id).classList.remove('show')}function closeM(el){el.closest('.modal').classList.remove('show')}
-function go(){$('products').scrollIntoView({behavior:'smooth'})}
-function setCat(c){category=c;renderFilters();render()}
-function renderFilters(){$('nav').innerHTML=cats.map(c=>`<button class='${category===c?'active':''}' onclick='setCat(this.textContent)'>${c}</button>`).join('');$('scat').innerHTML=cats.map(c=>`<option ${category===c?'selected':''}>${c}</option>`).join('')}
-function art(p){const c=['#2874f0','#e53935','#43a047','#8e24aa','#fb8c00'][p.id%5];const R=(x,y,w,h,f,r=0)=>`<rect x='${x}' y='${y}' width='${w}' height='${h}' rx='${r}' fill='${f}'/>`,C=(x,y,r,f,st)=>`<circle cx='${x}' cy='${y}' r='${r}' fill='${f}' stroke='${st||'none'}' stroke-width='2'/>`,L=(x1,y1,x2,y2,st,w,d)=>`<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='${st}' stroke-width='${w}' stroke-dasharray='${d||0}'/>`;let s='';const n=p.name;
-if(p.cat==='RAM')s=R(10,26,100,38,'#2e7d32',3)+[0,1,2,3].map(i=>R(18+i*22,32,16,18,'#212121',2)).join('')+R(10,54,100,6,c)+L(12,67,108,67,'#fbc02d',6,'3 2');
-else if(p.cat==='Graphics Card')s=R(4,20,6,50,'#90a4ae')+R(10,24,100,42,'#263238',5)+C(40,45,16,'#37474f',c)+C(80,45,16,'#37474f',c)+C(40,45,5,c)+C(80,45,5,c)+L(20,69,100,69,'#fbc02d',4,'3 2');
-else if(p.cat==='Processor')s=L(24,18,24,72,'#fbc02d',4,'3 2')+L(96,18,96,72,'#fbc02d',4,'3 2')+L(34,9,86,9,'#fbc02d',4,'3 2')+L(34,81,86,81,'#fbc02d',4,'3 2')+R(30,15,60,60,'#cfd8dc',6)+R(42,27,36,36,'#78909c',3)+R(48,33,24,24,c,2);
-else if(p.cat==='Storage'&&/Hard/.test(n))s=R(22,8,76,74,'#b0bec5',6)+C(60,42,27,'#455a64')+C(60,42,8,'#cfd8dc')+L(60,42,88,16,'#eceff1',3)+R(30,72,60,5,c);
-else if(p.cat==='Storage')s=R(8,28,104,34,'#1565c0',3)+R(14,28,8,34,'#fbc02d')+[0,1,2].map(i=>R(34+i*24,34,18,22,'#212121',2)).join('')+R(34,56,60,4,c);
-else if(p.cat==='Motherboard')s=R(15,6,90,78,'#1b5e20',4)+R(28,16,30,30,'#cfd8dc',3)+R(34,22,18,18,'#78909c')+[0,1,2,3].map(i=>R(70+i*8,12,5,36,'#212121')).join('')+R(22,60,76,6,'#111')+R(68,70,14,10,c,2);
-else if(/Power/.test(n))s=R(18,16,84,58,'#37474f',5)+C(60,45,22,'#263238',c)+C(60,45,5,c)+R(24,66,20,4,'#90a4ae');
-else if(/Cabinet/.test(n))s=R(32,5,56,80,'#212121',5)+R(38,11,44,68,'#455a64',3)+[22,43,64].map(y=>C(60,y,8,'none',c)).join('');
-else if(/Cooler/.test(n))s=R(8,28,72,34,'#546e7a',3)+C(30,45,13,'#263238',c)+C(58,45,13,'#263238',c)+C(98,45,14,'#263238',c)+L(80,38,86,38,'#90a4ae',3)+L(80,52,86,52,'#90a4ae',3);
-else if(/Keyboard/.test(n))s=R(6,26,108,42,'#263238',4)+[0,1,2].map(r=>[...Array(12)].map((_,i)=>R(11+i*8.5,31+r*9,6,6,r==1?c:'#78909c',1)).join('')).join('')+R(30,58,56,6,'#78909c',1);
-else s=R(42,10,36,70,'#263238',18)+L(60,10,60,38,'#607d8b',2)+R(56,20,8,14,c,4);
-return `<svg viewBox='0 0 120 90' xmlns='http://www.w3.org/2000/svg'>${s}</svg>`}
-function render(){const q=$('search').value.toLowerCase();const list=items.filter(p=>(category==='All'||p.cat===category)&&(p.name+' '+p.cat+' '+p.spec).toLowerCase().includes(q));$('result').textContent=list.length+' products';$('grid').innerHTML=list.map(p=>`<article class='product'><div class='art'><span class='tag'>ILLUSTRATION</span>${art(p)}</div><div class='info'><div class='cat'>${p.cat}</div><h3>${p.name}</h3><div class='spec'>${p.spec}</div><div class='rating'>★★★★☆ <span class='muted'>Sample rating</span></div><div class='price'>${money(p.price)}</div><button class='btn add' onclick='add(${p.id})'>Add to Cart</button></div></article>`).join('')||'<p>No matching products.</p>'}
-function add(id){const x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});updateCart()}
-function qty(id,n){const x=cart.find(i=>i.id===id);if(!x)return;x.qty+=n;if(x.qty<1)cart=cart.filter(i=>i.id!==id);updateCart()}
-function updateCart(){$('count').textContent=cart.reduce((a,x)=>a+x.qty,0);$('cartItems').innerHTML=cart.length?cart.map(x=>{const p=items.find(i=>i.id===x.id);return `<div class='cartrow'><div><b>${p.name}</b><small>${money(p.price)} each</small><div class='qty'><button onclick='qty(${p.id},-1)'>−</button>${x.qty}<button onclick='qty(${p.id},1)'>+</button></div></div><b>${money(p.price*x.qty)}</b></div>`}).join(''):'<p>Your cart is empty. Add a product to get started.</p>';$('total').textContent=money(total())}
-function openCart(){$('cartOverlay').classList.add('show');updateCart()}function closeCart(){$('cartOverlay').classList.remove('show')}
-function showPolicy(){show('policyModal')}
+    <!-- Parts Grid -->
+    <div id="partsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Product Cards Rendered via JS -->
+    </div>
 
-function setMode(s){signup=!!s;$('authTitle').textContent=signup?'Create account':'Sign in';$('nameRow').style.display=signup?'block':'none';$('authBtn').textContent=signup?'CREATE ACCOUNT':'SIGN IN';$('toUp').style.display=signup?'none':'inline';$('toIn').style.display=signup?'inline':'none';$('aPass').autocomplete=signup?'new-password':'current-password';$('authErr').textContent=''}
-function openAuth(s){setMode(s);show('authModal')}
-function friendly(e){const m={'auth/email-already-in-use':'This email is already registered. Please sign in.','auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'No account found with this email.','auth/invalid-email':'Please enter a valid email.','auth/weak-password':'Password must be at least 6 characters.','auth/network-request-failed':'Network problem. Check your internet and try again.','auth/too-many-requests':'Too many attempts. Please try again later.'};return m[e.code]||e.message}
-async function submitAuth(){
-const err=t=>{$('authErr').textContent=t};err('');
-if(!ready||!auth)return err('Add your Firebase config in the code first.');
-const email=$('aEmail').value.trim(),pw=$('aPass').value,name=$('aName').value.trim();
-if(!email||pw.length<6)return err('Enter a valid email and a password of at least 6 characters.');
-if(signup&&!name)return err('Please enter your name.');
-$('authBtn').disabled=true;
-try{
-if(signup){const c=await auth.createUserWithEmailAndPassword(email,pw);await c.user.updateProfile({displayName:name});$('hello').textContent='Hello, '+name;try{await db.collection('users').doc(c.user.uid).set({name,email,createdAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}catch(e2){console.error(e2)}}
-else await auth.signInWithEmailAndPassword(email,pw);
-hide('authModal');
-}catch(e){err(friendly(e))}
-$('authBtn').disabled=false}
-function accountClick(){if(!user)return openAuth(0);if(confirm('Sign out of RIGZORA?'))auth.signOut()}
-if(auth)auth.onAuthStateChanged(async u=>{user=u;address=null;
-if(u){$('hello').textContent='Hello, '+(u.displayName||(u.email||'').split('@')[0]);try{const d=await db.collection('users').doc(u.uid).get();if(d.exists&&d.data().address)address=d.data().address}catch(e){console.error(e)}}
-else $('hello').textContent='Hello, sign in';
-$('loc').textContent=address?address.city+' '+address.pincode:'Select address';
-if(u&&pending){pending=false;hide('authModal');openAddress()}});
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-20 bg-slate-900/40 rounded-2xl border border-slate-800">
+      <p class="text-slate-300 font-semibold text-lg">No matching PC components found</p>
+      <p class="text-slate-500 text-sm mt-1">Try clearing your search filter or switching hardware categories.</p>
+      <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-sm">Reset Filters</button>
+    </div>
+  </main>
 
-function checkout(){if(!cart.length){alert('Your cart is empty.');return}closeCart();if(!user){pending=true;openAuth(0);return}openAddress()}
-function openAddress(){const a=address||{};$('dName').value=a.name||(user&&user.displayName)||'';$('dPhone').value=a.phone||'';$('dHouse').value=a.house||'';$('dArea').value=a.area||'';$('dPin').value=a.pincode||'';$('dCity').value=a.city||'';$('dState').value=a.state||'';$('addrErr').textContent='';show('addrModal')}
-async function saveAddress(){
-const a={name:$('dName').value.trim(),phone:$('dPhone').value.trim(),house:$('dHouse').value.trim(),area:$('dArea').value.trim(),pincode:$('dPin').value.trim(),city:$('dCity').value.trim(),state:$('dState').value.trim()};
-const err=t=>{$('addrErr').textContent=t};
-if(!a.name||!a.house||!a.city||!a.state)return err('Please fill name, house/street, city and state.');
-if(!/^[0-9]{10}$/.test(a.phone))return err('Enter a valid 10-digit mobile number.');
-if(!/^[0-9]{6}$/.test(a.pincode))return err('Enter a valid 6-digit pincode.');
-$('addrBtn').disabled=true;
-try{await db.collection('users').doc(user.uid).set({address:a},{merge:true});address=a;$('loc').textContent=a.city+' '+a.pincode;hide('addrModal');openPay()}
-catch(e){err('Could not save address: '+e.message)}
-$('addrBtn').disabled=false}
-function setPay(c){method=c?'cod':'upi';$('upiBox').style.display=c?'none':'block';$('codBox').style.display=c?'block':'none';$('mUpi').classList.toggle('alt',!c);$('mCod').classList.toggle('alt',!!c);$('orderBtn').textContent=c?'Place order (Cash on Delivery)':'I have paid – place order';$('payNote').style.display=c?'none':'block';$('payErr').textContent=''}function addrText(a){return [a.name,a.house,a.area,a.city,a.state,a.pincode,'Ph: '+a.phone].filter(Boolean).join(', ')}
-function openPay(){setPay(0);const amt=total();$('payAmount').textContent=money(amt);$('payAddr').textContent=addrText(address);$('utr').value='';$('payErr').textContent='';$('upiLink').href='upi://pay?pa=anuhsp33355@okicici&pn=ANU%20THAKUR&am='+amt+'&cu=INR&tn=RIGZORA%20PC%20Parts';show('payModal')}
-async function placeOrder(){
-const err=t=>{$('payErr').textContent=t};err('');
-const cod=method==='cod';const utr=cod?'':$('utr').value.trim();
-if(!cod&&!/^[0-9]{12}$/.test(utr))return err('Enter the 12-digit UPI transaction ID (UTR) shown in your payment app.');
-if(!cart.length||!user||!address)return err('Something is missing. Please close this and try again.');
-const lines=cart.map(x=>{const p=items.find(i=>i.id===x.id);return {id:p.id,name:p.name,price:p.price,qty:x.qty}});
-const amt=total();
-$('orderBtn').disabled=true;
-try{
-const ref=await db.collection('orders').add({uid:user.uid,email:user.email,items:lines,total:amt,address,utr,paymentMethod:cod?'Cash on Delivery':'UPI',status:cod?'Placed - pay on delivery':'Placed - payment to be verified',createdAt:firebase.firestore.FieldValue.serverTimestamp()});
-cart=[];updateCart();hide('payModal');$('orderId').textContent=ref.id.slice(0,8).toUpperCase();$('okAmount').textContent=money(amt);$('okNote').textContent=cod?'Please keep '+money(amt)+' ready to pay in cash on delivery. We will contact you to confirm your order.':'We will verify your payment and confirm your order soon. You can track it under Returns & Orders.';show('okModal');
-}catch(e){err('Order could not be saved: '+e.message)}
-$('orderBtn').disabled=false}
-async function openOrders(){
-if(!user)return openAuth(0);
-show('ordersModal');$('ordersList').textContent='Loading...';
-try{
-const s=await db.collection('orders').where('uid','==',user.uid).get();
-const arr=s.docs.map(d=>Object.assign({id:d.id},d.data())).sort((a,b)=>((b.createdAt&&b.createdAt.seconds)||0)-((a.createdAt&&a.createdAt.seconds)||0));
-$('ordersList').innerHTML=arr.length?arr.map(o=>`<div class='order'><b>Order #${esc(o.id.slice(0,8).toUpperCase())}</b>${o.createdAt?' · '+esc(new Date(o.createdAt.seconds*1000).toLocaleDateString('en-IN')):''}<br>${(o.items||[]).map(i=>esc(i.name)+' × '+esc(i.qty)).join('<br>')}<br><b>${money(Number(o.total)||0)}</b> · ${esc(o.paymentMethod||'UPI')} · <span class='green'>${esc(o.status)}</span><br><small class='muted'>Deliver to: ${esc(o.address?addrText(o.address):'')}</small></div>`).join(''):'<p>No orders yet.</p>';
-}catch(e){$('ordersList').textContent='Could not load orders: '+e.message}}
+  <!-- Product Technical Details Modal -->
+  <div id="specModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-fadeIn">
+      <div class="relative h-64 bg-slate-950">
+        <img id="modalImage" src="" alt="" class="w-full h-full object-cover" />
+        <button onclick="closeSpecModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-950/80 text-white hover:bg-rose-500 flex items-center justify-center transition">
+          ✕
+        </button>
+        <span id="modalCategory" class="absolute bottom-4 left-4 px-3 py-1 rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs uppercase"></span>
+      </div>
+      <div class="p-6 space-y-5">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p id="modalBrand" class="text-xs font-mono uppercase tracking-wider text-cyan-400"></p>
+            <h2 id="modalTitle" class="text-2xl font-extrabold text-white mt-0.5"></h2>
+          </div>
+          <div class="text-right">
+            <p id="modalPrice" class="text-2xl font-mono font-extrabold text-emerald-400"></p>
+            <p id="modalTdp" class="text-xs font-mono text-slate-400 mt-0.5"></p>
+          </div>
+        </div>
 
-$('search').addEventListener('input',render);
-setMode(0);renderFilters();render();updateCart();
-</script></body></html>
+        <p id="modalDescription" class="text-slate-300 text-sm leading-relaxed"></p>
+
+        <!-- Key Specs Grid -->
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2.5">Technical Specifications</h4>
+          <div id="modalSpecsList" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3 border-t border-slate-800">
+          <button onclick="closeSpecModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">
+            Close
+          </button>
+          <button id="modalAddBtn" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold flex items-center gap-2">
+            + Add to PC Build
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-over Custom PC Builder Drawer -->
+  <div id="builderDrawer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/75 backdrop-blur-xs" onclick="toggleBuilderDrawer(false)"></div>
+    <aside class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-slate-950 border-l border-slate-800 flex flex-col shadow-2xl">
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-extrabold text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+            Custom PC Rig Builder
+          </h2>
+          <p class="text-xs text-slate-400">Select one component per slot & check PSU headroom</p>
+        </div>
+        <button onclick="toggleBuilderDrawer(false)" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <!-- Wattage & Compatibility Bar -->
+      <div class="p-4 bg-slate-900/90 border-b border-slate-800 space-y-2">
+        <div class="flex items-center justify-between text-xs font-mono">
+          <span class="text-slate-400">ESTIMATED SYSTEM DRAW</span>
+          <span id="wattageSummary" class="text-cyan-400 font-bold">0W / No PSU Selected</span>
+        </div>
+        <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+          <div id="wattageBar" class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <p id="psuStatusMsg" class="text-[11px] text-slate-400">Add a CPU, GPU, and Power Supply to verify wattage load.</p>
+      </div>
+
+      <!-- Builder Slots -->
+      <div id="builderSlotsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Slots rendered via JS -->
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-5 border-t border-slate-800 bg-slate-900/70 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm text-slate-400 font-medium">Total Build Estimate</span>
+          <span id="buildTotalPrice" class="text-2xl font-mono font-extrabold text-white">$0</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2.5">
+          <button onclick="clearBuild()" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-rose-950/60 hover:text-rose-300 text-slate-300 text-xs font-bold transition">
+            Clear All Parts
+          </button>
+          <button onclick="exportBuildSummary()" class="py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-extrabold transition">
+            Copy Build Specs
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div id="toastText" class="px-4 py-2.5 rounded-xl bg-slate-900 border border-cyan-500/50 text-cyan-300 text-xs font-mono shadow-xl"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/90 py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-300">NEXUS RIGS</span>
+        <span>•</span>
+        <span>PC Hardware Showcase & Interactive System Configurator</span>
+      </div>
+      <div class="font-mono">
+        CPUs • GPUs • Motherboards • RAM • NVMe • PSUs • Cases • Cooling
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Authentic PC Components Database with Verified Real Hardware Photography
+    const PC_PARTS = [
+      // CPUs
+      {
+        id: 'cpu-ryzen9-7950x3d',
+        category: 'CPU',
+        brand: 'AMD',
+        name: 'Ryzen 9 7950X3D 16-Core Processor',
+        price: 599,
+        rating: 4.9,
+        tdp: 120,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80',
+        description: 'Flagship 16-core, 32-thread desktop processor featuring AMD 3D V-Cache technology for unmatched gaming frame rates and heavy multi-threaded rendering.',
+        specs: {
+          'Cores / Threads': '16C / 32T',
+          'Max Boost Clock': '5.7 GHz',
+          'Total Cache': '144 MB L2+L3',
+          'Socket': 'AM5',
+          'TDP': '120W',
+          'Architecture': 'Zen 4 (5nm)'
+        }
+      },
+      {
+        id: 'cpu-intel-i9-14900k',
+        category: 'CPU',
+        brand: 'Intel',
+        name: 'Core i9-14900K Unlocked Desktop CPU',
+        price: 549,
+        rating: 4.8,
+        tdp: 253,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=900&q=80',
+        description: '24-core (8 P-cores + 16 E-cores) unlocked enthusiast processor capable of reaching up to 6.0 GHz Thermal Velocity Boost for extreme gaming and studio workloads.',
+        specs: {
+          'Cores / Threads': '24C / 32T',
+          'Max Turbo': '6.0 GHz',
+          'Smart Cache': '36 MB',
+          'Socket': 'LGA 1700',
+          'Max Turbo Power': '253W',
+          'Memory Support': 'DDR5-5600 / DDR4'
+        }
+      },
+
+      // GPUs
+      {
+        id: 'gpu-rtx-4090',
+        category: 'GPU',
+        brand: 'NVIDIA',
+        name: 'GeForce RTX 4090 Founders Edition 24GB',
+        price: 1599,
+        rating: 5.0,
+        tdp: 450,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80',
+        description: 'Powered by the Ada Lovelace architecture with 24GB of ultra-fast GDDR6X memory, DLSS 3.5 Frame Generation, and third-generation Ray Tracing cores.',
+        specs: {
+          'VRAM': '24GB GDDR6X',
+          'CUDA Cores': '16,384',
+          'Boost Clock': '2.52 GHz',
+          'Memory Bus': '384-bit',
+          'TGP Power': '450W',
+          'Outputs': '3x DP 1.4a, 1x HDMI 2.1'
+        }
+      },
+      {
+        id: 'gpu-rx-7900xtx',
+        category: 'GPU',
+        brand: 'AMD Radeon',
+        name: 'Radeon RX 7900 XTX Phantom Gaming 24GB',
+        price: 949,
+        rating: 4.7,
+        tdp: 355,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=80',
+        description: 'Chiplet-based RDNA 3 flagship graphics card built for high-refresh 4K gaming with DisplayPort 2.1 connectivity and 24GB GDDR6 memory.',
+        specs: {
+          'VRAM': '24GB GDDR6',
+          'Stream Processors': '6,144',
+          'Game Clock': '2.30 GHz',
+          'Infinity Cache': '96 MB',
+          'Board Power': '355W',
+          'Interface': 'PCIe 4.0 x16'
+        }
+      },
+
+      // Motherboards
+      {
+        id: 'mobo-x670e-hero',
+        category: 'Motherboard',
+        brand: 'ASUS ROG',
+        name: 'ROG Crosshair X670E Hero WiFi 6E',
+        price: 629,
+        rating: 4.8,
+        tdp: 35,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
+        description: 'Enthusiast AM5 ATX motherboard engineered with 18+2 teamed power stages, dual PCIe 5.0 x16 slots, five M.2 slots, and Polymo RGB lighting.',
+        specs: {
+          'Socket / Chipset': 'AM5 / X670E',
+          'Form Factor': 'ATX',
+          'VRM Design': '18+2 (110A)',
+          'Memory': '4x DDR5 up to 8000+ MT/s',
+          'M.2 Slots': '5x M.2 (PCIe 5.0)',
+          'Networking': '2.5Gb LAN + WiFi 6E'
+        }
+      },
+      {
+        id: 'mobo-z790-tomahawk',
+        category: 'Motherboard',
+        brand: 'MSI MAG',
+        name: 'MAG Z790 Tomahawk MAX WiFi 7',
+        price: 299,
+        rating: 4.7,
+        tdp: 30,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80',
+        description: 'Rock-solid Intel LGA 1700 gaming motherboard featuring a 16+1+1 mirrored power arrangement, PCIe 5.0 Lightning Gen 5, and full-speed WiFi 7.',
+        specs: {
+          'Socket / Chipset': 'LGA 1700 / Z790',
+          'Form Factor': 'ATX',
+          'VRM Design': '16+1+1 (90A SPS)',
+          'Memory': '4x DDR5 up to 7800+ MT/s',
+          'M.2 Slots': '4x M.2 NVMe',
+          'Networking': '2.5Gb LAN + WiFi 7'
+        }
+      },
+
+      // RAM
+      {
+        id: 'ram-trident-z5-64gb',
+        category: 'RAM',
+        brand: 'G.SKILL',
+        name: 'Trident Z5 RGB 64GB (2x32GB) DDR5-6400',
+        price: 219,
+        rating: 4.9,
+        tdp: 12,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80',
+        description: 'High-bandwidth dual-channel DDR5 memory kit with hand-screened ICs, brushed aluminum heatspreaders, and customizable RGB light bar.',
+        specs: {
+          'Capacity': '64GB (2 x 32GB)',
+          'Speed': 'DDR5-6400 MT/s',
+          'CAS Latency': 'CL32-39-39-102',
+          'Voltage': '1.40V',
+          'Profiles': 'Intel XMP 3.0',
+          'Height': '44 mm'
+        }
+      },
+      {
+        id: 'ram-corsair-dominator-32gb',
+        category: 'RAM',
+        brand: 'Corsair',
+        name: 'Dominator Titanium 32GB (2x16GB) DDR5-6000',
+        price: 169,
+        rating: 4.8,
+        tdp: 10,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/DDR4_RAM_modules.jpg/960px-DDR4_RAM_modules.jpg',
+        description: 'Precision-forged aluminum memory modules utilizing Corsair DHX cooling and replaceable top bars for low-latency gaming performance.',
+        specs: {
+          'Capacity': '32GB (2 x 16GB)',
+          'Speed': 'DDR5-6000 MT/s',
+          'CAS Latency': 'CL30-36-36-76',
+          'Voltage': '1.40V',
+          'Profiles': 'AMD EXPO & XMP',
+          'RGB': '11-Zone Capellix'
+        }
+      },
+
+      // Storage
+      {
+        id: 'ssd-samsung-990pro-2tb',
+        category: 'Storage',
+        brand: 'Samsung',
+        name: '990 PRO 2TB PCIe 4.0 NVMe M.2 SSD',
+        price: 169,
+        rating: 4.9,
+        tdp: 8,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg/960px-Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg',
+        description: 'Blistering sequential read speeds up to 7,450 MB/s with Samsung nickel-coated controller and smart thermal control algorithm.',
+        specs: {
+          'Capacity': '2 TB',
+          'Interface': 'PCIe Gen 4.0 x4',
+          'Seq. Read': '7,450 MB/s',
+          'Seq. Write': '6,900 MB/s',
+          'Form Factor': 'M.2 2280',
+          'Endurance': '1,200 TBW'
+        }
+      },
+      {
+        id: 'ssd-wd-sn850x-4tb',
+        category: 'Storage',
+        brand: 'Western Digital',
+        name: 'WD_BLACK SN850X 4TB NVMe Gaming SSD',
+        price: 299,
+        rating: 4.8,
+        tdp: 9,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80',
+        description: 'Massive 4TB PCIe Gen4 storage with Game Mode 2.0 predictive loading and ultra-low latency for modern open-world titles.',
+        specs: {
+          'Capacity': '4 TB',
+          'Interface': 'PCIe Gen 4.0 x4',
+          'Seq. Read': '7,300 MB/s',
+          'Seq. Write': '6,600 MB/s',
+          'Form Factor': 'M.2 2280',
+          'Endurance': '2,400 TBW'
+        }
+      },
+
+      // PSU
+      {
+        id: 'psu-corsair-rm1000x',
+        category: 'PSU',
+        brand: 'Corsair',
+        name: 'RM1000x Shift 1000W 80+ Gold ATX 3.0',
+        price: 189,
+        rating: 4.9,
+        tdp: 0,
+        psuOutput: 1000,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/PC_Power_Supply_Unit.jpg/960px-PC_Power_Supply_Unit.jpg',
+        description: 'Fully modular ATX 3.0 & PCIe 5.0 compliant power supply featuring innovative side-mounted modular cable interface and 100% Japanese 105°C capacitors.',
+        specs: {
+          'Wattage': '1000W Continuous',
+          'Efficiency': '80 PLUS Gold',
+          'Standard': 'ATX 3.0 / PCIe 5.0',
+          '12VHPWR Cable': 'Included (600W)',
+          'Fan': '140mm FDB Zero-RPM',
+          'Warranty': '10 Years'
+        }
+      },
+      {
+        id: 'psu-seasonic-1300w',
+        category: 'PSU',
+        brand: 'Seasonic',
+        name: 'PRIME TX-1300 1300W 80+ Titanium Modular',
+        price: 379,
+        rating: 5.0,
+        tdp: 0,
+        psuOutput: 1300,
+        image: 'https://images.unsplash.com/photo-1587202372583-49330a15584d?auto=format&fit=crop&w=900&q=80',
+        description: 'Flagship Titanium-certified power supply engineered with micro-tolerance load regulation (0.5%) and native dual 12V-2x6 connectors.',
+        specs: {
+          'Wattage': '1300W Continuous',
+          'Efficiency': '80 PLUS Titanium (94%+)',
+          'Standard': 'ATX 3.1 / PCIe 5.1',
+          'Modularity': '100% Full Modular',
+          'Fan': '135mm FDB Hybrid',
+          'Warranty': '12 Years'
+        }
+      },
+
+      // Cases
+      {
+        id: 'case-lianli-o11d',
+        category: 'Case',
+        brand: 'Lian Li',
+        name: 'O11 Dynamic EVO RGB Tempered Glass Mid-Tower',
+        price: 169,
+        rating: 4.9,
+        tdp: 5,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80',
+        description: 'Dual-chamber showcase chassis with pillarless tempered glass views, reversible motherboard orientation, and support for triple 360mm radiators.',
+        specs: {
+          'Form Factor': 'Mid-Tower (E-ATX/ATX)',
+          'Panels': '4mm Tempered Glass',
+          'Max GPU Length': '455.7 mm',
+          'Radiator Support': 'Up to 3x 360mm',
+          'Front I/O': 'USB-C 3.2, 2x USB 3.0',
+          'Chamber Design': 'Dual-Chamber'
+        }
+      },
+      {
+        id: 'case-fractal-north',
+        category: 'Case',
+        brand: 'Fractal Design',
+        name: 'North Charcoal Black Walnut Mesh ATX Case',
+        price: 139,
+        rating: 4.8,
+        tdp: 5,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=80',
+        description: 'Scandinavian-inspired PC chassis combining genuine walnut wood front slats with fine-patterned airflow mesh and brass accents.',
+        specs: {
+          'Form Factor': 'ATX / mATX / ITX',
+          'Front Material': 'Genuine Walnut Wood',
+          'Included Fans': '2x 140mm Aspect PWM',
+          'Max GPU Length': '355 mm',
+          'Top Radiator': 'Up to 240mm',
+          'Side Panel': 'Fine Steel Mesh'
+        }
+      },
+
+      // Cooling
+      {
+        id: 'cool-nzxt-kraken-360',
+        category: 'Cooling',
+        brand: 'NZXT',
+        name: 'Kraken Elite 360 RGB AIO Liquid Cooler',
+        price: 279,
+        rating: 4.8,
+        tdp: 15,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=900&q=80',
+        description: '360mm all-in-one liquid CPU cooler equipped with a 2.36-inch wide-angle 60Hz LCD display for real-time coolant temps and custom GIFs.',
+        specs: {
+          'Radiator Size': '360mm Aluminum',
+          'Pump Display': '2.36" 640x640 LCD',
+          'Fans': '3x 120mm F120 RGB Core',
+          'Pump Speed': '800 – 2,800 RPM',
+          'Sockets': 'AM5, AM4, LGA 1700/1851',
+          'Tubing': '400mm Nylon Braided'
+        }
+      },
+      {
+        id: 'cool-noctua-nhd15',
+        category: 'Cooling',
+        brand: 'Noctua',
+        name: 'NH-D15 chromax.black Dual-Tower Air Cooler',
+        price: 119,
+        rating: 4.9,
+        tdp: 6,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CPU_heatsink_and_fan.jpg/960px-CPU_heatsink_and_fan.jpg',
+        description: 'Legendary dual-tower 6-heatpipe air cooler finished in stealth black with dual NF-A15 140mm PWM fans for near-silent thermal dissipation.',
+        specs: {
+          'Cooler Type': 'Dual-Tower Air',
+          'Heatpipes': '6x Copper Heatpipes',
+          'Fans': '2x NF-A15 HS-PWM 140mm',
+          'Max Noise': '24.6 dB(A)',
+          'Height': '165 mm',
+          'Thermal Paste': 'NT-H1 Included'
+        }
+      }
+    ];
+
+    const CATEGORIES = ['All', 'CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
+    const BUILD_SLOTS = ['CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
+
+    let activeCategory = 'All';
+    let searchQuery = '';
+    let sortBy = 'featured';
+    let customBuild = {}; // { CPU: partObj, GPU: partObj, ... }
+
+    // Fallback SVG data URI if any external image fails to load
+    const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%230f172a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2306b6d4' font-family='monospace' font-size='24'%3ENEXUS RIGS HARDWARE%3C/text%3E%3C/svg%3E";
+
+    function init() {
+      renderCategoryTabs();
+      renderParts();
+      renderBuilderDrawer();
+
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        renderParts();
+      });
+
+      document.getElementById('sortSelect').addEventListener('change', (e) => {
+        sortBy = e.target.value;
+        renderParts();
+      });
+    }
+
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabs');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isActive = activeCategory === cat;
+        return `
+          <button 
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+              isActive 
+                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20' 
+                : 'bg-slate-900/90 text-slate-300 hover:bg-slate-800 border border-slate-800'
+            }"
+          >
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCategory(cat) {
+      activeCategory = cat;
+      renderCategoryTabs();
+      renderParts();
+    }
+
+    function resetFilters() {
+      activeCategory = 'All';
+      searchQuery = '';
+      sortBy = 'featured';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('sortSelect').value = 'featured';
+      renderCategoryTabs();
+      renderParts();
+    }
+
+    function getFilteredParts() {
+      let list = PC_PARTS.filter(part => {
+        const matchesCat = activeCategory === 'All' || part.category === activeCategory;
+        const matchesSearch = !searchQuery || 
+          part.name.toLowerCase().includes(searchQuery) ||
+          part.brand.toLowerCase().includes(searchQuery) ||
+          part.category.toLowerCase().includes(searchQuery) ||
+          Object.values(part.specs).some(v => v.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesSearch;
+      });
+
+      if (sortBy === 'price-asc') list.sort((a, b) => a.price - b.price);
+      if (sortBy === 'price-desc') list.sort((a, b) => b.price - a.price);
+      if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating);
+      if (sortBy === 'tdp-desc') list.sort((a, b) => b.tdp - a.tdp);
+
+      return list;
+    }
+
+    function renderParts() {
+      const grid = document.getElementById('partsGrid');
+      const empty = document.getElementById('emptyState');
+      const countEl = document.getElementById('resultsCount');
+      const parts = getFilteredParts();
+
+      countEl.textContent = `Showing ${parts.length} part${parts.length === 1 ? '' : 's'}`;
+
+      if (parts.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.innerHTML = parts.map(part => {
+        const isSelected = customBuild[part.category]?.id === part.id;
+        const specEntries = Object.entries(part.specs).slice(0, 2);
+
+        return `
+          <article class="group bg-card/90 border ${isSelected ? 'border-cyan-400 ring-1 ring-cyan-400/40' : 'border-slate-800 hover:border-slate-600'} rounded-2xl overflow-hidden flex flex-col transition duration-200 hover:-translate-y-1 shadow-lg">
+            <!-- Photo Header -->
+            <div class="relative h-48 bg-slate-950 overflow-hidden cursor-pointer" onclick="openSpecModal('${part.id}')">
+              <img 
+                src="${part.image}" 
+                alt="${part.name}" 
+                onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-[11px] font-mono font-bold text-cyan-400">
+                ${part.category}
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/85 text-[11px] font-mono text-amber-400">
+                ★ ${part.rating.toFixed(1)}
+              </span>
+              <span class="absolute bottom-2.5 right-3 text-[11px] font-mono text-slate-300 bg-slate-950/80 px-2 py-0.5 rounded">
+                ${part.psuOutput > 0 ? `${part.psuOutput}W Output` : `${part.tdp}W TDP`}
+              </span>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400">${part.brand}</p>
+                <h3 
+                  onclick="openSpecModal('${part.id}')" 
+                  class="text-white font-bold text-base leading-snug mt-0.5 cursor-pointer hover:text-cyan-400 transition line-clamp-2"
+                >
+                  ${part.name}
+                </h3>
+
+                <!-- Mini Specs -->
+                <div class="mt-3 space-y-1.5 pt-3 border-t border-slate-800/80">
+                  ${specEntries.map(([k, v]) => `
+                    <div class="flex justify-between text-xs">
+                      <span class="text-slate-500">${k}</span>
+                      <span class="font-mono text-slate-300 font-medium">${v}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <!-- Price & Actions -->
+              <div class="pt-2 flex items-center justify-between gap-2">
+                <span class="text-xl font-mono font-extrabold text-white">$${part.price.toLocaleString()}</span>
+                <div class="flex items-center gap-1.5">
+                  <button 
+                    onclick="openSpecModal('${part.id}')" 
+                    class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                    title="View Full Specs"
+                  >
+                    Details
+                  </button>
+                  <button 
+                    onclick="addToBuild('${part.id}')" 
+                    class="px-3.5 py-2 rounded-xl text-xs font-bold transition ${
+                      isSelected 
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' 
+                        : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950'
+                    }"
+                  >
+                    ${isSelected ? '✓ In Build' : '+ Add'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function openSpecModal(partId) {
+      const part = PC_PARTS.find(p => p.id === partId);
+      if (!part) return;
+
+      document.getElementById('modalImage').src = part.image;
+      document.getElementById('modalCategory').textContent = part.category;
+      document.getElementById('modalBrand').textContent = part.brand;
+      document.getElementById('modalTitle').textContent = part.name;
+      document.getElementById('modalPrice').textContent = `$${part.price.toLocaleString()}`;
+      document.getElementById('modalTdp').textContent = part.psuOutput > 0 ? `Max Output: ${part.psuOutput}W` : `Est. Power Draw: ${part.tdp}W`;
+      document.getElementById('modalDescription').textContent = part.description;
+
+      const specsList = document.getElementById('modalSpecsList');
+      specsList.innerHTML = Object.entries(part.specs).map(([key, val]) => `
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-2.5">
+          <p class="text-[10px] font-mono uppercase text-slate-500">${key}</p>
+          <p class="text-xs font-mono font-bold text-slate-200 mt-0.5">${val}</p>
+        </div>
+      `).join('');
+
+      const addBtn = document.getElementById('modalAddBtn');
+      addBtn.onclick = () => {
+        addToBuild(part.id);
+        closeSpecModal();
+      };
+
+      const modal = document.getElementById('specModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSpecModal() {
+      const modal = document.getElementById('specModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function addToBuild(partId) {
+      const part = PC_PARTS.find(p => p.id === partId);
+      if (!part) return;
+      customBuild[part.category] = part;
+      renderParts();
+      renderBuilderDrawer();
+      showToast(`Added ${part.name} to ${part.category} slot`);
+    }
+
+    function removeFromBuild(category) {
+      delete customBuild[category];
+      renderParts();
+      renderBuilderDrawer();
+    }
+
+    function clearBuild() {
+      customBuild = {};
+      renderParts();
+      renderBuilderDrawer();
+      showToast('Cleared all parts from PC Builder');
+    }
+
+    function loadRecommendedRig() {
+      const flagshipIds = [
+        'cpu-ryzen9-7950x3d',
+        'gpu-rtx-4090',
+        'mobo-x670e-hero',
+        'ram-trident-z5-64gb',
+        'ssd-samsung-990pro-2tb',
+        'psu-corsair-rm1000x',
+        'case-lianli-o11d',
+        'cool-nzxt-kraken-360'
+      ];
+      flagshipIds.forEach(id => {
+        const part = PC_PARTS.find(p => p.id === id);
+        if (part) customBuild[part.category] = part;
+      });
+      renderParts();
+      renderBuilderDrawer();
+      toggleBuilderDrawer(true);
+      showToast('Loaded Flagship 4K Gaming Rig!');
+    }
+
+    function renderBuilderDrawer() {
+      const selectedCount = Object.keys(customBuild).length;
+      document.getElementById('buildBadgeCount').textContent = selectedCount;
+
+      const slotsContainer = document.getElementById('builderSlotsList');
+      let totalPrice = 0;
+      let totalTdp = 0;
+      let psuCapacity = 0;
+
+      slotsContainer.innerHTML = BUILD_SLOTS.map(slot => {
+        const part = customBuild[slot];
+        if (part) {
+          totalPrice += part.price;
+          totalTdp += part.tdp;
+          if (part.psuOutput > 0) psuCapacity = part.psuOutput;
+
+          return `
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center gap-3">
+              <img src="${part.image}" alt="${part.name}" class="w-14 h-14 rounded-lg object-cover bg-slate-950 shrink-0" />
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono uppercase text-cyan-400 font-bold">${slot}</span>
+                  <span class="text-xs font-mono font-bold text-emerald-400">$${part.price}</span>
+                </div>
+                <p class="text-xs font-bold text-white truncate mt-0.5">${part.name}</p>
+                <p class="text-[11px] font-mono text-slate-400">${part.psuOutput > 0 ? `${part.psuOutput}W PSU` : `${part.tdp}W TDP`}</p>
+              </div>
+              <button onclick="removeFromBuild('${slot}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="Remove">
+                ✕
+              </button>
+            </div>
+          `;
+        } else {
+          return `
+            <div 
+              onclick="selectCategory('${slot}'); toggleBuilderDrawer(false); scrollToCatalog();"
+              class="border border-dashed border-slate-800 hover:border-cyan-500/60 rounded-xl p-3 flex items-center justify-between cursor-pointer transition group"
+            >
+              <div>
+                <span class="text-[10px] font-mono uppercase text-slate-500 group-hover:text-cyan-400">${slot}</span>
+                <p class="text-xs text-slate-400">No ${slot} selected</p>
+              </div>
+              <span class="text-xs font-mono text-cyan-400 group-hover:translate-x-0.5 transition">+ Choose</span>
+            </div>
+          `;
+        }
+      }).join('');
+
+      document.getElementById('buildTotalPrice').textContent = `$${totalPrice.toLocaleString()}`;
+
+      // Update Wattage Meter
+      const wattageSummary = document.getElementById('wattageSummary');
+      const wattageBar = document.getElementById('wattageBar');
+      const psuStatusMsg = document.getElementById('psuStatusMsg');
+
+      if (psuCapacity > 0) {
+        const loadPct = Math.min(100, Math.round((totalTdp / psuCapacity) * 100));
+        wattageSummary.textContent = `${totalTdp}W / ${psuCapacity}W (${loadPct}%)`;
+        wattageBar.style.width = `${loadPct}%`;
+
+        if (totalTdp > psuCapacity) {
+          wattageBar.className = 'h-full bg-rose-500 transition-all duration-300';
+          psuStatusMsg.textContent = '⚠️ Warning: System draw exceeds selected PSU capacity!';
+          psuStatusMsg.className = 'text-[11px] text-rose-400 font-medium';
+        } else if (loadPct > 80) {
+          wattageBar.className = 'h-full bg-amber-400 transition-all duration-300';
+          psuStatusMsg.textContent = '⚡ High load: Consider higher wattage for peak transient headroom.';
+          psuStatusMsg.className = 'text-[11px] text-amber-300';
+        } else {
+          wattageBar.className = 'h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300';
+          psuStatusMsg.textContent = '✓ Optimal PSU headroom for sustained gaming & overclocking.';
+          psuStatusMsg.className = 'text-[11px] text-emerald-400';
+        }
+      } else {
+        wattageSummary.textContent = `${totalTdp}W Est. Draw`;
+        wattageBar.style.width = totalTdp > 0 ? '35%' : '0%';
+        wattageBar.className = 'h-full bg-cyan-500 transition-all duration-300';
+        psuStatusMsg.textContent = totalTdp > 0 
+          ? `Recommended PSU: at least ${Math.ceil((totalTdp * 1.35) / 50) * 50}W` 
+          : 'Add a CPU, GPU, and Power Supply to verify wattage load.';
+        psuStatusMsg.className = 'text-[11px] text-slate-400';
+      }
+    }
+
+    function toggleBuilderDrawer(open) {
+      const drawer = document.getElementById('builderDrawer');
+      if (open) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function scrollToCatalog() {
+      document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function exportBuildSummary() {
+      const entries = Object.entries(customBuild);
+      if (entries.length === 0) {
+        showToast('Add some parts first before copying!');
+        return;
+      }
+      let total = 0;
+      const lines = ['=== NEXUS RIGS CUSTOM PC BUILD ==='];
+      entries.forEach(([slot, part]) => {
+        total += part.price;
+        lines.push(`${slot}: ${part.name} ($${part.price})`);
+      });
+      lines.push(`Total Estimate: $${total.toLocaleString()}`);
+
+      navigator.clipboard?.writeText(lines.join('\n'));
+      showToast('Build list copied to clipboard!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      toast.classList.remove('opacity-0');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0');
+      }, 2600);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSpecModal();
+        toggleBuilderDrawer(false);
+      }
+    });
+
+    init();
+  </script>
+</body>
+</html>

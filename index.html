@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RIGZORA STORE — PC Hardware Store &amp; Online Rig Builder</title>
+  <title>RIGZORA STORE — PC Hardware Store, Online Payment & Order Confirmation</title>
   <meta name="description" content="Shop authentic PC hardware components across 8 categories with real photography, live TDP wattage builder, online payment, and instant order confirmation." />
-  <meta property="og:title" content="RIGZORA STORE — PC Hardware &amp; Online Rig Builder" />
+  <meta property="og:title" content="RIGZORA STORE — PC Hardware & Online Rig Builder" />
   <meta property="og:description" content="Interactive PC component catalog, live wattage estimator, online payment, and order tracking." />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2306b6d4'%3E%3Cpath d='M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z'/%3E%3C/svg%3E" />
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -21,30 +21,30 @@
         extend: {
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
+            mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
             obsidian: '#090d16',
             panel: '#111827',
             card: '#161f33',
             accent: '#06b6d4',
-            neon: '#8b5cf6'
+            neon: '#8b5cf6',
           }
         }
       }
-    };
+    }
   </script>
   <style>
     body {
       background-color: #090d16;
       color: #f3f4f6;
-      background-image:
+      background-image: 
         radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
         radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
     }
     .cyber-grid {
       background-size: 36px 36px;
-      background-image:
+      background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     }
@@ -86,29 +86,29 @@
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-obsidian/85 border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
       <!-- Brand Logo -->
-      <button type="button" data-action="reset-filters" class="flex items-center gap-3 text-left shrink-0 focus:outline-none">
-        <span class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-          <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+      <div class="flex items-center gap-3 cursor-pointer shrink-0" onclick="resetFilters()">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
           </svg>
-        </span>
-        <span>
-          <span class="block font-extrabold text-lg tracking-wider text-white">RIGZORA<span class="text-cyan-400">STORE</span></span>
-          <span class="hidden sm:block text-[10px] font-mono uppercase tracking-widest text-slate-400 -mt-1">PC Hardware &amp; Online Store</span>
-        </span>
-      </button>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-wider text-white">RIGZORA<span class="text-cyan-400">STORE</span></span>
+          <span class="hidden sm:block text-[10px] font-mono uppercase tracking-widest text-slate-400 -mt-1">PC Hardware & Online Store</span>
+        </div>
+      </div>
 
-      <!-- Desktop Search Bar -->
+      <!-- Search Bar -->
       <div class="flex-1 max-w-md hidden md:block">
         <div class="relative">
-          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
-          <input
-            id="searchInput"
-            type="search"
+          <input 
+            id="searchInput" 
+            type="text" 
             aria-label="Search PC components"
-            placeholder="Search RTX 4090, Ryzen 9, DDR5, NVMe..."
+            placeholder="Search RTX 4090, Ryzen 9, DDR5, NVMe..." 
             class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition"
           />
         </div>
@@ -116,39 +116,37 @@
 
       <!-- Actions, Orders & Google Form Link -->
       <div class="flex items-center gap-2">
-        <button
+        <button 
           type="button"
-          data-action="open-orders"
+          onclick="openOrdersHistoryModal()"
           class="flex items-center gap-1.5 text-xs font-semibold text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 rounded-xl transition"
           title="View Confirmed Orders"
         >
-          <span aria-hidden="true">&#128230;</span>
+          <span>📦</span>
           <span class="hidden sm:inline">My Orders</span>
           <span id="ordersCountBadge" class="bg-emerald-500/20 text-emerald-300 font-mono text-[11px] px-1.5 rounded">0</span>
         </button>
 
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6N1QQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=publish-editor"
-          target="_blank"
+        <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6N1QQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=publish-editor" 
+          target="_blank" 
           rel="noopener noreferrer"
           class="hidden lg:flex items-center gap-1.5 text-xs font-semibold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 px-3 py-2 rounded-xl transition"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          <span>Custom Form</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Custom Form
         </a>
 
         <!-- Build & Cart Drawer Button -->
-        <button
+        <button 
           type="button"
-          data-action="open-drawer"
+          onclick="toggleBuilderDrawer(true)" 
           class="relative flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm px-3.5 py-2 rounded-xl shadow-lg shadow-cyan-500/20 transition transform active:scale-95"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
-          <span class="hidden sm:inline">Build &amp; Pay</span>
+          <span class="hidden sm:inline">Build & Pay</span>
           <span id="buildBadgeCount" class="bg-slate-950 text-cyan-400 font-mono text-xs px-2 py-0.5 rounded-full">0</span>
         </button>
       </div>
@@ -161,27 +159,24 @@
       <div class="lg:col-span-7 space-y-5">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>RIGZORA STORE • FIREBASE CLOUD &amp; ONLINE CHECKOUT</span>
+          RIGZORA STORE • FIREBASE CLOUD & ONLINE CHECKOUT
         </div>
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
-          Architect &amp; Order Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400">Flagship Workstation</span>
+          Architect & Order Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-violet-400">Flagship Workstation</span>
         </h1>
         <p class="text-slate-400 text-base sm:text-lg max-w-2xl">
           Configure authentic PC components across all 8 hardware categories with real photography, live TDP wattage checks, online UPI/Card payment, and instant order confirmation.
         </p>
         <div class="flex flex-wrap gap-3 pt-2">
-          <button type="button" data-action="scroll-catalog" class="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-sm hover:bg-cyan-400 transition">
+          <button type="button" onclick="scrollToCatalog()" class="px-5 py-2.5 rounded-xl bg-white text-slate-950 font-bold text-sm hover:bg-cyan-400 transition">
             Browse Hardware
           </button>
-          <button type="button" data-action="autofill-rig" class="px-5 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-semibold text-sm transition flex items-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span>Auto-Fill Flagship Rig</span>
+          <button type="button" onclick="loadRecommendedRig()" class="px-5 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-cyan-300 font-semibold text-sm transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Auto-Fill Flagship Rig
           </button>
-          <button type="button" data-action="open-checkout" class="px-5 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-semibold text-sm transition flex items-center gap-2">
-            <span aria-hidden="true">&#128179;</span>
-            <span>Online Checkout</span>
+          <button type="button" onclick="openCheckoutModal()" class="px-5 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-semibold text-sm transition flex items-center gap-2">
+            💳 Online Checkout
           </button>
         </div>
       </div>
@@ -189,9 +184,9 @@
       <!-- Featured Showcase Card -->
       <div class="lg:col-span-5">
         <div class="relative rounded-2xl overflow-hidden border border-slate-700/70 bg-slate-900/90 shadow-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
-            alt="Custom Liquid Cooled Gaming PC"
+          <img 
+            src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" 
+            alt="Custom Liquid Cooled Gaming PC" 
             class="w-full h-64 object-cover object-center"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
@@ -213,11 +208,10 @@
   <main id="catalogSection" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Mobile Search Input -->
     <div class="mb-4 md:hidden">
-      <input
-        id="mobileSearchInput"
-        type="search"
-        aria-label="Search PC components on mobile"
-        placeholder="Search RTX 4090, Ryzen 9, DDR5, NVMe..."
+      <input 
+        id="mobileSearchInput" 
+        type="text" 
+        placeholder="Search RTX 4090, Ryzen 9, DDR5, NVMe..." 
         class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400"
       />
     </div>
@@ -229,8 +223,8 @@
       <!-- Sort Dropdown -->
       <div class="flex items-center gap-3 self-end md:self-auto">
         <span id="resultsCount" class="text-xs font-mono text-slate-400">Showing 16 parts</span>
-        <select
-          id="sortSelect"
+        <select 
+          id="sortSelect" 
           aria-label="Sort hardware parts"
           class="bg-slate-900 border border-slate-700 text-slate-200 text-xs font-medium rounded-xl px-3 py-2 focus:outline-none focus:border-cyan-400"
         >
@@ -250,17 +244,17 @@
     <div id="emptyState" class="hidden text-center py-20 bg-slate-900/40 rounded-2xl border border-slate-800">
       <p class="text-slate-300 font-semibold text-lg">No matching PC components found</p>
       <p class="text-slate-500 text-sm mt-1">Try clearing your search filter or switching hardware categories.</p>
-      <button type="button" data-action="reset-filters" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-sm">Reset Filters</button>
+      <button type="button" onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 text-slate-950 font-bold text-sm">Reset Filters</button>
     </div>
   </main>
 
   <!-- Product Technical Details Modal -->
-  <div id="specModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+  <div id="specModal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl animate-modal">
       <div class="relative h-64 bg-slate-950">
-        <img id="modalImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Component preview" class="w-full h-full object-cover" />
-        <button type="button" aria-label="Close modal" data-action="close-spec-modal" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-950/80 text-white hover:bg-rose-500 flex items-center justify-center transition">
-          &#10005;
+        <img id="modalImage" src="" alt="" class="w-full h-full object-cover" />
+        <button type="button" aria-label="Close modal" onclick="closeSpecModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-950/80 text-white hover:bg-rose-500 flex items-center justify-center transition">
+          ✕
         </button>
         <span id="modalCategory" class="absolute bottom-4 left-4 px-3 py-1 rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs uppercase"></span>
       </div>
@@ -284,7 +278,7 @@
         </div>
 
         <div class="pt-2 flex items-center justify-end gap-3 border-t border-slate-800">
-          <button type="button" data-action="close-spec-modal" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">
+          <button type="button" onclick="closeSpecModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold">
             Close
           </button>
           <button type="button" id="modalAddBtn" class="px-5 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-sm font-bold flex items-center gap-2">
@@ -296,20 +290,20 @@
   </div>
 
   <!-- Slide-over Custom PC Builder Drawer -->
-  <div id="builderDrawer" role="dialog" aria-modal="true" aria-label="Custom PC Rig Builder" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" data-action="close-drawer"></div>
+  <div id="builderDrawer" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-black/75 backdrop-blur-sm" onclick="toggleBuilderDrawer(false)"></div>
     <aside class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-slate-950 border-l border-slate-800 flex flex-col shadow-2xl">
       <!-- Drawer Header -->
       <div class="p-5 border-b border-slate-800 flex items-center justify-between">
         <div>
           <h2 class="text-lg font-extrabold text-white flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-            <span>Custom PC Rig Builder</span>
+            Custom PC Rig Builder
           </h2>
-          <p class="text-xs text-slate-400">Select components &amp; proceed to online payment</p>
+          <p class="text-xs text-slate-400">Select components & proceed to online payment</p>
         </div>
-        <button type="button" aria-label="Close builder drawer" data-action="close-drawer" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 flex items-center justify-center">
-          &#10005;
+        <button type="button" aria-label="Close builder drawer" onclick="toggleBuilderDrawer(false)" class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 flex items-center justify-center">
+          ✕
         </button>
       </div>
 
@@ -336,74 +330,73 @@
         </div>
 
         <!-- Primary Online Payment Button -->
-        <button
-          type="button"
-          data-action="open-checkout"
+        <button 
+          type="button" 
+          onclick="openCheckoutModal()" 
           class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-extrabold text-sm tracking-wide shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2"
         >
-          <span aria-hidden="true">&#128179;</span>
-          <span>Proceed to Online Payment</span>
+          <span>💳 Proceed to Online Payment</span>
         </button>
 
         <div class="grid grid-cols-2 gap-2.5">
-          <button type="button" data-action="clear-build" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-rose-950/60 hover:text-rose-300 text-slate-300 text-xs font-bold transition">
+          <button type="button" onclick="clearBuild()" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-rose-950/60 hover:text-rose-300 text-slate-300 text-xs font-bold transition">
             Clear All
           </button>
-          <button type="button" data-action="export-build" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 text-xs font-bold transition">
+          <button type="button" onclick="exportBuildSummary()" class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 text-xs font-bold transition">
             Copy Build Specs
           </button>
         </div>
 
         <!-- Google Form Inquiry Link -->
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6N1QQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=publish-editor"
-          target="_blank"
+        <a 
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6N1QQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=publish-editor" 
+          target="_blank" 
           rel="noopener noreferrer"
           class="w-full py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 font-semibold text-xs text-center block transition"
         >
-          Need Help? Fill Google Consultation Form &#8599;
+          Need Help? Fill Google Consultation Form ↗
         </a>
       </div>
     </aside>
   </div>
 
   <!-- Online Payment Checkout Modal -->
-  <div id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutHeading" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm overflow-y-auto">
+  <div id="checkoutModal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm overflow-y-auto">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl animate-modal my-8">
       <!-- Header -->
       <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
         <div class="flex items-center gap-2.5">
-          <span class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-bold" aria-hidden="true">&#128274;</span>
+          <span class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-bold">🔒</span>
           <div>
-            <h2 id="checkoutHeading" class="text-lg font-extrabold text-white">RIGZORA Secure Online Checkout</h2>
+            <h2 class="text-lg font-extrabold text-white">RIGZORA Secure Online Checkout</h2>
             <p class="text-[11px] font-mono text-slate-400">256-Bit Encrypted Payment • Instant Order Confirmation</p>
           </div>
         </div>
-        <button type="button" aria-label="Close checkout modal" data-action="close-checkout" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-rose-500 text-slate-300 hover:text-white flex items-center justify-center transition">&#10005;</button>
+        <button type="button" onclick="closeCheckoutModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-rose-500 text-slate-300 hover:text-white flex items-center justify-center transition">✕</button>
       </div>
 
-      <form id="checkoutForm" class="p-6 space-y-5">
+      <form id="checkoutForm" onsubmit="processOnlinePayment(event)" class="p-6 space-y-5">
         <!-- Customer & Shipping Details -->
         <div class="space-y-3">
-          <h3 class="text-xs font-mono uppercase tracking-wider text-cyan-400">1. Customer &amp; Delivery Details</h3>
+          <h3 class="text-xs font-mono uppercase tracking-wider text-cyan-400">1. Customer & Delivery Details</h3>
           <div class="grid sm:grid-cols-2 gap-3">
             <div>
-              <label for="custName" class="block text-xs text-slate-400 mb-1">Full Name *</label>
-              <input id="custName" type="text" required="required" placeholder="Anirudh Partap Singh" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
+              <label class="block text-xs text-slate-400 mb-1">Full Name *</label>
+              <input id="custName" type="text" required placeholder="Anirudh Partap Singh" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
             </div>
             <div>
-              <label for="custEmail" class="block text-xs text-slate-400 mb-1">Email Address *</label>
-              <input id="custEmail" type="email" required="required" placeholder="gamer@rigzora.store" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
+              <label class="block text-xs text-slate-400 mb-1">Email Address *</label>
+              <input id="custEmail" type="email" required placeholder="gamer@rigzora.store" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-3">
             <div>
-              <label for="custPhone" class="block text-xs text-slate-400 mb-1">Phone Number *</label>
-              <input id="custPhone" type="tel" required="required" placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
+              <label class="block text-xs text-slate-400 mb-1">Phone Number *</label>
+              <input id="custPhone" type="tel" required placeholder="+91 98765 43210" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
             </div>
             <div>
-              <label for="custCity" class="block text-xs text-slate-400 mb-1">City &amp; PIN Code *</label>
-              <input id="custCity" type="text" required="required" placeholder="Hoshiarpur, Punjab - 146001" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
+              <label class="block text-xs text-slate-400 mb-1">City & PIN Code *</label>
+              <input id="custCity" type="text" required placeholder="Hoshiarpur, Punjab - 146001" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400" />
             </div>
           </div>
         </div>
@@ -412,14 +405,14 @@
         <div class="space-y-3">
           <h3 class="text-xs font-mono uppercase tracking-wider text-cyan-400">2. Select Online Payment Method</h3>
           <div class="grid grid-cols-3 gap-2">
-            <button type="button" data-pay-method="UPI" id="payTab-UPI" class="pay-tab py-2.5 px-3 rounded-xl border border-cyan-400 bg-cyan-500/15 text-cyan-300 text-xs font-bold transition">
-              &#128241; UPI / QR
+            <button type="button" onclick="selectPaymentMethod('UPI')" id="payTab-UPI" class="pay-tab py-2.5 px-3 rounded-xl border border-cyan-400 bg-cyan-500/15 text-cyan-300 text-xs font-bold transition">
+              📱 UPI / QR
             </button>
-            <button type="button" data-pay-method="Card" id="payTab-Card" class="pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition">
-              &#128179; Credit/Debit Card
+            <button type="button" onclick="selectPaymentMethod('Card')" id="payTab-Card" class="pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition">
+              💳 Credit/Debit Card
             </button>
-            <button type="button" data-pay-method="NetBanking" id="payTab-NetBanking" class="pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition">
-              &#127974; Net Banking
+            <button type="button" onclick="selectPaymentMethod('NetBanking')" id="payTab-NetBanking" class="pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition">
+              🏦 Net Banking
             </button>
           </div>
 
@@ -429,11 +422,12 @@
               <div class="space-y-1 flex-1">
                 <p class="text-xs font-bold text-white">Pay Instantly via UPI App</p>
                 <p class="text-[11px] text-slate-400">Google Pay, PhonePe, Paytm, BHIM UPI</p>
-                <input id="upiIdInput" type="text" aria-label="UPI ID" value="rigzora.store@okaxis" placeholder="Enter your UPI ID (e.g. name@oksbi)" class="mt-2 w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-400" />
+                <input id="upiIdInput" type="text" value="rigzora.store@okaxis" placeholder="Enter your UPI ID (e.g. name@oksbi)" class="mt-2 w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs font-mono text-cyan-300 focus:outline-none focus:border-cyan-400" />
               </div>
+              <!-- Simulated Clean QR Badge -->
               <div class="w-20 h-20 rounded-xl bg-white p-1.5 shrink-0 flex flex-col items-center justify-center text-slate-950">
-                <svg class="w-14 h-14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 2h3v2h-3v-2zm3 2h3v4h-3v-4zm-3 2h2v2h-2v-2z" />
+                <svg class="w-14 h-14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-3 2h3v2h-3v-2zm3 2h3v4h-3v-4zm-3 2h2v2h-2v-2z"/>
                 </svg>
                 <span class="text-[8px] font-mono font-extrabold tracking-tighter">SCAN UPI</span>
               </div>
@@ -443,25 +437,25 @@
           <!-- Card Panel -->
           <div id="payPanel-Card" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
             <div>
-              <label for="cardNumInput" class="block text-[11px] text-slate-400 mb-1">Card Number</label>
-              <input id="cardNumInput" type="text" maxlength="19" placeholder="4532 0000 0000 8891" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
+              <label class="block text-[11px] text-slate-400 mb-1">Card Number</label>
+              <input type="text" maxlength="19" placeholder="4532 •••• •••• 8891" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
             </div>
             <div class="grid grid-cols-2 gap-3">
               <div>
-                <label for="cardExpInput" class="block text-[11px] text-slate-400 mb-1">Expiry (MM/YY)</label>
-                <input id="cardExpInput" type="text" maxlength="5" placeholder="08/29" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
+                <label class="block text-[11px] text-slate-400 mb-1">Expiry (MM/YY)</label>
+                <input type="text" maxlength="5" placeholder="08/29" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
               </div>
               <div>
-                <label for="cardCvvInput" class="block text-[11px] text-slate-400 mb-1">CVV</label>
-                <input id="cardCvvInput" type="password" maxlength="3" placeholder="123" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
+                <label class="block text-[11px] text-slate-400 mb-1">CVV</label>
+                <input type="password" maxlength="3" placeholder="•••" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-mono text-white focus:outline-none focus:border-cyan-400" />
               </div>
             </div>
           </div>
 
           <!-- NetBanking Panel -->
           <div id="payPanel-NetBanking" class="hidden bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
-            <label for="bankSelect" class="block text-[11px] text-slate-400">Choose Your Bank</label>
-            <select id="bankSelect" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
+            <label class="block text-[11px] text-slate-400">Choose Your Bank</label>
+            <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
               <option>State Bank of India (SBI)</option>
               <option>HDFC Bank</option>
               <option>ICICI Bank</option>
@@ -482,7 +476,7 @@
             <span class="font-mono text-emerald-400">FREE</span>
           </div>
           <div class="flex justify-between text-slate-400">
-            <span>Platform &amp; Handling Fee</span>
+            <span>Platform & Handling Fee</span>
             <span class="font-mono text-slate-200">$0</span>
           </div>
           <div class="pt-2 border-t border-slate-800 flex justify-between items-center">
@@ -492,34 +486,35 @@
         </div>
 
         <!-- Submit Payment Button -->
-        <button
+        <button 
           id="payNowBtn"
-          type="submit"
+          type="submit" 
           class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-extrabold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2"
         >
-          <span>Confirm &amp; Pay Online Now</span>
+          <span>Confirm & Pay Online Now</span>
         </button>
       </form>
     </div>
   </div>
 
   <!-- ORDER CONFIRMATION & RECEIPT MODAL -->
-  <div id="orderConfirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmHeading" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
+  <div id="orderConfirmModal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto">
     <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl animate-modal my-8">
       <!-- Top Success Banner -->
       <div class="bg-gradient-to-r from-emerald-600/25 via-cyan-600/20 to-slate-900 border-b border-emerald-500/30 p-6 text-center space-y-2">
-        <div class="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-400 flex items-center justify-center mx-auto text-3xl animate-check shadow-lg shadow-emerald-500/20" aria-hidden="true">
-          &#10003;
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-400 text-emerald-400 flex items-center justify-center mx-auto text-3xl animate-check shadow-lg shadow-emerald-500/20">
+          ✓
         </div>
         <span class="inline-block px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-[11px] font-bold uppercase tracking-wider">
           Payment Successful • Order Confirmed
         </span>
-        <h2 id="confirmHeading" class="text-2xl font-extrabold text-white">Thank You! Your Rig Order is Confirmed</h2>
-        <p class="text-xs text-slate-300">We have logged your hardware order and generated your digital receipt.</p>
+        <h2 class="text-2xl font-extrabold text-white">Thank You! Your Rig Order is Confirmed</h2>
+        <p class="text-xs text-slate-300">We have logged your hardware order and sent confirmation details.</p>
       </div>
 
       <!-- Order Metadata & Receipt Body -->
       <div class="p-6 space-y-5">
+        <!-- Order ID & Status Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs">
           <div>
             <p class="text-[10px] font-mono uppercase text-slate-500">Order ID</p>
@@ -531,10 +526,11 @@
           </div>
           <div class="col-span-2 sm:col-span-1">
             <p class="text-[10px] font-mono uppercase text-slate-500">Order Status</p>
-            <p class="font-mono font-bold text-emerald-400 mt-0.5">&#9679; CONFIRMED</p>
+            <p class="font-mono font-bold text-emerald-400 mt-0.5">● CONFIRMED</p>
           </div>
         </div>
 
+        <!-- Customer Delivery Summary -->
         <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3.5 text-xs space-y-1">
           <p class="text-[10px] font-mono uppercase text-slate-500">Shipping To</p>
           <p id="confirmCustomerName" class="font-bold text-white text-sm"></p>
@@ -542,28 +538,31 @@
           <p id="confirmDate" class="text-[11px] font-mono text-slate-500 pt-1"></p>
         </div>
 
+        <!-- Ordered Parts List -->
         <div>
           <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Confirmed Hardware List</h3>
           <div id="confirmItemsList" class="max-h-48 overflow-y-auto space-y-2 bg-slate-950 border border-slate-800 rounded-xl p-3"></div>
         </div>
 
+        <!-- Total Paid -->
         <div class="flex items-center justify-between pt-2 border-t border-slate-800">
           <div>
             <span class="text-xs text-slate-400 block">Amount Paid Online</span>
-            <span id="firebaseSyncStatus" class="text-[10px] font-mono text-emerald-400">&#10003; Synced with RIGZORA Cloud</span>
+            <span id="firebaseSyncStatus" class="text-[10px] font-mono text-emerald-400">✓ Synced with RIGZORA Cloud</span>
           </div>
           <span id="confirmTotalPaid" class="text-2xl font-mono font-extrabold text-emerald-400">$0</span>
         </div>
 
+        <!-- Receipt Actions -->
         <div class="grid grid-cols-3 gap-2.5 no-print pt-1">
-          <button type="button" data-action="copy-receipt" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-bold transition">
-            Copy Receipt
+          <button type="button" onclick="copyConfirmedReceipt()" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 text-xs font-bold transition">
+            📋 Copy Receipt
           </button>
-          <button type="button" data-action="print-receipt" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">
-            Print Invoice
+          <button type="button" onclick="window.print()" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">
+            🖨️ Print Invoice
           </button>
-          <button type="button" data-action="close-confirm" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition">
-            Done &#10003;
+          <button type="button" onclick="closeOrderConfirmModal()" class="py-2.5 px-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-extrabold transition">
+            Done ✓
           </button>
         </div>
       </div>
@@ -571,14 +570,14 @@
   </div>
 
   <!-- Past Confirmed Orders Modal -->
-  <div id="ordersHistoryModal" role="dialog" aria-modal="true" aria-labelledby="historyHeading" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+  <div id="ordersHistoryModal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
     <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl animate-modal">
       <div class="p-5 border-b border-slate-800 flex items-center justify-between">
         <div>
-          <h2 id="historyHeading" class="text-lg font-extrabold text-white">Confirmed Orders History</h2>
+          <h2 class="text-lg font-extrabold text-white">Confirmed Orders History</h2>
           <p class="text-xs text-slate-400">Your completed RIGZORA STORE orders</p>
         </div>
-        <button type="button" aria-label="Close orders history" data-action="close-orders" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">&#10005;</button>
+        <button type="button" onclick="closeOrdersHistoryModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">✕</button>
       </div>
       <div id="ordersHistoryList" class="p-5 max-h-96 overflow-y-auto space-y-3"></div>
     </div>
@@ -595,11 +594,11 @@
       <div class="flex items-center gap-2">
         <span class="font-bold text-slate-300">RIGZORA STORE</span>
         <span>•</span>
-        <span>PC Hardware Showcase, Online Payment &amp; Order Confirmation</span>
+        <span>PC Hardware Showcase, Online Payment & Order Confirmation</span>
       </div>
       <div class="flex items-center gap-4">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhljrwvvtt6N1QQ1Nbugscnat5-mt_wcXOWYeHUWHtBq4QUg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">
-          Google Form Consultation &#8599;
+          Google Form Consultation ↗
         </a>
         <span>•</span>
         <span class="font-mono">Powered by Firebase</span>
@@ -607,7 +606,7 @@
     </div>
   </footer>
 
-  <!-- Firebase SDK (Modular v11 via Official CDN) -->
+  <!-- Firebase SDK (Modular v11 via Official CDN for GitHub Pages) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
@@ -625,10 +624,11 @@
 
     try {
       const app = initializeApp(firebaseConfig);
-      getAnalytics(app);
+      const analytics = getAnalytics(app);
       const db = getFirestore(app);
 
-      window.saveOrderToFirebase = async function (orderPayload) {
+      // Expose Firestore order logger to main storefront script
+      window.saveOrderToFirebase = async (orderPayload) => {
         try {
           const docRef = await addDoc(collection(db, "orders"), {
             ...orderPayload,
@@ -636,1022 +636,998 @@
           });
           return { synced: true, docId: docRef.id };
         } catch (err) {
+          console.warn("Firestore write skipped (check Firestore rules if needed):", err.message);
           return { synced: false };
         }
       };
     } catch (e) {
-      window.saveOrderToFirebase = async function () {
-        return { synced: false };
-      };
+      console.warn("Firebase initialization notice:", e.message);
     }
   </script>
 
-  <!-- Main Storefront & Event Delegation Script -->
+  <!-- Main Application Logic -->
   <script>
-    (function () {
-      const STORAGE_KEY = 'rigzora_custom_build_v1';
-      const ORDERS_STORAGE_KEY = 'rigzora_confirmed_orders_v1';
+    const STORAGE_KEY = 'rigzora_custom_build_v1';
+    const ORDERS_STORAGE_KEY = 'rigzora_confirmed_orders_v1';
 
-      const PC_PARTS = [
-        {
-          id: 'cpu-ryzen9-7950x3d',
-          category: 'CPU',
-          brand: 'AMD',
-          name: 'Ryzen 9 7950X3D 16-Core Processor',
-          price: 599,
-          rating: 4.9,
-          tdp: 120,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80',
-          description: 'Flagship 16-core, 32-thread desktop processor featuring AMD 3D V-Cache technology for unmatched gaming frame rates and heavy multi-threaded rendering.',
-          specs: {
-            'Cores / Threads': '16C / 32T',
-            'Max Boost Clock': '5.7 GHz',
-            'Total Cache': '144 MB L2+L3',
-            'Socket': 'AM5',
-            'TDP': '120W',
-            'Architecture': 'Zen 4 (5nm)'
-          }
-        },
-        {
-          id: 'cpu-intel-i9-14900k',
-          category: 'CPU',
-          brand: 'Intel',
-          name: 'Core i9-14900K Unlocked Desktop CPU',
-          price: 549,
-          rating: 4.8,
-          tdp: 253,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=900&q=80',
-          description: '24-core (8 P-cores + 16 E-cores) unlocked enthusiast processor capable of reaching up to 6.0 GHz Thermal Velocity Boost for extreme gaming and studio workloads.',
-          specs: {
-            'Cores / Threads': '24C / 32T',
-            'Max Turbo': '6.0 GHz',
-            'Smart Cache': '36 MB',
-            'Socket': 'LGA 1700',
-            'Max Turbo Power': '253W',
-            'Memory Support': 'DDR5-5600 / DDR4'
-          }
-        },
-        {
-          id: 'gpu-rtx-4090',
-          category: 'GPU',
-          brand: 'NVIDIA',
-          name: 'GeForce RTX 4090 Founders Edition 24GB',
-          price: 1599,
-          rating: 5.0,
-          tdp: 450,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80',
-          description: 'Powered by the Ada Lovelace architecture with 24GB of ultra-fast GDDR6X memory, DLSS 3.5 Frame Generation, and third-generation Ray Tracing cores.',
-          specs: {
-            'VRAM': '24GB GDDR6X',
-            'CUDA Cores': '16,384',
-            'Boost Clock': '2.52 GHz',
-            'Memory Bus': '384-bit',
-            'TGP Power': '450W',
-            'Outputs': '3x DP 1.4a, 1x HDMI 2.1'
-          }
-        },
-        {
-          id: 'gpu-rx-7900xtx',
-          category: 'GPU',
-          brand: 'AMD Radeon',
-          name: 'Radeon RX 7900 XTX Phantom Gaming 24GB',
-          price: 949,
-          rating: 4.7,
-          tdp: 355,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=80',
-          description: 'Chiplet-based RDNA 3 flagship graphics card built for high-refresh 4K gaming with DisplayPort 2.1 connectivity and 24GB GDDR6 memory.',
-          specs: {
-            'VRAM': '24GB GDDR6',
-            'Stream Processors': '6,144',
-            'Game Clock': '2.30 GHz',
-            'Infinity Cache': '96 MB',
-            'Board Power': '355W',
-            'Interface': 'PCIe 4.0 x16'
-          }
-        },
-        {
-          id: 'mobo-x670e-hero',
-          category: 'Motherboard',
-          brand: 'ASUS ROG',
-          name: 'ROG Crosshair X670E Hero WiFi 6E',
-          price: 629,
-          rating: 4.8,
-          tdp: 35,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
-          description: 'Enthusiast AM5 ATX motherboard engineered with 18+2 teamed power stages, dual PCIe 5.0 x16 slots, five M.2 slots, and Polymo RGB lighting.',
-          specs: {
-            'Socket / Chipset': 'AM5 / X670E',
-            'Form Factor': 'ATX',
-            'VRM Design': '18+2 (110A)',
-            'Memory': '4x DDR5 up to 8000+ MT/s',
-            'M.2 Slots': '5x M.2 (PCIe 5.0)',
-            'Networking': '2.5Gb LAN + WiFi 6E'
-          }
-        },
-        {
-          id: 'mobo-z790-tomahawk',
-          category: 'Motherboard',
-          brand: 'MSI MAG',
-          name: 'MAG Z790 Tomahawk MAX WiFi 7',
-          price: 299,
-          rating: 4.7,
-          tdp: 30,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80',
-          description: 'Rock-solid Intel LGA 1700 gaming motherboard featuring a 16+1+1 mirrored power arrangement, PCIe 5.0 Lightning Gen 5, and full-speed WiFi 7.',
-          specs: {
-            'Socket / Chipset': 'LGA 1700 / Z790',
-            'Form Factor': 'ATX',
-            'VRM Design': '16+1+1 (90A SPS)',
-            'Memory': '4x DDR5 up to 7800+ MT/s',
-            'M.2 Slots': '4x M.2 NVMe',
-            'Networking': '2.5Gb LAN + WiFi 7'
-          }
-        },
-        {
-          id: 'ram-trident-z5-64gb',
-          category: 'RAM',
-          brand: 'G.SKILL',
-          name: 'Trident Z5 RGB 64GB (2x32GB) DDR5-6400',
-          price: 219,
-          rating: 4.9,
-          tdp: 12,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80',
-          description: 'High-bandwidth dual-channel DDR5 memory kit with hand-screened ICs, brushed aluminum heatspreaders, and customizable RGB light bar.',
-          specs: {
-            'Capacity': '64GB (2 x 32GB)',
-            'Speed': 'DDR5-6400 MT/s',
-            'CAS Latency': 'CL32-39-39-102',
-            'Voltage': '1.40V',
-            'Profiles': 'Intel XMP 3.0',
-            'Height': '44 mm'
-          }
-        },
-        {
-          id: 'ram-corsair-dominator-32gb',
-          category: 'RAM',
-          brand: 'Corsair',
-          name: 'Dominator Titanium 32GB (2x16GB) DDR5-6000',
-          price: 169,
-          rating: 4.8,
-          tdp: 10,
-          psuOutput: 0,
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/DDR4_RAM_modules.jpg/960px-DDR4_RAM_modules.jpg',
-          description: 'Precision-forged aluminum memory modules utilizing Corsair DHX cooling and replaceable top bars for low-latency gaming performance.',
-          specs: {
-            'Capacity': '32GB (2 x 16GB)',
-            'Speed': 'DDR5-6000 MT/s',
-            'CAS Latency': 'CL30-36-36-76',
-            'Voltage': '1.40V',
-            'Profiles': 'AMD EXPO + XMP',
-            'RGB': '11-Zone Capellix'
-          }
-        },
-        {
-          id: 'ssd-samsung-990pro-2tb',
-          category: 'Storage',
-          brand: 'Samsung',
-          name: '990 PRO 2TB PCIe 4.0 NVMe M.2 SSD',
-          price: 169,
-          rating: 4.9,
-          tdp: 8,
-          psuOutput: 0,
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg/960px-Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg',
-          description: 'Blistering sequential read speeds up to 7,450 MB/s with Samsung nickel-coated controller and smart thermal control algorithm.',
-          specs: {
-            'Capacity': '2 TB',
-            'Interface': 'PCIe Gen 4.0 x4',
-            'Seq. Read': '7,450 MB/s',
-            'Seq. Write': '6,900 MB/s',
-            'Form Factor': 'M.2 2280',
-            'Endurance': '1,200 TBW'
-          }
-        },
-        {
-          id: 'ssd-wd-sn850x-4tb',
-          category: 'Storage',
-          brand: 'Western Digital',
-          name: 'WD_BLACK SN850X 4TB NVMe Gaming SSD',
-          price: 299,
-          rating: 4.8,
-          tdp: 9,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80',
-          description: 'Massive 4TB PCIe Gen4 storage with Game Mode 2.0 predictive loading and ultra-low latency for modern open-world titles.',
-          specs: {
-            'Capacity': '4 TB',
-            'Interface': 'PCIe Gen 4.0 x4',
-            'Seq. Read': '7,300 MB/s',
-            'Seq. Write': '6,600 MB/s',
-            'Form Factor': 'M.2 2280',
-            'Endurance': '2,400 TBW'
-          }
-        },
-        {
-          id: 'psu-corsair-rm1000x',
-          category: 'PSU',
-          brand: 'Corsair',
-          name: 'RM1000x Shift 1000W 80+ Gold ATX 3.0',
-          price: 189,
-          rating: 4.9,
-          tdp: 0,
-          psuOutput: 1000,
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/PC_Power_Supply_Unit.jpg/960px-PC_Power_Supply_Unit.jpg',
-          description: 'Fully modular ATX 3.0 and PCIe 5.0 compliant power supply featuring innovative side-mounted modular cable interface and Japanese 105C capacitors.',
-          specs: {
-            'Wattage': '1000W Continuous',
-            'Efficiency': '80 PLUS Gold',
-            'Standard': 'ATX 3.0 / PCIe 5.0',
-            '12VHPWR Cable': 'Included (600W)',
-            'Fan': '140mm FDB Zero-RPM',
-            'Warranty': '10 Years'
-          }
-        },
-        {
-          id: 'psu-seasonic-1300w',
-          category: 'PSU',
-          brand: 'Seasonic',
-          name: 'PRIME TX-1300 1300W 80+ Titanium Modular',
-          price: 379,
-          rating: 5.0,
-          tdp: 0,
-          psuOutput: 1300,
-          image: 'https://images.unsplash.com/photo-1587202372583-49330a15584d?auto=format&fit=crop&w=900&q=80',
-          description: 'Flagship Titanium-certified power supply engineered with micro-tolerance load regulation (0.5%) and native dual 12V-2x6 connectors.',
-          specs: {
-            'Wattage': '1300W Continuous',
-            'Efficiency': '80 PLUS Titanium (94%+)',
-            'Standard': 'ATX 3.1 / PCIe 5.1',
-            'Modularity': '100% Full Modular',
-            'Fan': '135mm FDB Hybrid',
-            'Warranty': '12 Years'
-          }
-        },
-        {
-          id: 'case-lianli-o11d',
-          category: 'Case',
-          brand: 'Lian Li',
-          name: 'O11 Dynamic EVO RGB Tempered Glass Mid-Tower',
-          price: 169,
-          rating: 4.9,
-          tdp: 5,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80',
-          description: 'Dual-chamber showcase chassis with pillarless tempered glass views, reversible motherboard orientation, and support for triple 360mm radiators.',
-          specs: {
-            'Form Factor': 'Mid-Tower (E-ATX/ATX)',
-            'Panels': '4mm Tempered Glass',
-            'Max GPU Length': '455.7 mm',
-            'Radiator Support': 'Up to 3x 360mm',
-            'Front I/O': 'USB-C 3.2, 2x USB 3.0',
-            'Chamber Design': 'Dual-Chamber'
-          }
-        },
-        {
-          id: 'case-fractal-north',
-          category: 'Case',
-          brand: 'Fractal Design',
-          name: 'North Charcoal Black Walnut Mesh ATX Case',
-          price: 139,
-          rating: 4.8,
-          tdp: 5,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=80',
-          description: 'Scandinavian-inspired PC chassis combining genuine walnut wood front slats with fine-patterned airflow mesh and brass accents.',
-          specs: {
-            'Form Factor': 'ATX / mATX / ITX',
-            'Front Material': 'Genuine Walnut Wood',
-            'Included Fans': '2x 140mm Aspect PWM',
-            'Max GPU Length': '355 mm',
-            'Top Radiator': 'Up to 240mm',
-            'Side Panel': 'Fine Steel Mesh'
-          }
-        },
-        {
-          id: 'cool-nzxt-kraken-360',
-          category: 'Cooling',
-          brand: 'NZXT',
-          name: 'Kraken Elite 360 RGB AIO Liquid Cooler',
-          price: 279,
-          rating: 4.8,
-          tdp: 15,
-          psuOutput: 0,
-          image: 'https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=900&q=80',
-          description: '360mm all-in-one liquid CPU cooler equipped with a 2.36-inch wide-angle 60Hz LCD display for real-time coolant temps and custom GIFs.',
-          specs: {
-            'Radiator Size': '360mm Aluminum',
-            'Pump Display': '2.36" 640x640 LCD',
-            'Fans': '3x 120mm F120 RGB Core',
-            'Pump Speed': '800 - 2,800 RPM',
-            'Sockets': 'AM5, AM4, LGA 1700/1851',
-            'Tubing': '400mm Nylon Braided'
-          }
-        },
-        {
-          id: 'cool-noctua-nhd15',
-          category: 'Cooling',
-          brand: 'Noctua',
-          name: 'NH-D15 chromax.black Dual-Tower Air Cooler',
-          price: 119,
-          rating: 4.9,
-          tdp: 6,
-          psuOutput: 0,
-          image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CPU_heatsink_and_fan.jpg/960px-CPU_heatsink_and_fan.jpg',
-          description: 'Legendary dual-tower 6-heatpipe air cooler finished in stealth black with dual NF-A15 140mm PWM fans for near-silent thermal dissipation.',
-          specs: {
-            'Cooler Type': 'Dual-Tower Air',
-            'Heatpipes': '6x Copper Heatpipes',
-            'Fans': '2x NF-A15 HS-PWM 140mm',
-            'Max Noise': '24.6 dB(A)',
-            'Height': '165 mm',
-            'Thermal Paste': 'NT-H1 Included'
-          }
+    const PC_PARTS = [
+      // CPUs
+      {
+        id: 'cpu-ryzen9-7950x3d',
+        category: 'CPU',
+        brand: 'AMD',
+        name: 'Ryzen 9 7950X3D 16-Core Processor',
+        price: 599,
+        rating: 4.9,
+        tdp: 120,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=900&q=80',
+        description: 'Flagship 16-core, 32-thread desktop processor featuring AMD 3D V-Cache technology for unmatched gaming frame rates and heavy multi-threaded rendering.',
+        specs: {
+          'Cores / Threads': '16C / 32T',
+          'Max Boost Clock': '5.7 GHz',
+          'Total Cache': '144 MB L2+L3',
+          'Socket': 'AM5',
+          'TDP': '120W',
+          'Architecture': 'Zen 4 (5nm)'
         }
-      ];
-
-      const CATEGORIES = ['All', 'CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
-      const BUILD_SLOTS = ['CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
-
-      let activeCategory = 'All';
-      let searchQuery = '';
-      let sortBy = 'featured';
-      let customBuild = {};
-      let selectedPaymentMethod = 'UPI';
-      let confirmedOrders = [];
-      let latestConfirmedOrder = null;
-
-      const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%230f172a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2306b6d4' font-family='monospace' font-size='24'%3ERIGZORA HARDWARE%3C/text%3E%3C/svg%3E";
-
-      function escapeHtml(str) {
-        return String(str)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-      }
-
-      function loadSavedState() {
-        try {
-          const saved = localStorage.getItem(STORAGE_KEY);
-          if (saved) customBuild = JSON.parse(saved);
-          const savedOrders = localStorage.getItem(ORDERS_STORAGE_KEY);
-          if (savedOrders) confirmedOrders = JSON.parse(savedOrders);
-        } catch (e) {
-          customBuild = {};
-          confirmedOrders = [];
+      },
+      {
+        id: 'cpu-intel-i9-14900k',
+        category: 'CPU',
+        brand: 'Intel',
+        name: 'Core i9-14900K Unlocked Desktop CPU',
+        price: 549,
+        rating: 4.8,
+        tdp: 253,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=900&q=80',
+        description: '24-core (8 P-cores + 16 E-cores) unlocked enthusiast processor capable of reaching up to 6.0 GHz Thermal Velocity Boost for extreme gaming and studio workloads.',
+        specs: {
+          'Cores / Threads': '24C / 32T',
+          'Max Turbo': '6.0 GHz',
+          'Smart Cache': '36 MB',
+          'Socket': 'LGA 1700',
+          'Max Turbo Power': '253W',
+          'Memory Support': 'DDR5-5600 / DDR4'
         }
-        updateOrdersBadge();
-      }
+      },
 
-      function saveCurrentBuild() {
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(customBuild));
-        } catch (e) {}
-      }
-
-      function saveConfirmedOrders() {
-        try {
-          localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(confirmedOrders));
-        } catch (e) {}
-        updateOrdersBadge();
-      }
-
-      function updateOrdersBadge() {
-        const el = document.getElementById('ordersCountBadge');
-        if (el) el.textContent = String(confirmedOrders.length);
-      }
-
-      function renderCategoryTabs() {
-        const container = document.getElementById('categoryTabs');
-        container.innerHTML = CATEGORIES.map(function (cat) {
-          const isActive = activeCategory === cat;
-          const activeClasses = isActive
-            ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20'
-            : 'bg-slate-900/90 text-slate-300 hover:bg-slate-800 border border-slate-800';
-          return '<button type="button" data-category="' + escapeHtml(cat) + '" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ' + activeClasses + '">' + escapeHtml(cat) + '</button>';
-        }).join('');
-      }
-
-      function selectCategory(cat) {
-        activeCategory = cat;
-        renderCategoryTabs();
-        renderParts();
-      }
-
-      function resetFilters() {
-        activeCategory = 'All';
-        searchQuery = '';
-        sortBy = 'featured';
-        document.getElementById('searchInput').value = '';
-        document.getElementById('mobileSearchInput').value = '';
-        document.getElementById('sortSelect').value = 'featured';
-        renderCategoryTabs();
-        renderParts();
-      }
-
-      function getFilteredParts() {
-        const list = PC_PARTS.filter(function (part) {
-          const matchesCat = activeCategory === 'All' || part.category === activeCategory;
-          const matchesSearch = !searchQuery ||
-            part.name.toLowerCase().includes(searchQuery) ||
-            part.brand.toLowerCase().includes(searchQuery) ||
-            part.category.toLowerCase().includes(searchQuery) ||
-            Object.values(part.specs).some(function (v) { return v.toLowerCase().includes(searchQuery); });
-          return matchesCat && matchesSearch;
-        });
-
-        if (sortBy === 'price-asc') list.sort(function (a, b) { return a.price - b.price; });
-        if (sortBy === 'price-desc') list.sort(function (a, b) { return b.price - a.price; });
-        if (sortBy === 'rating') list.sort(function (a, b) { return b.rating - a.rating; });
-        if (sortBy === 'tdp-desc') list.sort(function (a, b) { return b.tdp - a.tdp; });
-
-        return list;
-      }
-
-      function renderParts() {
-        const grid = document.getElementById('partsGrid');
-        const empty = document.getElementById('emptyState');
-        const countEl = document.getElementById('resultsCount');
-        const parts = getFilteredParts();
-
-        countEl.textContent = 'Showing ' + parts.length + ' part' + (parts.length === 1 ? '' : 's');
-
-        if (parts.length === 0) {
-          grid.innerHTML = '';
-          empty.classList.remove('hidden');
-          return;
+      // GPUs
+      {
+        id: 'gpu-rtx-4090',
+        category: 'GPU',
+        brand: 'NVIDIA',
+        name: 'GeForce RTX 4090 Founders Edition 24GB',
+        price: 1599,
+        rating: 5.0,
+        tdp: 450,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80',
+        description: 'Powered by the Ada Lovelace architecture with 24GB of ultra-fast GDDR6X memory, DLSS 3.5 Frame Generation, and third-generation Ray Tracing cores.',
+        specs: {
+          'VRAM': '24GB GDDR6X',
+          'CUDA Cores': '16,384',
+          'Boost Clock': '2.52 GHz',
+          'Memory Bus': '384-bit',
+          'TGP Power': '450W',
+          'Outputs': '3x DP 1.4a, 1x HDMI 2.1'
         }
+      },
+      {
+        id: 'gpu-rx-7900xtx',
+        category: 'GPU',
+        brand: 'AMD Radeon',
+        name: 'Radeon RX 7900 XTX Phantom Gaming 24GB',
+        price: 949,
+        rating: 4.7,
+        tdp: 355,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=80',
+        description: 'Chiplet-based RDNA 3 flagship graphics card built for high-refresh 4K gaming with DisplayPort 2.1 connectivity and 24GB GDDR6 memory.',
+        specs: {
+          'VRAM': '24GB GDDR6',
+          'Stream Processors': '6,144',
+          'Game Clock': '2.30 GHz',
+          'Infinity Cache': '96 MB',
+          'Board Power': '355W',
+          'Interface': 'PCIe 4.0 x16'
+        }
+      },
 
-        empty.classList.add('hidden');
-        grid.innerHTML = parts.map(function (part) {
-          const isSelected = customBuild[part.category] && customBuild[part.category].id === part.id;
-          const specEntries = Object.entries(part.specs).slice(0, 2);
-          const borderClass = isSelected ? 'border-cyan-400 ring-1 ring-cyan-400/40' : 'border-slate-800 hover:border-slate-600';
-          const btnClass = isSelected
-            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-            : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950';
-          const powerLabel = part.psuOutput > 0 ? part.psuOutput + 'W Output' : part.tdp + 'W TDP';
+      // Motherboards
+      {
+        id: 'mobo-x670e-hero',
+        category: 'Motherboard',
+        brand: 'ASUS ROG',
+        name: 'ROG Crosshair X670E Hero WiFi 6E',
+        price: 629,
+        rating: 4.8,
+        tdp: 35,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80',
+        description: 'Enthusiast AM5 ATX motherboard engineered with 18+2 teamed power stages, dual PCIe 5.0 x16 slots, five M.2 slots, and Polymo RGB lighting.',
+        specs: {
+          'Socket / Chipset': 'AM5 / X670E',
+          'Form Factor': 'ATX',
+          'VRM Design': '18+2 (110A)',
+          'Memory': '4x DDR5 up to 8000+ MT/s',
+          'M.2 Slots': '5x M.2 (PCIe 5.0)',
+          'Networking': '2.5Gb LAN + WiFi 6E'
+        }
+      },
+      {
+        id: 'mobo-z790-tomahawk',
+        category: 'Motherboard',
+        brand: 'MSI MAG',
+        name: 'MAG Z790 Tomahawk MAX WiFi 7',
+        price: 299,
+        rating: 4.7,
+        tdp: 30,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80',
+        description: 'Rock-solid Intel LGA 1700 gaming motherboard featuring a 16+1+1 mirrored power arrangement, PCIe 5.0 Lightning Gen 5, and full-speed WiFi 7.',
+        specs: {
+          'Socket / Chipset': 'LGA 1700 / Z790',
+          'Form Factor': 'ATX',
+          'VRM Design': '16+1+1 (90A SPS)',
+          'Memory': '4x DDR5 up to 7800+ MT/s',
+          'M.2 Slots': '4x M.2 NVMe',
+          'Networking': '2.5Gb LAN + WiFi 7'
+        }
+      },
 
-          const specsHtml = specEntries.map(function (entry) {
-            return '<div class="flex justify-between text-xs"><span class="text-slate-500">' + escapeHtml(entry[0]) + '</span><span class="font-mono text-slate-300 font-medium">' + escapeHtml(entry[1]) + '</span></div>';
-          }).join('');
+      // RAM
+      {
+        id: 'ram-trident-z5-64gb',
+        category: 'RAM',
+        brand: 'G.SKILL',
+        name: 'Trident Z5 RGB 64GB (2x32GB) DDR5-6400',
+        price: 219,
+        rating: 4.9,
+        tdp: 12,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80',
+        description: 'High-bandwidth dual-channel DDR5 memory kit with hand-screened ICs, brushed aluminum heatspreaders, and customizable RGB light bar.',
+        specs: {
+          'Capacity': '64GB (2 x 32GB)',
+          'Speed': 'DDR5-6400 MT/s',
+          'CAS Latency': 'CL32-39-39-102',
+          'Voltage': '1.40V',
+          'Profiles': 'Intel XMP 3.0',
+          'Height': '44 mm'
+        }
+      },
+      {
+        id: 'ram-corsair-dominator-32gb',
+        category: 'RAM',
+        brand: 'Corsair',
+        name: 'Dominator Titanium 32GB (2x16GB) DDR5-6000',
+        price: 169,
+        rating: 4.8,
+        tdp: 10,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/DDR4_RAM_modules.jpg/960px-DDR4_RAM_modules.jpg',
+        description: 'Precision-forged aluminum memory modules utilizing Corsair DHX cooling and replaceable top bars for low-latency gaming performance.',
+        specs: {
+          'Capacity': '32GB (2 x 16GB)',
+          'Speed': 'DDR5-6000 MT/s',
+          'CAS Latency': 'CL30-36-36-76',
+          'Voltage': '1.40V',
+          'Profiles': 'AMD EXPO & XMP',
+          'RGB': '11-Zone Capellix'
+        }
+      },
 
-          return (
-            '<article class="group bg-card/90 border ' + borderClass + ' rounded-2xl overflow-hidden flex flex-col transition duration-200 hover:-translate-y-1 shadow-lg">' +
-              '<div class="relative h-48 bg-slate-950 overflow-hidden cursor-pointer" data-open-spec="' + escapeHtml(part.id) + '">' +
-                '<img src="' + escapeHtml(part.image) + '" alt="' + escapeHtml(part.name) + '" class="part-img w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy" />' +
-                '<div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>' +
-                '<span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-[11px] font-mono font-bold text-cyan-400">' + escapeHtml(part.category) + '</span>' +
-                '<span class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/85 text-[11px] font-mono text-amber-400">&#9733; ' + part.rating.toFixed(1) + '</span>' +
-                '<span class="absolute bottom-2.5 right-3 text-[11px] font-mono text-slate-300 bg-slate-950/80 px-2 py-0.5 rounded">' + escapeHtml(powerLabel) + '</span>' +
-              '</div>' +
-              '<div class="p-5 flex-1 flex flex-col justify-between space-y-4">' +
-                '<div>' +
-                  '<p class="text-[11px] font-mono uppercase tracking-wider text-slate-400">' + escapeHtml(part.brand) + '</p>' +
-                  '<h3 data-open-spec="' + escapeHtml(part.id) + '" class="text-white font-bold text-base leading-snug mt-0.5 cursor-pointer hover:text-cyan-400 transition clamp-2">' + escapeHtml(part.name) + '</h3>' +
-                  '<div class="mt-3 space-y-1.5 pt-3 border-t border-slate-800/80">' + specsHtml + '</div>' +
-                '</div>' +
-                '<div class="pt-2 flex items-center justify-between gap-2">' +
-                  '<span class="text-xl font-mono font-extrabold text-white">$' + part.price.toLocaleString() + '</span>' +
-                  '<div class="flex items-center gap-1.5">' +
-                    '<button type="button" data-open-spec="' + escapeHtml(part.id) + '" class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">Details</button>' +
-                    '<button type="button" data-add-part="' + escapeHtml(part.id) + '" class="px-3.5 py-2 rounded-xl text-xs font-bold transition ' + btnClass + '">' + (isSelected ? '&#10003; In Build' : '+ Add') + '</button>' +
-                  '</div>' +
-                '</div>' +
-              '</div>' +
-            '</article>'
-          );
-        }).join('');
+      // Storage
+      {
+        id: 'ssd-samsung-990pro-2tb',
+        category: 'Storage',
+        brand: 'Samsung',
+        name: '990 PRO 2TB PCIe 4.0 NVMe M.2 SSD',
+        price: 169,
+        rating: 4.9,
+        tdp: 8,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg/960px-Samsung_980_PRO_1TB_M.2_NVMe_SSD.jpg',
+        description: 'Blistering sequential read speeds up to 7,450 MB/s with Samsung nickel-coated controller and smart thermal control algorithm.',
+        specs: {
+          'Capacity': '2 TB',
+          'Interface': 'PCIe Gen 4.0 x4',
+          'Seq. Read': '7,450 MB/s',
+          'Seq. Write': '6,900 MB/s',
+          'Form Factor': 'M.2 2280',
+          'Endurance': '1,200 TBW'
+        }
+      },
+      {
+        id: 'ssd-wd-sn850x-4tb',
+        category: 'Storage',
+        brand: 'Western Digital',
+        name: 'WD_BLACK SN850X 4TB NVMe Gaming SSD',
+        price: 299,
+        rating: 4.8,
+        tdp: 9,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80',
+        description: 'Massive 4TB PCIe Gen4 storage with Game Mode 2.0 predictive loading and ultra-low latency for modern open-world titles.',
+        specs: {
+          'Capacity': '4 TB',
+          'Interface': 'PCIe Gen 4.0 x4',
+          'Seq. Read': '7,300 MB/s',
+          'Seq. Write': '6,600 MB/s',
+          'Form Factor': 'M.2 2280',
+          'Endurance': '2,400 TBW'
+        }
+      },
 
-        grid.querySelectorAll('.part-img').forEach(function (img) {
-          img.addEventListener('error', function () {
-            if (img.src !== FALLBACK_IMG) img.src = FALLBACK_IMG;
-          });
-        });
+      // PSU
+      {
+        id: 'psu-corsair-rm1000x',
+        category: 'PSU',
+        brand: 'Corsair',
+        name: 'RM1000x Shift 1000W 80+ Gold ATX 3.0',
+        price: 189,
+        rating: 4.9,
+        tdp: 0,
+        psuOutput: 1000,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/PC_Power_Supply_Unit.jpg/960px-PC_Power_Supply_Unit.jpg',
+        description: 'Fully modular ATX 3.0 & PCIe 5.0 compliant power supply featuring innovative side-mounted modular cable interface and 100% Japanese 105°C capacitors.',
+        specs: {
+          'Wattage': '1000W Continuous',
+          'Efficiency': '80 PLUS Gold',
+          'Standard': 'ATX 3.0 / PCIe 5.0',
+          '12VHPWR Cable': 'Included (600W)',
+          'Fan': '140mm FDB Zero-RPM',
+          'Warranty': '10 Years'
+        }
+      },
+      {
+        id: 'psu-seasonic-1300w',
+        category: 'PSU',
+        brand: 'Seasonic',
+        name: 'PRIME TX-1300 1300W 80+ Titanium Modular',
+        price: 379,
+        rating: 5.0,
+        tdp: 0,
+        psuOutput: 1300,
+        image: 'https://images.unsplash.com/photo-1587202372583-49330a15584d?auto=format&fit=crop&w=900&q=80',
+        description: 'Flagship Titanium-certified power supply engineered with micro-tolerance load regulation (0.5%) and native dual 12V-2x6 connectors.',
+        specs: {
+          'Wattage': '1300W Continuous',
+          'Efficiency': '80 PLUS Titanium (94%+)',
+          'Standard': 'ATX 3.1 / PCIe 5.1',
+          'Modularity': '100% Full Modular',
+          'Fan': '135mm FDB Hybrid',
+          'Warranty': '12 Years'
+        }
+      },
+
+      // Cases
+      {
+        id: 'case-lianli-o11d',
+        category: 'Case',
+        brand: 'Lian Li',
+        name: 'O11 Dynamic EVO RGB Tempered Glass Mid-Tower',
+        price: 169,
+        rating: 4.9,
+        tdp: 5,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80',
+        description: 'Dual-chamber showcase chassis with pillarless tempered glass views, reversible motherboard orientation, and support for triple 360mm radiators.',
+        specs: {
+          'Form Factor': 'Mid-Tower (E-ATX/ATX)',
+          'Panels': '4mm Tempered Glass',
+          'Max GPU Length': '455.7 mm',
+          'Radiator Support': 'Up to 3x 360mm',
+          'Front I/O': 'USB-C 3.2, 2x USB 3.0',
+          'Chamber Design': 'Dual-Chamber'
+        }
+      },
+      {
+        id: 'case-fractal-north',
+        category: 'Case',
+        brand: 'Fractal Design',
+        name: 'North Charcoal Black Walnut Mesh ATX Case',
+        price: 139,
+        rating: 4.8,
+        tdp: 5,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=900&q=80',
+        description: 'Scandinavian-inspired PC chassis combining genuine walnut wood front slats with fine-patterned airflow mesh and brass accents.',
+        specs: {
+          'Form Factor': 'ATX / mATX / ITX',
+          'Front Material': 'Genuine Walnut Wood',
+          'Included Fans': '2x 140mm Aspect PWM',
+          'Max GPU Length': '355 mm',
+          'Top Radiator': 'Up to 240mm',
+          'Side Panel': 'Fine Steel Mesh'
+        }
+      },
+
+      // Cooling
+      {
+        id: 'cool-nzxt-kraken-360',
+        category: 'Cooling',
+        brand: 'NZXT',
+        name: 'Kraken Elite 360 RGB AIO Liquid Cooler',
+        price: 279,
+        rating: 4.8,
+        tdp: 15,
+        psuOutput: 0,
+        image: 'https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?auto=format&fit=crop&w=900&q=80',
+        description: '360mm all-in-one liquid CPU cooler equipped with a 2.36-inch wide-angle 60Hz LCD display for real-time coolant temps and custom GIFs.',
+        specs: {
+          'Radiator Size': '360mm Aluminum',
+          'Pump Display': '2.36" 640x640 LCD',
+          'Fans': '3x 120mm F120 RGB Core',
+          'Pump Speed': '800 – 2,800 RPM',
+          'Sockets': 'AM5, AM4, LGA 1700/1851',
+          'Tubing': '400mm Nylon Braided'
+        }
+      },
+      {
+        id: 'cool-noctua-nhd15',
+        category: 'Cooling',
+        brand: 'Noctua',
+        name: 'NH-D15 chromax.black Dual-Tower Air Cooler',
+        price: 119,
+        rating: 4.9,
+        tdp: 6,
+        psuOutput: 0,
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/CPU_heatsink_and_fan.jpg/960px-CPU_heatsink_and_fan.jpg',
+        description: 'Legendary dual-tower 6-heatpipe air cooler finished in stealth black with dual NF-A15 140mm PWM fans for near-silent thermal dissipation.',
+        specs: {
+          'Cooler Type': 'Dual-Tower Air',
+          'Heatpipes': '6x Copper Heatpipes',
+          'Fans': '2x NF-A15 HS-PWM 140mm',
+          'Max Noise': '24.6 dB(A)',
+          'Height': '165 mm',
+          'Thermal Paste': 'NT-H1 Included'
+        }
       }
+    ];
 
-      function openSpecModal(partId) {
-        const part = PC_PARTS.find(function (p) { return p.id === partId; });
-        if (!part) return;
+    const CATEGORIES = ['All', 'CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
+    const BUILD_SLOTS = ['CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'PSU', 'Case', 'Cooling'];
 
-        const imgEl = document.getElementById('modalImage');
-        imgEl.src = part.image;
-        imgEl.alt = part.name;
-        imgEl.onerror = function () { imgEl.src = FALLBACK_IMG; };
+    let activeCategory = 'All';
+    let searchQuery = '';
+    let sortBy = 'featured';
+    let customBuild = {};
+    let selectedPaymentMethod = 'UPI';
+    let confirmedOrders = [];
+    let latestConfirmedOrder = null;
 
-        document.getElementById('modalCategory').textContent = part.category;
-        document.getElementById('modalBrand').textContent = part.brand;
-        document.getElementById('modalTitle').textContent = part.name;
-        document.getElementById('modalPrice').textContent = '$' + part.price.toLocaleString();
-        document.getElementById('modalTdp').textContent = part.psuOutput > 0 ? 'Max Output: ' + part.psuOutput + 'W' : 'Est. Power Draw: ' + part.tdp + 'W';
-        document.getElementById('modalDescription').textContent = part.description;
+    const FALLBACK_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500' viewBox='0 0 800 500'%3E%3Crect width='800' height='500' fill='%230f172a'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2306b6d4' font-family='monospace' font-size='24'%3ERIGZORA HARDWARE%3C/text%3E%3C/svg%3E";
 
-        const specsList = document.getElementById('modalSpecsList');
-        specsList.innerHTML = Object.entries(part.specs).map(function (entry) {
-          return '<div class="bg-slate-950/90 border border-slate-800 rounded-xl p-2.5"><p class="text-[10px] font-mono uppercase text-slate-500">' + escapeHtml(entry[0]) + '</p><p class="text-xs font-mono font-bold text-slate-200 mt-0.5">' + escapeHtml(entry[1]) + '</p></div>';
-        }).join('');
-
-        const addBtn = document.getElementById('modalAddBtn');
-        addBtn.setAttribute('data-modal-add-id', part.id);
-
-        const modal = document.getElementById('specModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-
-      function closeSpecModal() {
-        const modal = document.getElementById('specModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-
-      function addToBuild(partId) {
-        const part = PC_PARTS.find(function (p) { return p.id === partId; });
-        if (!part) return;
-        customBuild[part.category] = part;
-        saveCurrentBuild();
-        renderParts();
-        renderBuilderDrawer();
-        showToast('Added ' + part.name + ' to ' + part.category + ' slot');
-      }
-
-      function removeFromBuild(category) {
-        delete customBuild[category];
-        saveCurrentBuild();
-        renderParts();
-        renderBuilderDrawer();
-      }
-
-      function clearBuild() {
+    function loadSavedState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) customBuild = JSON.parse(saved);
+        const savedOrders = localStorage.getItem(ORDERS_STORAGE_KEY);
+        if (savedOrders) confirmedOrders = JSON.parse(savedOrders);
+      } catch (e) {
         customBuild = {};
-        saveCurrentBuild();
-        renderParts();
-        renderBuilderDrawer();
-        showToast('Cleared all parts from PC Builder');
+        confirmedOrders = [];
       }
+      updateOrdersBadge();
+    }
 
-      function loadRecommendedRig() {
-        const flagshipIds = [
-          'cpu-ryzen9-7950x3d',
-          'gpu-rtx-4090',
-          'mobo-x670e-hero',
-          'ram-trident-z5-64gb',
-          'ssd-samsung-990pro-2tb',
-          'psu-corsair-rm1000x',
-          'case-lianli-o11d',
-          'cool-nzxt-kraken-360'
-        ];
-        flagshipIds.forEach(function (id) {
-          const part = PC_PARTS.find(function (p) { return p.id === id; });
-          if (part) customBuild[part.category] = part;
-        });
-        saveCurrentBuild();
-        renderParts();
-        renderBuilderDrawer();
-        toggleBuilderDrawer(true);
-        showToast('Loaded Flagship 4K Gaming Rig!');
-      }
+    function saveCurrentBuild() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(customBuild));
+      } catch (e) {}
+    }
 
-      function getBuildTotals() {
-        const items = Object.values(customBuild);
-        const totalPrice = items.reduce(function (sum, p) { return sum + p.price; }, 0);
-        const totalTdp = items.reduce(function (sum, p) { return sum + p.tdp; }, 0);
-        const psu = customBuild['PSU'];
-        return { items: items, totalPrice: totalPrice, totalTdp: totalTdp, psuCapacity: psu ? psu.psuOutput : 0 };
-      }
+    function saveConfirmedOrders() {
+      try {
+        localStorage.setItem(ORDERS_STORAGE_KEY, JSON.stringify(confirmedOrders));
+      } catch (e) {}
+      updateOrdersBadge();
+    }
 
-      function renderBuilderDrawer() {
-        const totals = getBuildTotals();
-        document.getElementById('buildBadgeCount').textContent = String(totals.items.length);
+    function updateOrdersBadge() {
+      const el = document.getElementById('ordersCountBadge');
+      if (el) el.textContent = confirmedOrders.length;
+    }
 
-        const slotsContainer = document.getElementById('builderSlotsList');
-        slotsContainer.innerHTML = BUILD_SLOTS.map(function (slot) {
-          const part = customBuild[slot];
-          if (part) {
-            const pwr = part.psuOutput > 0 ? part.psuOutput + 'W PSU' : part.tdp + 'W TDP';
-            return (
-              '<div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center gap-3">' +
-                '<img src="' + escapeHtml(part.image) + '" alt="' + escapeHtml(part.name) + '" class="drawer-img w-14 h-14 rounded-lg object-cover bg-slate-950 shrink-0" />' +
-                '<div class="flex-1 min-w-0">' +
-                  '<div class="flex items-center justify-between">' +
-                    '<span class="text-[10px] font-mono uppercase text-cyan-400 font-bold">' + escapeHtml(slot) + '</span>' +
-                    '<span class="text-xs font-mono font-bold text-emerald-400">$' + part.price + '</span>' +
-                  '</div>' +
-                  '<p class="text-xs font-bold text-white truncate mt-0.5">' + escapeHtml(part.name) + '</p>' +
-                  '<p class="text-[11px] font-mono text-slate-400">' + escapeHtml(pwr) + '</p>' +
-                '</div>' +
-                '<button type="button" data-remove-slot="' + escapeHtml(slot) + '" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="Remove">&#10005;</button>' +
-              '</div>'
-            );
-          }
-          return (
-            '<div data-choose-slot="' + escapeHtml(slot) + '" class="border border-dashed border-slate-800 hover:border-cyan-500/60 rounded-xl p-3 flex items-center justify-between cursor-pointer transition group">' +
-              '<div>' +
-                '<span class="text-[10px] font-mono uppercase text-slate-500 group-hover:text-cyan-400">' + escapeHtml(slot) + '</span>' +
-                '<p class="text-xs text-slate-400">No ' + escapeHtml(slot) + ' selected</p>' +
-              '</div>' +
-              '<span class="text-xs font-mono text-cyan-400 group-hover:translate-x-0.5 transition">+ Choose</span>' +
-            '</div>'
-          );
-        }).join('');
+    function init() {
+      loadSavedState();
+      renderCategoryTabs();
+      renderParts();
+      renderBuilderDrawer();
 
-        slotsContainer.querySelectorAll('.drawer-img').forEach(function (img) {
-          img.addEventListener('error', function () {
-            if (img.src !== FALLBACK_IMG) img.src = FALLBACK_IMG;
-          });
-        });
-
-        document.getElementById('buildTotalPrice').textContent = '$' + totals.totalPrice.toLocaleString();
-
-        const wattageSummary = document.getElementById('wattageSummary');
-        const wattageBar = document.getElementById('wattageBar');
-        const psuStatusMsg = document.getElementById('psuStatusMsg');
-
-        if (totals.psuCapacity > 0) {
-          const loadPct = Math.min(100, Math.round((totals.totalTdp / totals.psuCapacity) * 100));
-          wattageSummary.textContent = totals.totalTdp + 'W / ' + totals.psuCapacity + 'W (' + loadPct + '%)';
-          wattageBar.style.width = loadPct + '%';
-
-          if (totals.totalTdp > totals.psuCapacity) {
-            wattageBar.className = 'h-full bg-rose-500 transition-all duration-300';
-            psuStatusMsg.textContent = 'Warning: System draw exceeds selected PSU capacity!';
-            psuStatusMsg.className = 'text-[11px] text-rose-400 font-medium';
-          } else if (loadPct > 80) {
-            wattageBar.className = 'h-full bg-amber-400 transition-all duration-300';
-            psuStatusMsg.textContent = 'High load: Consider higher wattage for peak transient headroom.';
-            psuStatusMsg.className = 'text-[11px] text-amber-300';
-          } else {
-            wattageBar.className = 'h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300';
-            psuStatusMsg.textContent = 'Optimal PSU headroom for sustained gaming & overclocking.';
-            psuStatusMsg.className = 'text-[11px] text-emerald-400';
-          }
-        } else {
-          wattageSummary.textContent = totals.totalTdp + 'W Est. Draw';
-          wattageBar.style.width = totals.totalTdp > 0 ? '35%' : '0%';
-          wattageBar.className = 'h-full bg-cyan-500 transition-all duration-300';
-          const recW = Math.ceil((totals.totalTdp * 1.35) / 50) * 50;
-          psuStatusMsg.textContent = totals.totalTdp > 0
-            ? 'Recommended PSU: at least ' + recW + 'W'
-            : 'Add a CPU, GPU, and Power Supply to verify wattage load.';
-          psuStatusMsg.className = 'text-[11px] text-slate-400';
-        }
-      }
-
-      function toggleBuilderDrawer(open) {
-        const drawer = document.getElementById('builderDrawer');
-        if (open) drawer.classList.remove('hidden');
-        else drawer.classList.add('hidden');
-      }
-
-      function scrollToCatalog() {
-        document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
-      }
-
-      function openCheckoutModal() {
-        const totals = getBuildTotals();
-        if (totals.items.length === 0) {
-          showToast('Add at least 1 PC part to checkout!');
-          return;
-        }
-        toggleBuilderDrawer(false);
-        document.getElementById('checkoutItemCount').textContent = String(totals.items.length);
-        document.getElementById('checkoutSubtotal').textContent = '$' + totals.totalPrice.toLocaleString();
-        document.getElementById('checkoutGrandTotal').textContent = '$' + totals.totalPrice.toLocaleString();
-
-        const modal = document.getElementById('checkoutModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-
-      function closeCheckoutModal() {
-        const modal = document.getElementById('checkoutModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-
-      function selectPaymentMethod(method) {
-        selectedPaymentMethod = method;
-        ['UPI', 'Card', 'NetBanking'].forEach(function (m) {
-          const tab = document.getElementById('payTab-' + m);
-          const panel = document.getElementById('payPanel-' + m);
-          if (m === method) {
-            tab.className = 'pay-tab py-2.5 px-3 rounded-xl border border-cyan-400 bg-cyan-500/15 text-cyan-300 text-xs font-bold transition';
-            panel.classList.remove('hidden');
-          } else {
-            tab.className = 'pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition';
-            panel.classList.add('hidden');
-          }
-        });
-      }
-
-      async function processOnlinePayment(e) {
-        e.preventDefault();
-        const payBtn = document.getElementById('payNowBtn');
-        const originalText = payBtn.innerHTML;
-        payBtn.disabled = true;
-        payBtn.innerHTML = '<span class="animate-pulse">Verifying Online Payment...</span>';
-
-        const totals = getBuildTotals();
-        const orderId = 'RZ-' + Math.floor(100000 + Math.random() * 900000);
-        const orderData = {
-          orderId: orderId,
-          customerName: document.getElementById('custName').value.trim(),
-          customerEmail: document.getElementById('custEmail').value.trim(),
-          customerPhone: document.getElementById('custPhone').value.trim(),
-          customerCity: document.getElementById('custCity').value.trim(),
-          paymentMethod: selectedPaymentMethod,
-          items: totals.items.map(function (i) { return { category: i.category, name: i.name, price: i.price }; }),
-          totalAmount: totals.totalPrice,
-          status: 'CONFIRMED',
-          dateFormatted: new Date().toLocaleString()
-        };
-
-        await new Promise(function (r) { setTimeout(r, 900); });
-
-        let firebaseSynced = false;
-        if (typeof window.saveOrderToFirebase === 'function') {
-          const res = await window.saveOrderToFirebase(orderData);
-          firebaseSynced = Boolean(res && res.synced);
-        }
-
-        confirmedOrders.unshift(orderData);
-        saveConfirmedOrders();
-        latestConfirmedOrder = orderData;
-
-        payBtn.disabled = false;
-        payBtn.innerHTML = originalText;
-        closeCheckoutModal();
-
-        customBuild = {};
-        saveCurrentBuild();
-        renderParts();
-        renderBuilderDrawer();
-
-        showOrderConfirmation(orderData, firebaseSynced);
-      }
-
-      function showOrderConfirmation(order, firebaseSynced) {
-        document.getElementById('confirmOrderId').textContent = '#' + order.orderId;
-        document.getElementById('confirmPayMethod').textContent = order.paymentMethod + ' (PAID)';
-        document.getElementById('confirmCustomerName').textContent = order.customerName + ' • ' + order.customerPhone;
-        document.getElementById('confirmCustomerAddress').textContent = order.customerCity + ' (' + order.customerEmail + ')';
-        document.getElementById('confirmDate').textContent = 'Confirmed on: ' + order.dateFormatted;
-        document.getElementById('confirmTotalPaid').textContent = '$' + order.totalAmount.toLocaleString();
-
-        const syncEl = document.getElementById('firebaseSyncStatus');
-        syncEl.textContent = firebaseSynced
-          ? 'Order Logged to Firebase Cloud (rigzora-store)'
-          : 'Order Confirmed & Saved Locally';
-
-        document.getElementById('confirmItemsList').innerHTML = order.items.map(function (item) {
-          return (
-            '<div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-800/70 last:border-0">' +
-              '<div class="min-w-0 pr-2">' +
-                '<span class="text-[10px] font-mono uppercase text-cyan-400 mr-1.5">[' + escapeHtml(item.category) + ']</span>' +
-                '<span class="text-slate-200 font-medium">' + escapeHtml(item.name) + '</span>' +
-              '</div>' +
-              '<span class="font-mono font-bold text-white shrink-0">$' + item.price.toLocaleString() + '</span>' +
-            '</div>'
-          );
-        }).join('');
-
-        const modal = document.getElementById('orderConfirmModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-
-      function closeOrderConfirmModal() {
-        const modal = document.getElementById('orderConfirmModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-
-      function copyConfirmedReceipt() {
-        if (!latestConfirmedOrder) return;
-        const o = latestConfirmedOrder;
-        const lines = [
-          '=== RIGZORA STORE — ORDER CONFIRMATION ===',
-          'Order ID: #' + o.orderId,
-          'Status: CONFIRMED (' + o.paymentMethod + ')',
-          'Date: ' + o.dateFormatted,
-          'Customer: ' + o.customerName + ' (' + o.customerPhone + ')',
-          'Delivery: ' + o.customerCity,
-          '------------------------------------------'
-        ].concat(
-          o.items.map(function (i) { return i.category + ': ' + i.name + ' - $' + i.price; }),
-          [
-            '------------------------------------------',
-            'TOTAL PAID: $' + o.totalAmount.toLocaleString()
-          ]
-        );
-        copyTextSafe(lines.join('\n'), 'Order confirmation receipt copied!');
-      }
-
-      function openOrdersHistoryModal() {
-        const list = document.getElementById('ordersHistoryList');
-        if (confirmedOrders.length === 0) {
-          list.innerHTML =
-            '<div class="text-center py-10 text-slate-400 text-sm">' +
-              '<p class="font-semibold text-slate-300">No confirmed orders yet</p>' +
-              '<p class="text-xs mt-1">Select PC parts and complete online checkout to see your orders here.</p>' +
-            '</div>';
-        } else {
-          list.innerHTML = confirmedOrders.map(function (o, idx) {
-            return (
-              '<div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">' +
-                '<div class="flex items-center justify-between">' +
-                  '<span class="font-mono font-extrabold text-cyan-400 text-xs">#' + escapeHtml(o.orderId) + '</span>' +
-                  '<span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-mono text-[10px] font-bold">CONFIRMED</span>' +
-                '</div>' +
-                '<p class="text-xs text-slate-300 font-medium">' + o.items.length + ' Hardware Component(s) • Paid via ' + escapeHtml(o.paymentMethod) + '</p>' +
-                '<div class="flex items-center justify-between pt-1 border-t border-slate-800/80 text-xs">' +
-                  '<span class="text-slate-500 font-mono text-[11px]">' + escapeHtml(o.dateFormatted) + '</span>' +
-                  '<div class="flex items-center gap-3">' +
-                    '<span class="font-mono font-extrabold text-white">$' + o.totalAmount.toLocaleString() + '</span>' +
-                    '<button type="button" data-view-receipt="' + idx + '" class="text-cyan-400 hover:underline font-semibold">Receipt</button>' +
-                  '</div>' +
-                '</div>' +
-              '</div>'
-            );
-          }).join('');
-        }
-
-        const modal = document.getElementById('ordersHistoryModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-      }
-
-      function closeOrdersHistoryModal() {
-        const modal = document.getElementById('ordersHistoryModal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-
-      function exportBuildSummary() {
-        const entries = Object.entries(customBuild);
-        if (entries.length === 0) {
-          showToast('Add some parts first before copying!');
-          return;
-        }
-        let total = 0;
-        const lines = ['=== RIGZORA STORE CUSTOM PC BUILD ==='];
-        entries.forEach(function (entry) {
-          total += entry[1].price;
-          lines.push(entry[0] + ': ' + entry[1].name + ' ($' + entry[1].price + ')');
-        });
-        lines.push('Total Estimate: $' + total.toLocaleString());
-        copyTextSafe(lines.join('\n'), 'Build specs copied to clipboard!');
-      }
-
-      function copyTextSafe(text, toastMsg) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(text).then(function () {
-            showToast(toastMsg);
-          }).catch(function () {
-            fallbackCopy(text, toastMsg);
-          });
-        } else {
-          fallbackCopy(text, toastMsg);
-        }
-      }
-
-      function fallbackCopy(text, toastMsg) {
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.style.position = 'fixed';
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-        try {
-          document.execCommand('copy');
-          showToast(toastMsg);
-        } catch (err) {
-          showToast('Unable to copy automatically');
-        }
-        document.body.removeChild(textarea);
-      }
-
-      let toastTimer = null;
-      function showToast(msg) {
-        const toast = document.getElementById('toast');
-        document.getElementById('toastText').textContent = msg;
-        toast.classList.remove('opacity-0');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(function () {
-          toast.classList.add('opacity-0');
-        }, 2600);
-      }
-
-      // Global Delegated Click Listener (Zero inline onclick attributes)
-      document.addEventListener('click', function (e) {
-        const target = e.target.closest('[data-action], [data-category], [data-open-spec], [data-add-part], [data-modal-add-id], [data-remove-slot], [data-choose-slot], [data-pay-method], [data-view-receipt]');
-        if (!target) return;
-
-        if (target.hasAttribute('data-action')) {
-          const action = target.getAttribute('data-action');
-          if (action === 'reset-filters') resetFilters();
-          if (action === 'open-orders') openOrdersHistoryModal();
-          if (action === 'close-orders') closeOrdersHistoryModal();
-          if (action === 'open-drawer') toggleBuilderDrawer(true);
-          if (action === 'close-drawer') toggleBuilderDrawer(false);
-          if (action === 'scroll-catalog') scrollToCatalog();
-          if (action === 'autofill-rig') loadRecommendedRig();
-          if (action === 'open-checkout') openCheckoutModal();
-          if (action === 'close-checkout') closeCheckoutModal();
-          if (action === 'close-spec-modal') closeSpecModal();
-          if (action === 'clear-build') clearBuild();
-          if (action === 'export-build') exportBuildSummary();
-          if (action === 'copy-receipt') copyConfirmedReceipt();
-          if (action === 'print-receipt') window.print();
-          if (action === 'close-confirm') closeOrderConfirmModal();
-          return;
-        }
-
-        if (target.hasAttribute('data-category')) {
-          selectCategory(target.getAttribute('data-category'));
-          return;
-        }
-
-        if (target.hasAttribute('data-open-spec')) {
-          openSpecModal(target.getAttribute('data-open-spec'));
-          return;
-        }
-
-        if (target.hasAttribute('data-add-part')) {
-          addToBuild(target.getAttribute('data-add-part'));
-          return;
-        }
-
-        if (target.hasAttribute('data-modal-add-id')) {
-          addToBuild(target.getAttribute('data-modal-add-id'));
-          closeSpecModal();
-          return;
-        }
-
-        if (target.hasAttribute('data-remove-slot')) {
-          removeFromBuild(target.getAttribute('data-remove-slot'));
-          return;
-        }
-
-        if (target.hasAttribute('data-choose-slot')) {
-          selectCategory(target.getAttribute('data-choose-slot'));
-          toggleBuilderDrawer(false);
-          scrollToCatalog();
-          return;
-        }
-
-        if (target.hasAttribute('data-pay-method')) {
-          selectPaymentMethod(target.getAttribute('data-pay-method'));
-          return;
-        }
-
-        if (target.hasAttribute('data-view-receipt')) {
-          const idx = Number(target.getAttribute('data-view-receipt'));
-          closeOrdersHistoryModal();
-          latestConfirmedOrder = confirmedOrders[idx];
-          if (latestConfirmedOrder) showOrderConfirmation(latestConfirmedOrder, true);
-        }
-      });
-
-      document.getElementById('checkoutForm').addEventListener('submit', processOnlinePayment);
-
-      const syncSearch = function (val) {
+      const syncSearch = (val) => {
         searchQuery = val.trim().toLowerCase();
         document.getElementById('searchInput').value = val;
         document.getElementById('mobileSearchInput').value = val;
         renderParts();
       };
 
-      document.getElementById('searchInput').addEventListener('input', function (e) { syncSearch(e.target.value); });
-      document.getElementById('mobileSearchInput').addEventListener('input', function (e) { syncSearch(e.target.value); });
+      document.getElementById('searchInput').addEventListener('input', (e) => syncSearch(e.target.value));
+      document.getElementById('mobileSearchInput').addEventListener('input', (e) => syncSearch(e.target.value));
 
-      document.getElementById('sortSelect').addEventListener('change', function (e) {
+      document.getElementById('sortSelect').addEventListener('change', (e) => {
         sortBy = e.target.value;
         renderParts();
       });
+    }
 
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          closeSpecModal();
-          toggleBuilderDrawer(false);
-          closeCheckoutModal();
-          closeOrderConfirmModal();
-          closeOrdersHistoryModal();
-        }
-      });
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabs');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isActive = activeCategory === cat;
+        return `
+          <button 
+            type="button"
+            onclick="selectCategory('${cat}')"
+            class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+              isActive 
+                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-500/20' 
+                : 'bg-slate-900/90 text-slate-300 hover:bg-slate-800 border border-slate-800'
+            }"
+          >
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
 
-      // Boot Application
-      loadSavedState();
+    function selectCategory(cat) {
+      activeCategory = cat;
       renderCategoryTabs();
       renderParts();
+    }
+
+    function resetFilters() {
+      activeCategory = 'All';
+      searchQuery = '';
+      sortBy = 'featured';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('mobileSearchInput').value = '';
+      document.getElementById('sortSelect').value = 'featured';
+      renderCategoryTabs();
+      renderParts();
+    }
+
+    function getFilteredParts() {
+      let list = PC_PARTS.filter(part => {
+        const matchesCat = activeCategory === 'All' || part.category === activeCategory;
+        const matchesSearch = !searchQuery || 
+          part.name.toLowerCase().includes(searchQuery) ||
+          part.brand.toLowerCase().includes(searchQuery) ||
+          part.category.toLowerCase().includes(searchQuery) ||
+          Object.values(part.specs).some(v => v.toLowerCase().includes(searchQuery));
+        return matchesCat && matchesSearch;
+      });
+
+      if (sortBy === 'price-asc') list.sort((a, b) => a.price - b.price);
+      if (sortBy === 'price-desc') list.sort((a, b) => b.price - a.price);
+      if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating);
+      if (sortBy === 'tdp-desc') list.sort((a, b) => b.tdp - a.tdp);
+
+      return list;
+    }
+
+    function renderParts() {
+      const grid = document.getElementById('partsGrid');
+      const empty = document.getElementById('emptyState');
+      const countEl = document.getElementById('resultsCount');
+      const parts = getFilteredParts();
+
+      countEl.textContent = `Showing ${parts.length} part${parts.length === 1 ? '' : 's'}`;
+
+      if (parts.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.innerHTML = parts.map(part => {
+        const isSelected = customBuild[part.category]?.id === part.id;
+        const specEntries = Object.entries(part.specs).slice(0, 2);
+
+        return `
+          <article class="group bg-card/90 border ${isSelected ? 'border-cyan-400 ring-1 ring-cyan-400/40' : 'border-slate-800 hover:border-slate-600'} rounded-2xl overflow-hidden flex flex-col transition duration-200 hover:-translate-y-1 shadow-lg">
+            <div class="relative h-48 bg-slate-950 overflow-hidden cursor-pointer" onclick="openSpecModal('${part.id}')">
+              <img 
+                src="${part.image}" 
+                alt="${part.name}" 
+                onerror="this.onerror=null;this.src='${FALLBACK_IMG}';"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-slate-950/85 backdrop-blur-md border border-slate-700/80 text-[11px] font-mono font-bold text-cyan-400">
+                ${part.category}
+              </span>
+              <span class="absolute top-3 right-3 px-2 py-1 rounded-lg bg-slate-950/85 text-[11px] font-mono text-amber-400">
+                ★ ${part.rating.toFixed(1)}
+              </span>
+              <span class="absolute bottom-2.5 right-3 text-[11px] font-mono text-slate-300 bg-slate-950/80 px-2 py-0.5 rounded">
+                ${part.psuOutput > 0 ? `${part.psuOutput}W Output` : `${part.tdp}W TDP`}
+              </span>
+            </div>
+
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-400">${part.brand}</p>
+                <h3 
+                  onclick="openSpecModal('${part.id}')" 
+                  class="text-white font-bold text-base leading-snug mt-0.5 cursor-pointer hover:text-cyan-400 transition clamp-2"
+                >
+                  ${part.name}
+                </h3>
+
+                <div class="mt-3 space-y-1.5 pt-3 border-t border-slate-800/80">
+                  ${specEntries.map(([k, v]) => `
+                    <div class="flex justify-between text-xs">
+                      <span class="text-slate-500">${k}</span>
+                      <span class="font-mono text-slate-300 font-medium">${v}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="pt-2 flex items-center justify-between gap-2">
+                <span class="text-xl font-mono font-extrabold text-white">$${part.price.toLocaleString()}</span>
+                <div class="flex items-center gap-1.5">
+                  <button 
+                    type="button"
+                    onclick="openSpecModal('${part.id}')" 
+                    class="px-2.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+                  >
+                    Details
+                  </button>
+                  <button 
+                    type="button"
+                    onclick="addToBuild('${part.id}')" 
+                    class="px-3.5 py-2 rounded-xl text-xs font-bold transition ${
+                      isSelected 
+                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' 
+                        : 'bg-cyan-500 hover:bg-cyan-400 text-slate-950'
+                    }"
+                  >
+                    ${isSelected ? '✓ In Build' : '+ Add'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function openSpecModal(partId) {
+      const part = PC_PARTS.find(p => p.id === partId);
+      if (!part) return;
+
+      const imgEl = document.getElementById('modalImage');
+      imgEl.src = part.image;
+      imgEl.onerror = () => { imgEl.src = FALLBACK_IMG; };
+
+      document.getElementById('modalCategory').textContent = part.category;
+      document.getElementById('modalBrand').textContent = part.brand;
+      document.getElementById('modalTitle').textContent = part.name;
+      document.getElementById('modalPrice').textContent = `$${part.price.toLocaleString()}`;
+      document.getElementById('modalTdp').textContent = part.psuOutput > 0 ? `Max Output: ${part.psuOutput}W` : `Est. Power Draw: ${part.tdp}W`;
+      document.getElementById('modalDescription').textContent = part.description;
+
+      const specsList = document.getElementById('modalSpecsList');
+      specsList.innerHTML = Object.entries(part.specs).map(([key, val]) => `
+        <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-2.5">
+          <p class="text-[10px] font-mono uppercase text-slate-500">${key}</p>
+          <p class="text-xs font-mono font-bold text-slate-200 mt-0.5">${val}</p>
+        </div>
+      `).join('');
+
+      const addBtn = document.getElementById('modalAddBtn');
+      addBtn.onclick = () => {
+        addToBuild(part.id);
+        closeSpecModal();
+      };
+
+      const modal = document.getElementById('specModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSpecModal() {
+      const modal = document.getElementById('specModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function addToBuild(partId) {
+      const part = PC_PARTS.find(p => p.id === partId);
+      if (!part) return;
+      customBuild[part.category] = part;
+      saveCurrentBuild();
+      renderParts();
       renderBuilderDrawer();
-    })();
+      showToast(`Added ${part.name} to ${part.category} slot`);
+    }
+
+    function removeFromBuild(category) {
+      delete customBuild[category];
+      saveCurrentBuild();
+      renderParts();
+      renderBuilderDrawer();
+    }
+
+    function clearBuild() {
+      customBuild = {};
+      saveCurrentBuild();
+      renderParts();
+      renderBuilderDrawer();
+      showToast('Cleared all parts from PC Builder');
+    }
+
+    function loadRecommendedRig() {
+      const flagshipIds = [
+        'cpu-ryzen9-7950x3d',
+        'gpu-rtx-4090',
+        'mobo-x670e-hero',
+        'ram-trident-z5-64gb',
+        'ssd-samsung-990pro-2tb',
+        'psu-corsair-rm1000x',
+        'case-lianli-o11d',
+        'cool-nzxt-kraken-360'
+      ];
+      flagshipIds.forEach(id => {
+        const part = PC_PARTS.find(p => p.id === id);
+        if (part) customBuild[part.category] = part;
+      });
+      saveCurrentBuild();
+      renderParts();
+      renderBuilderDrawer();
+      toggleBuilderDrawer(true);
+      showToast('Loaded Flagship 4K Gaming Rig!');
+    }
+
+    function getBuildTotals() {
+      const items = Object.values(customBuild);
+      const totalPrice = items.reduce((sum, p) => sum + p.price, 0);
+      const totalTdp = items.reduce((sum, p) => sum + p.tdp, 0);
+      const psu = customBuild['PSU'];
+      return { items, totalPrice, totalTdp, psuCapacity: psu ? psu.psuOutput : 0 };
+    }
+
+    function renderBuilderDrawer() {
+      const { items, totalPrice, totalTdp, psuCapacity } = getBuildTotals();
+      document.getElementById('buildBadgeCount').textContent = items.length;
+
+      const slotsContainer = document.getElementById('builderSlotsList');
+      slotsContainer.innerHTML = BUILD_SLOTS.map(slot => {
+        const part = customBuild[slot];
+        if (part) {
+          return `
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center gap-3">
+              <img src="${part.image}" alt="${part.name}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';" class="w-14 h-14 rounded-lg object-cover bg-slate-950 shrink-0" />
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono uppercase text-cyan-400 font-bold">${slot}</span>
+                  <span class="text-xs font-mono font-bold text-emerald-400">$${part.price}</span>
+                </div>
+                <p class="text-xs font-bold text-white truncate mt-0.5">${part.name}</p>
+                <p class="text-[11px] font-mono text-slate-400">${part.psuOutput > 0 ? `${part.psuOutput}W PSU` : `${part.tdp}W TDP`}</p>
+              </div>
+              <button type="button" onclick="removeFromBuild('${slot}')" class="text-slate-500 hover:text-rose-400 p-1 text-xs" title="Remove">
+                ✕
+              </button>
+            </div>
+          `;
+        } else {
+          return `
+            <div 
+              onclick="selectCategory('${slot}'); toggleBuilderDrawer(false); scrollToCatalog();"
+              class="border border-dashed border-slate-800 hover:border-cyan-500/60 rounded-xl p-3 flex items-center justify-between cursor-pointer transition group"
+            >
+              <div>
+                <span class="text-[10px] font-mono uppercase text-slate-500 group-hover:text-cyan-400">${slot}</span>
+                <p class="text-xs text-slate-400">No ${slot} selected</p>
+              </div>
+              <span class="text-xs font-mono text-cyan-400 group-hover:translate-x-0.5 transition">+ Choose</span>
+            </div>
+          `;
+        }
+      }).join('');
+
+      document.getElementById('buildTotalPrice').textContent = `$${totalPrice.toLocaleString()}`;
+
+      const wattageSummary = document.getElementById('wattageSummary');
+      const wattageBar = document.getElementById('wattageBar');
+      const psuStatusMsg = document.getElementById('psuStatusMsg');
+
+      if (psuCapacity > 0) {
+        const loadPct = Math.min(100, Math.round((totalTdp / psuCapacity) * 100));
+        wattageSummary.textContent = `${totalTdp}W / ${psuCapacity}W (${loadPct}%)`;
+        wattageBar.style.width = `${loadPct}%`;
+
+        if (totalTdp > psuCapacity) {
+          wattageBar.className = 'h-full bg-rose-500 transition-all duration-300';
+          psuStatusMsg.textContent = '⚠️ Warning: System draw exceeds selected PSU capacity!';
+          psuStatusMsg.className = 'text-[11px] text-rose-400 font-medium';
+        } else if (loadPct > 80) {
+          wattageBar.className = 'h-full bg-amber-400 transition-all duration-300';
+          psuStatusMsg.textContent = '⚡ High load: Consider higher wattage for peak transient headroom.';
+          psuStatusMsg.className = 'text-[11px] text-amber-300';
+        } else {
+          wattageBar.className = 'h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-300';
+          psuStatusMsg.textContent = '✓ Optimal PSU headroom for sustained gaming & overclocking.';
+          psuStatusMsg.className = 'text-[11px] text-emerald-400';
+        }
+      } else {
+        wattageSummary.textContent = `${totalTdp}W Est. Draw`;
+        wattageBar.style.width = totalTdp > 0 ? '35%' : '0%';
+        wattageBar.className = 'h-full bg-cyan-500 transition-all duration-300';
+        psuStatusMsg.textContent = totalTdp > 0 
+          ? `Recommended PSU: at least ${Math.ceil((totalTdp * 1.35) / 50) * 50}W` 
+          : 'Add a CPU, GPU, and Power Supply to verify wattage load.';
+        psuStatusMsg.className = 'text-[11px] text-slate-400';
+      }
+    }
+
+    function toggleBuilderDrawer(open) {
+      const drawer = document.getElementById('builderDrawer');
+      if (open) drawer.classList.remove('hidden');
+      else drawer.classList.add('hidden');
+    }
+
+    function scrollToCatalog() {
+      document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ==================== ONLINE PAYMENT & ORDER CONFIRMATION ====================
+    function openCheckoutModal() {
+      const { items, totalPrice } = getBuildTotals();
+      if (items.length === 0) {
+        showToast('Add at least 1 PC part to checkout!');
+        return;
+      }
+      toggleBuilderDrawer(false);
+      document.getElementById('checkoutItemCount').textContent = items.length;
+      document.getElementById('checkoutSubtotal').textContent = `$${totalPrice.toLocaleString()}`;
+      document.getElementById('checkoutGrandTotal').textContent = `$${totalPrice.toLocaleString()}`;
+
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      ['UPI', 'Card', 'NetBanking'].forEach(m => {
+        const tab = document.getElementById(`payTab-${m}`);
+        const panel = document.getElementById(`payPanel-${m}`);
+        if (m === method) {
+          tab.className = 'pay-tab py-2.5 px-3 rounded-xl border border-cyan-400 bg-cyan-500/15 text-cyan-300 text-xs font-bold transition';
+          panel.classList.remove('hidden');
+        } else {
+          tab.className = 'pay-tab py-2.5 px-3 rounded-xl border border-slate-700 bg-slate-950 text-slate-400 text-xs font-bold transition';
+          panel.classList.add('hidden');
+        }
+      });
+    }
+
+    async function processOnlinePayment(e) {
+      e.preventDefault();
+      const payBtn = document.getElementById('payNowBtn');
+      const originalText = payBtn.innerHTML;
+      payBtn.disabled = true;
+      payBtn.innerHTML = `<span class="animate-pulse">⏳ Verifying Online Payment...</span>`;
+
+      const { items, totalPrice } = getBuildTotals();
+      const orderId = 'RZ-' + Math.floor(100000 + Math.random() * 900000);
+      const orderData = {
+        orderId,
+        customerName: document.getElementById('custName').value.trim(),
+        customerEmail: document.getElementById('custEmail').value.trim(),
+        customerPhone: document.getElementById('custPhone').value.trim(),
+        customerCity: document.getElementById('custCity').value.trim(),
+        paymentMethod: selectedPaymentMethod,
+        items: items.map(i => ({ category: i.category, name: i.name, price: i.price })),
+        totalAmount: totalPrice,
+        status: 'CONFIRMED',
+        dateFormatted: new Date().toLocaleString()
+      };
+
+      // Simulate gateway verification delay
+      await new Promise(r => setTimeout(r, 1100));
+
+      // Attempt Firebase Firestore sync
+      let firebaseSynced = false;
+      if (typeof window.saveOrderToFirebase === 'function') {
+        const res = await window.saveOrderToFirebase(orderData);
+        firebaseSynced = res.synced;
+      }
+
+      // Save to local order history
+      confirmedOrders.unshift(orderData);
+      saveConfirmedOrders();
+      latestConfirmedOrder = orderData;
+
+      // Reset button & close checkout
+      payBtn.disabled = false;
+      payBtn.innerHTML = originalText;
+      closeCheckoutModal();
+
+      // Clear active cart after confirmed purchase
+      customBuild = {};
+      saveCurrentBuild();
+      renderParts();
+      renderBuilderDrawer();
+
+      // Open Order Confirmation Modal
+      showOrderConfirmation(orderData, firebaseSynced);
+    }
+
+    function showOrderConfirmation(order, firebaseSynced) {
+      document.getElementById('confirmOrderId').textContent = `#${order.orderId}`;
+      document.getElementById('confirmPayMethod').textContent = `${order.paymentMethod} (PAID)`;
+      document.getElementById('confirmCustomerName').textContent = `${order.customerName} • ${order.customerPhone}`;
+      document.getElementById('confirmCustomerAddress').textContent = `${order.customerCity} (${order.customerEmail})`;
+      document.getElementById('confirmDate').textContent = `Confirmed on: ${order.dateFormatted}`;
+      document.getElementById('confirmTotalPaid').textContent = `$${order.totalAmount.toLocaleString()}`;
+
+      const syncEl = document.getElementById('firebaseSyncStatus');
+      syncEl.textContent = firebaseSynced 
+        ? '✓ Order Logged to Firebase Cloud (rigzora-store)' 
+        : '✓ Order Confirmed & Saved Locally';
+
+      document.getElementById('confirmItemsList').innerHTML = order.items.map(item => `
+        <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-800/70 last:border-0">
+          <div class="min-w-0 pr-2">
+            <span class="text-[10px] font-mono uppercase text-cyan-400 mr-1.5">[${item.category}]</span>
+            <span class="text-slate-200 font-medium">${item.name}</span>
+          </div>
+          <span class="font-mono font-bold text-white shrink-0">$${item.price.toLocaleString()}</span>
+        </div>
+      `).join('');
+
+      const modal = document.getElementById('orderConfirmModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeOrderConfirmModal() {
+      const modal = document.getElementById('orderConfirmModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyConfirmedReceipt() {
+      if (!latestConfirmedOrder) return;
+      const o = latestConfirmedOrder;
+      const lines = [
+        `=== RIGZORA STORE — ORDER CONFIRMATION ===`,
+        `Order ID: #${o.orderId}`,
+        `Status: CONFIRMED (${o.paymentMethod})`,
+        `Date: ${o.dateFormatted}`,
+        `Customer: ${o.customerName} (${o.customerPhone})`,
+        `Delivery: ${o.customerCity}`,
+        `------------------------------------------`,
+        ...o.items.map(i => `${i.category}: ${i.name} - $${i.price}`),
+        `------------------------------------------`,
+        `TOTAL PAID: $${o.totalAmount.toLocaleString()}`
+      ];
+      copyTextSafe(lines.join('\n'), 'Order confirmation receipt copied!');
+    }
+
+    function openOrdersHistoryModal() {
+      const list = document.getElementById('ordersHistoryList');
+      if (confirmedOrders.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-10 text-slate-400 text-sm">
+            <p class="font-semibold text-slate-300">No confirmed orders yet</p>
+            <p class="text-xs mt-1">Select PC parts and complete online checkout to see your orders here.</p>
+          </div>
+        `;
+      } else {
+        list.innerHTML = confirmedOrders.map((o, idx) => `
+          <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-extrabold text-cyan-400 text-xs">#${o.orderId}</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 font-mono text-[10px] font-bold">✓ CONFIRMED</span>
+            </div>
+            <p class="text-xs text-slate-300 font-medium">${o.items.length} Hardware Component(s) • Paid via ${o.paymentMethod}</p>
+            <div class="flex items-center justify-between pt-1 border-t border-slate-800/80 text-xs">
+              <span class="text-slate-500 font-mono text-[11px]">${o.dateFormatted}</span>
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-extrabold text-white">$${o.totalAmount.toLocaleString()}</span>
+                <button type="button" onclick="viewPastReceipt(${idx})" class="text-cyan-400 hover:underline font-semibold">Receipt</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const modal = document.getElementById('ordersHistoryModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function viewPastReceipt(index) {
+      closeOrdersHistoryModal();
+      latestConfirmedOrder = confirmedOrders[index];
+      showOrderConfirmation(latestConfirmedOrder, true);
+    }
+
+    function closeOrdersHistoryModal() {
+      const modal = document.getElementById('ordersHistoryModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function exportBuildSummary() {
+      const entries = Object.entries(customBuild);
+      if (entries.length === 0) {
+        showToast('Add some parts first before copying!');
+        return;
+      }
+      let total = 0;
+      const lines = ['=== RIGZORA STORE CUSTOM PC BUILD ==='];
+      entries.forEach(([slot, part]) => {
+        total += part.price;
+        lines.push(`${slot}: ${part.name} ($${part.price})`);
+      });
+      lines.push(`Total Estimate: $${total.toLocaleString()}`);
+      copyTextSafe(lines.join('\n'), 'Build specs copied to clipboard!');
+    }
+
+    function copyTextSafe(text, toastMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(toastMsg)).catch(() => fallbackCopy(text, toastMsg));
+      } else {
+        fallbackCopy(text, toastMsg);
+      }
+    }
+
+    function fallbackCopy(text, toastMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(toastMsg);
+      } catch (err) {
+        showToast('Unable to copy automatically');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = msg;
+      toast.classList.remove('opacity-0');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('opacity-0');
+      }, 2600);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSpecModal();
+        toggleBuilderDrawer(false);
+        closeCheckoutModal();
+        closeOrderConfirmModal();
+        closeOrdersHistoryModal();
+      }
+    });
+
+    init();
   </script>
 </body>
 </html>

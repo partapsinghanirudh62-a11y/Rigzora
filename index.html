@@ -59,13 +59,31 @@ footer{padding:24px 14px;color:var(--mut);text-align:center;font-size:12px;borde
 <button class="btn" onclick="openCart()">🛒 Cart (<span id="cc">0</span>)</button>
 </header>
 <div class="banner"><h1>Build your dream rig with Rigzora</h1><p>Genuine PC parts · 100% secure online payment · Easy 7-day returns</p></div>
-<div class="trust"><span>🔒 Online payment only</span><span>🚚 Free delivery above $25</span><span>↩️ 7-day return</span><span>✅ Brand warranty</span></div>
+<div class="trust"><span>🔒 UPI payments only (GPay, PhonePe, Paytm)</span><span>🚚 Free delivery above $25</span><span>↩️ 7-day return</span><span>✅ Brand warranty</span></div>
 <div class="chips" id="chips" style="margin-top:10px"></div>
 <div class="grid" id="grid"></div>
-<footer>© 2026 Rigzora. All prices in USD. Payments are accepted online only — no Cash on Delivery.</footer>
+<footer>© 2026 Rigzora. All prices in USD. Payments accepted via UPI only (Google Pay, PhonePe, Paytm, BHIM) — no Cash on Delivery.</footer>
 
 <div class="ov" id="ov" onclick="if(event.target===this)closeOv()"><div class="panel" id="panel"></div></div>
 
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAnalytics} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile,signOut} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,doc,setDoc,addDoc,collection,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyDNB_0hxzuxgpPGCXXcFF4LuI2A5l8WqBE",authDomain:"rigzora-store.firebaseapp.com",projectId:"rigzora-store",storageBucket:"rigzora-store.firebasestorage.app",messagingSenderId:"789618312361",appId:"1:789618312361:web:4122495cb8cd800679d5b8",measurementId:"G-YZX0WTFZND"};
+const app=initializeApp(firebaseConfig);
+try{getAnalytics(app)}catch(e){}
+const auth=getAuth(app),db=getFirestore(app);
+window.FB={
+async signUpIn(name,email,pw,phone){var cr;
+try{cr=await createUserWithEmailAndPassword(auth,email,pw);await updateProfile(cr.user,{displayName:name})}
+catch(e){if(e.code=="auth/email-already-in-use")cr=await signInWithEmailAndPassword(auth,email,pw);else throw e}
+await setDoc(doc(db,"customers",cr.user.uid),{name:name,email:email,phone:phone},{merge:true});return cr.user.uid},
+saveAddr(uid,a){return setDoc(doc(db,"customers",uid),{address:a},{merge:true})},
+async order(o){o.created=serverTimestamp();return (await addDoc(collection(db,"orders"),o)).id},
+out(){return signOut(auth)}};
+</script>
 <script>
 var D="RAM|Corsair|Vengeance LPX 16GB (2x8GB) DDR4 3200MHz|3499|4299|4.6|2814\nRAM|G.Skill|Trident Z5 RGB 32GB (2x16GB) DDR5 6000MHz|10999|13499|4.7|1203\nRAM|Kingston|FURY Beast 16GB DDR5 5600MHz|5299|6499|4.5|1766\nRAM|Crucial|8GB DDR4 3200MHz Desktop Memory|1799|2299|4.4|5120\nRAM|TeamGroup|T-Force Delta RGB 16GB DDR4 3600MHz|4199|5199|4.5|932\nStorage|Samsung|980 PRO 1TB NVMe PCIe 4.0 SSD|9499|12999|4.8|4410\nStorage|WD|Black SN850X 1TB NVMe Gen4 SSD|8999|11999|4.7|2380\nStorage|Crucial|P3 500GB NVMe PCIe 3.0 SSD|3299|4499|4.4|6021\nStorage|Kingston|NV2 1TB NVMe SSD|5499|6999|4.3|3340\nStorage|Seagate|Barracuda 2TB 7200RPM HDD|4899|5799|4.5|7250\nGPU|NVIDIA|GeForce RTX 4060 8GB GDDR6 Dual Fan|29999|34999|4.6|1520\nGPU|AMD|Radeon RX 7600 8GB GDDR6|24499|28999|4.4|880\nGPU|NVIDIA|GeForce RTX 4070 SUPER 12GB GDDR6X|59999|66999|4.8|640\nCPU|AMD|Ryzen 5 5600 6-Core 12-Thread (AM4)|9499|12499|4.7|3902\nCPU|AMD|Ryzen 7 7700X 8-Core 16-Thread (AM5)|29999|34999|4.7|710\nCPU|Intel|Core i5-13400F 10-Core Processor|16999|20999|4.5|2210\nCPU|Intel|Core i7-14700K 20-Core Unlocked|39999|44999|4.6|540\nMotherboard|ASUS|TUF Gaming B550-PLUS WiFi II (AM4)|10999|13999|4.5|1380\nMotherboard|MSI|MAG B760 TOMAHAWK WiFi DDR5|17499|20999|4.6|760\nMotherboard|Gigabyte|B650 AORUS ELITE AX (AM5)|15999|18999|4.5|690\nPSU|Corsair|CV650 650W 80+ Bronze|4799|5999|4.5|2980\nPSU|Cooler Master|MWE 750W 80+ Gold Fully Modular|7999|9999|4.6|1120\nCooling|Cooler Master|Hyper 212 Black Edition CPU Air Cooler|2999|3699|4.5|4100\nCooling|DeepCool|AK620 Dual-Tower CPU Cooler|4999|6299|4.7|1530\nCooling|NZXT|Kraken 240 AIO Liquid Cooler|11999|14999|4.5|480\nCabinet|NZXT|H5 Flow ATX Mid-Tower Case|7999|9499|4.7|910\nCabinet|Ant Esports|ICE-120 ARGB Mid-Tower Cabinet|3999|5499|4.2|2740\nPeripherals|Logitech|G102 Lightsync Gaming Mouse|1299|1995|4.5|18200\nPeripherals|Redragon|K552 Kumara Mechanical Keyboard|2799|3999|4.4|9810\nPeripherals|LG|24GN600 24\" 144Hz IPS Gaming Monitor|10999|14999|4.5|2030".split("\n").map(function(l,i){var p=l.split("|");return{id:i,c:p[0],b:p[1],n:p[2],p:U(+p[3]),m:U(+p[4]),r:p[5],v:+p[6]}});
 var ICON={RAM:"🧠",Storage:"💾",GPU:"🎮",CPU:"⚙️",Motherboard:"🔌",PSU:"🔋",Cooling:"❄️",Cabinet:"🖥️",Peripherals:"🖱️"};
@@ -94,24 +112,34 @@ show('<h2>Your cart</h2>'+ks.map(function(k){var x=D[k];return '<div class="row"
 '<div class="tot" style="margin-top:10px"><span>Subtotal</span><span>'+inr(sub())+'</span></div><div class="tot"><span>Delivery</span><span>'+(ship()?inr(ship()):"FREE")+'</span></div><div class="tot g"><span>Total</span><span>'+inr(sub()+ship())+'</span></div><button class="btn" style="width:100%;margin-top:10px" onclick="checkout()">Proceed to checkout</button><button class="btn ghost" style="width:100%;margin-top:8px" onclick="closeOv()">Continue shopping</button>')}
 function qty(k,d){cart[k]+=d;if(cart[k]<=0)delete cart[k];save();count();openCart()}
 function bar(n){return '<div class="steps">'+[0,1,2].map(function(i){return '<div class="'+(i<=n?'d':'')+'"></div>'}).join("")+'</div>'}
-function openAuth(){if(user){show('<h2>My account</h2><p>'+user.name+'<br><span class="br">'+user.email+' · '+user.phone+'</span></p><button class="btn ghost" onclick="user=null;addr=null;save();count();closeOv()">Sign out</button>')}else{step=0;auth(false)}}
+function openAuth(){if(user){show('<h2>My account</h2><p>'+user.name+'<br><span class="br">'+user.email+' · '+user.phone+'</span></p><button class="btn ghost" onclick="user=null;addr=null;window.FB&&FB.out();save();count();closeOv()">Sign out</button>')}else{step=0;auth(false)}}
 function auth(co){show((co?bar(0):'')+'<h2>Sign in / Sign up</h2><label>Full name</label><input class="in" id="a1"><label>Email</label><input class="in" id="a2" type="email"><label>Mobile number</label><input class="in" id="a3" type="tel" maxlength="10"><label>Password (min 6)</label><input class="in" id="a4" type="password"><div class="err" id="er"></div><button class="btn" style="width:100%" onclick="doAuth('+co+')">Continue</button>')}
-function doAuth(co){var n=$("a1").value.trim(),e=$("a2").value.trim(),p=$("a3").value.trim(),w=$("a4").value;
+async function doAuth(co){var n=$("a1").value.trim(),e=$("a2").value.trim(),p=$("a3").value.trim(),w=$("a4").value;
 if(n.length<2)return $("er").textContent="Enter your name.";if(!/^\S+@\S+\.\S+$/.test(e))return $("er").textContent="Enter a valid email.";if(!/^[6-9]\d{9}$/.test(p))return $("er").textContent="Enter a valid 10-digit mobile number.";if(w.length<6)return $("er").textContent="Password must be 6+ characters.";
-user={name:n,email:e,phone:p};save();count();co?address():closeOv()}
+var b=$("a4").parentNode.querySelector(".btn");if(b){b.disabled=true;b.textContent="Please wait…"}
+try{var uid=window.FB?await FB.signUpIn(n,e,w,p):null;user={name:n,email:e,phone:p,uid:uid}}
+catch(x){if(b){b.disabled=false;b.textContent="Continue"}var c=x&&x.code||"";return $("er").textContent=(c=="auth/wrong-password"||c=="auth/invalid-credential")?"Wrong password for this email.":(c=="auth/weak-password"?"Choose a stronger password.":"Could not sign in. Check your connection and Firebase setup.")}
+save();count();co?address():closeOv()}
 function checkout(){if(!user)auth(true);else address()}
 function address(){var a=addr||{};show(bar(1)+'<h2>Delivery address</h2><label>Full name</label><input class="in" id="d1" value="'+(a.n||user.name)+'"><label>Address (house no., street, area)</label><input class="in" id="d2" value="'+(a.a||"")+'"><div class="two"><div><label>City</label><input class="in" id="d3" value="'+(a.c||"")+'"></div><div><label>PIN code</label><input class="in" id="d4" maxlength="6" value="'+(a.z||"")+'"></div></div><label>State</label><input class="in" id="d5" value="'+(a.s||"")+'"><div class="err" id="er"></div><button class="btn" style="width:100%" onclick="doAddr()">Deliver to this address</button>')}
 function doAddr(){var a={n:$("d1").value.trim(),a:$("d2").value.trim(),c:$("d3").value.trim(),z:$("d4").value.trim(),s:$("d5").value.trim()};
-if(!a.n||a.a.length<5||!a.c||!a.s)return $("er").textContent="Please fill in all address fields.";if(!/^\d{6}$/.test(a.z))return $("er").textContent="Enter a valid 6-digit PIN code.";addr=a;payment()}
-function payment(){var t=sub()+ship();show(bar(2)+'<h2>Payment</h2><div class="tot g"><span>Amount to pay</span><span>'+inr(t)+'</span></div><div class="br">Only online payment is accepted. Cash on Delivery is not available.</div><div class="pay"><button class="'+(method=="upi"?"on":"")+'" onclick="method=\'upi\';payment()">UPI</button><button class="'+(method=="card"?"on":"")+'" onclick="method=\'card\';payment()">Card</button><button class="'+(method=="nb"?"on":"")+'" onclick="method=\'nb\';payment()">Net Banking</button></div>'+
-(method=="upi"?'<label>UPI ID</label><input class="in" id="p1" placeholder="yourname@upi">':method=="card"?'<label>Card number</label><input class="in" id="p1" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456"><div class="two"><div><label>Expiry (MM/YY)</label><input class="in" id="p2" maxlength="5"></div><div><label>CVV</label><input class="in" id="p3" type="password" maxlength="4"></div></div>':'<label>Select bank</label><select class="in" id="p1"><option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option><option>Kotak Mahindra Bank</option></select>')+
-'<div class="err" id="er"></div><button class="btn" id="pb" style="width:100%" onclick="pay()">Pay '+inr(t)+' securely</button><div class="note">🔒 This is a demo checkout. To take real money, connect a payment gateway such as Razorpay or Cashfree.</div>')}
+if(!a.n||a.a.length<5||!a.c||!a.s)return $("er").textContent="Please fill in all address fields.";if(!/^\d{6}$/.test(a.z))return $("er").textContent="Enter a valid 6-digit PIN code.";addr=a;if(window.FB&&user.uid)FB.saveAddr(user.uid,a).catch(function(){});payment()}
+var MERCHANT_UPI="yourshop@upi",MERCHANT_NAME="Rigzora",app="gpay",oid=null;
+var APPS={gpay:["Google Pay","tez://upi/pay","🟦"],phonepe:["PhonePe","phonepe://pay","🟪"],paytm:["Paytm","paytmmp://pay","🔷"],any:["Any UPI app","upi://pay","📲"]};
+function rup(t){return Math.round(t*85)}
+function rs(t){return "₹"+rup(t).toLocaleString("en-IN")}
+function upiLink(a,t){return APPS[a][1]+"?pa="+encodeURIComponent(MERCHANT_UPI)+"&pn="+encodeURIComponent(MERCHANT_NAME)+"&am="+rup(t)+".00&cu=INR&tn="+encodeURIComponent("Rigzora order "+oid)}
+function payment(){var t=sub()+ship();oid=oid||"RZ"+Date.now().toString().slice(-8);
+show(bar(2)+'<h2>Pay with UPI</h2><div class="tot g"><span>Amount to pay</span><span>'+rs(t)+'</span></div><div class="br">≈ '+inr(t)+' · UPI payments are made in Indian rupees. Cash on Delivery is not available.</div><label>Choose your UPI app</label><div class="two">'+Object.keys(APPS).map(function(k){return '<button class="btn ghost" style="padding:14px 6px" onclick="payWith(\''+k+'\')">'+APPS[k][2]+' '+APPS[k][0]+'</button>'}).join("")+'</div><div class="note">Tap an app to open it with the amount filled in. On a computer? Pay to UPI ID <b>'+MERCHANT_UPI+'</b> from your phone, then continue below.</div><button class="btn ghost" style="width:100%;margin-top:10px" onclick="utr()">I already paid / paying manually</button>')}
+function payWith(a){app=a;location.href=upiLink(a,sub()+ship());setTimeout(utr,900)}
+function utr(){var t=sub()+ship();show(bar(2)+'<h2>Confirm your payment</h2><p>Pay <b>'+rs(t)+'</b> to <b>'+MERCHANT_UPI+'</b> in '+APPS[app][0]+', then enter the 12-digit UPI reference (UTR) shown in the app.</p><label>UPI reference / UTR number</label><input class="in" id="p1" inputmode="numeric" maxlength="12" placeholder="12-digit number"><div class="err" id="er"></div><button class="btn" id="pb" style="width:100%" onclick="pay()">Confirm payment</button><button class="btn ghost" style="width:100%;margin-top:8px" onclick="payment()">Choose another app</button>')}
 function pay(){var v=$("p1").value.trim();
-if(method=="upi"&&!/^[\w.\-]{2,}@[a-zA-Z]{2,}$/.test(v))return $("er").textContent="Enter a valid UPI ID, e.g. name@upi.";
-if(method=="card"){if(v.replace(/\s/g,"").length<13)return $("er").textContent="Enter a valid card number.";if(!/^(0[1-9]|1[0-2])\/\d\d$/.test($("p2").value))return $("er").textContent="Enter expiry as MM/YY.";if($("p3").value.length<3)return $("er").textContent="Enter CVV."}
-$("pb").disabled=true;$("pb").textContent="Processing payment…";
-setTimeout(function(){var id="RZ"+Date.now().toString().slice(-8),t=sub()+ship(),n=0;for(var k in cart)n+=cart[k];
-cart={};save();count();
-show('<div class="ctr"><svg class="tick" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M28 52l16 16 29-34"/></svg><h2>Payment successful!</h2><p>Your order has been placed.</p></div><div class="note"><div class="tot"><span>Order ID</span><span>'+id+'</span></div><div class="tot"><span>Items</span><span>'+n+'</span></div><div class="tot"><span>Paid</span><span>'+inr(t)+'</span></div><div class="tot"><span>Deliver to</span><span style="text-align:right">'+addr.n+', '+addr.c+' – '+addr.z+'</span></div><div class="tot"><span>Estimated delivery</span><span>3–5 days</span></div></div><button class="btn" style="width:100%;margin-top:14px" onclick="closeOv()">Continue shopping</button>')},1800)}
+if(!/^\d{12}$/.test(v))return $("er").textContent="Enter the 12-digit UPI reference number.";
+$("pb").disabled=true;$("pb").textContent="Verifying payment…";
+setTimeout(function(){var id=oid,t=sub()+ship(),n=0;for(var k in cart)n+=cart[k];
+var it=[];for(var k in cart)it.push({id:+k,name:D[k].n,qty:cart[k],price:D[k].p});
+if(window.FB&&user.uid)FB.order({uid:user.uid,orderId:id,items:it,total:t,amountINR:rup(t),address:addr,method:"upi",upiApp:app,utr:v,status:"awaiting_verification"}).catch(function(){});
+cart={};oid=null;save();count();
+show('<div class="ctr"><svg class="tick" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46"/><path d="M28 52l16 16 29-34"/></svg><h2>Order placed!</h2><p>Your UPI payment is being confirmed.</p></div><div class="note"><div class="tot"><span>Order ID</span><span>'+id+'</span></div><div class="tot"><span>Items</span><span>'+n+'</span></div><div class="tot"><span>Paid via UPI</span><span>'+rs(t)+'</span></div><div class="tot"><span>UTR</span><span>'+v+'</span></div><div class="tot"><span>Deliver to</span><span style="text-align:right">'+addr.n+', '+addr.c+' – '+addr.z+'</span></div><div class="tot"><span>Estimated delivery</span><span>3–5 days</span></div></div><button class="btn" style="width:100%;margin-top:14px" onclick="closeOv()">Continue shopping</button>')},1800)}
 chips();grid();count();
 </script></body></html>
